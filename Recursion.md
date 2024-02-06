@@ -12,7 +12,7 @@
 
 ## Useful articles
 
-## Questions
+## For practice 
 **codeforces** <br />
 [Assiout sheet - Recursion](https://codeforces.com/group/MWSDmqGsZm/contest/223339)
 
