@@ -9,12 +9,24 @@
 ## Useful videos 
 [Recursion in Programming - Full Course](https://youtu.be/IJDJ0kBx2LM?si=NEXHFnrRiT8Sf8KG) <br />
 [Dr Mostafa Saad -competitive programming pov](https://www.youtube.com/watch?v=hyk46UmJPS4&list=PLPt2dINI2MIZPFq6HyUB1Uhxdh1UDnZMS&index=24) <br />
+[Tower of Hanoi problem](https://youtu.be/q6RicK1FCUs?si=nYdiK7xfuIQxfj-G) <br /> 
 
 ## Useful articles
 
 ## For practice 
-**codeforces** <br />
+**codeforces** <br /> 
 [Assiout sheet - Recursion](https://codeforces.com/group/MWSDmqGsZm/contest/223339) <br /> 
-**LeetCode** <br />
-[45 recursion problems](https://leetcode.com/tag/recursion/)
+**LeetCode** <br /> 
+[45 recursion problems](https://leetcode.com/tag/recursion/) <br />
+
+## Formal definitions 
+*Recursive call* : A method call in which the method being called is the same as the one making the call.  <br />
+*Direct recursion* : Recursion in which a method directly calls itself.  <br />
+*Indirect recursion* : Recursion in which a chain of two or more method calls returns to the method that originated the chain.  <br />
+*Tail recursion* : The case in which a function contains only a single recursive call and it is the last statement to be executed in the function.  <br />
+
+## general format
+
+
+## Tower of Hanoi problem
 
