@@ -5,3 +5,14 @@
 ## Why and why not?
 ![Screenshot 2024-02-06 025228](https://github.com/HelanaNady/DataStructure/assets/137416623/2a2c6245-499a-4ddd-b55f-820931ef81a8)
 
+
+## Useful videos 
+[Recursion in Programming - Full Course](https://youtu.be/IJDJ0kBx2LM?si=NEXHFnrRiT8Sf8KG)
+[Dr Mostafa Saad -competitive programming pov](https://www.youtube.com/watch?v=hyk46UmJPS4&list=PLPt2dINI2MIZPFq6HyUB1Uhxdh1UDnZMS&index=24)
+
+## Useful articles
+
+## Questions
+**codeforces**
+[Assiout sheet - Recursion](https://codeforces.com/group/MWSDmqGsZm/contest/223339)
+
