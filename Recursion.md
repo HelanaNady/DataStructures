@@ -8,7 +8,7 @@
 *Tail recursion* : The case in which a function contains only a single recursive call and it is the last statement to be executed in the function.  <br />
 
 ## general format
-```
+```C++
 if(SomeKnownCondition)  //base case
    SolutionStatement;
 else
