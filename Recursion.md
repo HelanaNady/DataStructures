@@ -8,6 +8,12 @@
 *Tail recursion* : The case in which a function contains only a single recursive call and it is the last statement to be executed in the function.  <br />
 
 ## general format
+```
+if(SomeKnownCondition)  //base case
+   SolutionStatement;
+else
+   RecursiveFunctionCall;  //general case
+```
 
 
 ## Why and why not?
