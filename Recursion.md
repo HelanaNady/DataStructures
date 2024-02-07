@@ -9,10 +9,12 @@
 
 ## general format
 ```C++
-if(SomeKnownCondition)  //base case
+
+if (SomeKnownCondition)       //base case
    SolutionStatement;
 else
-   RecursiveFunctionCall;  //general case
+   RecursiveFunctionCall;    //general case
+
 ```
 
 
