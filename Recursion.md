@@ -7,6 +7,9 @@
 *Indirect recursion* : Recursion in which a chain of two or more method calls returns to the method that originated the chain.  <br />
 *Tail recursion* : The case in which a function contains only a single recursive call and it is the last statement to be executed in the function.  <br />
 
+## Why and why not?
+![Screenshot 2024-02-06 025228](https://github.com/HelanaNady/DataStructure/assets/137416623/2a2c6245-499a-4ddd-b55f-820931ef81a8)
+
 ## general format
 ```Cpp
 
@@ -57,8 +60,7 @@ int main()
 ```
 >Time complexity:
 >O(2^N), There are two possibilities for every disk. Therefore, 2 * 2 * 2 * . . . * 2(N times) is 2N
-## Why and why not?
-![Screenshot 2024-02-06 025228](https://github.com/HelanaNady/DataStructure/assets/137416623/2a2c6245-499a-4ddd-b55f-820931ef81a8)
+
 
 
 ## Useful videos 
