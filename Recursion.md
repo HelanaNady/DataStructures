@@ -19,24 +19,6 @@ else
 *Note: If there're multiple recursion calls there might be multiple base casees*
 
 
-## Why and why not?
-![Screenshot 2024-02-06 025228](https://github.com/HelanaNady/DataStructure/assets/137416623/2a2c6245-499a-4ddd-b55f-820931ef81a8)
-
-
-## Useful videos 
-[Recursion in Programming - Full Course](https://youtu.be/IJDJ0kBx2LM?si=NEXHFnrRiT8Sf8KG) <br />
-[Dr Mostafa Saad -competitive programming pov](https://www.youtube.com/watch?v=hyk46UmJPS4&list=PLPt2dINI2MIZPFq6HyUB1Uhxdh1UDnZMS&index=24) <br />
-[Tower of Hanoi problem](https://youtu.be/q6RicK1FCUs?si=nYdiK7xfuIQxfj-G) <br /> 
-
-## Useful articles
-
-## For practice 
-**codeforces** <br /> 
-[Assiout sheet - Recursion](https://codeforces.com/group/MWSDmqGsZm/contest/223339) <br /> 
-**LeetCode** <br /> 
-[45 recursion problems](https://leetcode.com/tag/recursion/) <br />
-
-
 ## Tower of Hanoi problem
 **Solutin pattern using recursion:** <br /> 
 -- Shift ‘N-1’ disks from ‘A’ to ‘B’, using C. <br /> 
@@ -73,5 +55,22 @@ int main()
 // This is code is contributed by rathbhupendra 
 
 ```
->[!Note] Time complexity:
+>Time complexity:
 >O(2^N), There are two possibilities for every disk. Therefore, 2 * 2 * 2 * . . . * 2(N times) is 2N
+## Why and why not?
+![Screenshot 2024-02-06 025228](https://github.com/HelanaNady/DataStructure/assets/137416623/2a2c6245-499a-4ddd-b55f-820931ef81a8)
+
+
+## Useful videos 
+[Recursion in Programming - Full Course](https://youtu.be/IJDJ0kBx2LM?si=NEXHFnrRiT8Sf8KG) <br />
+[Dr Mostafa Saad -competitive programming pov](https://www.youtube.com/watch?v=hyk46UmJPS4&list=PLPt2dINI2MIZPFq6HyUB1Uhxdh1UDnZMS&index=24) <br />
+[Tower of Hanoi problem](https://youtu.be/q6RicK1FCUs?si=nYdiK7xfuIQxfj-G) <br /> 
+
+## Useful articles
+[GeeksForGeeks Tower of Hanoi](https://www.geeksforgeeks.org/c-program-for-tower-of-hanoi/) <br />
+
+## For practice 
+**codeforces** <br /> 
+[Assiout sheet - Recursion](https://codeforces.com/group/MWSDmqGsZm/contest/223339) <br /> 
+**LeetCode** <br /> 
+[45 recursion problems](https://leetcode.com/tag/recursion/) <br />
