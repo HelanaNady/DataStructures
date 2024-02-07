@@ -37,21 +37,15 @@
 ## Node 
 
 ```cpp
+template <typename T>
 class Node
 {
 public:
-	int num;
-    Node *next;
-    Node()
-    {
-        num = 0;
-        next = nullptr;
-    }
-    Node(int num)
-    {
-        this->num = num;
-        next = nullptr;
-    }
+    T data;
+    Node<T> *next;
+
+    Node() : data(0), next(nullptr) {}
+    Node(T value) : data(value), next(nullptr) {}
 };
 ```
 
@@ -59,18 +53,20 @@ public:
 returns the number of data elements in the list
 
 ```cpp
-int size()
+template <typename T>
+int LinkedList<T>::size() 
 {
     int size = 0;
-    Node *ptr = head;
+    Node<T> *ptr = head;
 
-    while (ptr != nullptr)
+    while(ptr != nullptr) 
     {
         size++;
         ptr = ptr->next;
     }
     return size;
 }
+
 ```
 ## empty
 returns true if empty
