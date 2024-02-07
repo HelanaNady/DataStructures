@@ -8,7 +8,7 @@
 *Tail recursion* : The case in which a function contains only a single recursive call and it is the last statement to be executed in the function.  <br />
 
 ## general format
-```C++
+```Cpp
 
 if (SomeKnownCondition)       //base case
    SolutionStatement;
@@ -16,6 +16,7 @@ else
    RecursiveFunctionCall;    //general case
 
 ```
+*Note: If there're multiple recursion calls there might be multiple base casees*
 
 
 ## Why and why not?
@@ -37,4 +38,40 @@ else
 
 
 ## Tower of Hanoi problem
+**Solutin pattern using recursion:** <br /> 
+-- Shift ‘N-1’ disks from ‘A’ to ‘B’, using C. <br /> 
+-- Shift last disk from ‘A’ to ‘C’. <br /> 
+-- Shift ‘N-1’ disks from ‘B’ to ‘C’, using A. <br /> 
 
+**Code implementation:** <br /> 
+```Cpp
+// C++ recursive function to 
+// solve tower of hanoi puzzle 
+#include <bits/stdc++.h> 
+using namespace std; 
+
+void towerOfHanoi(int n, char from_rod, char to_rod, char aux_rod) 
+{ 
+	if (n == 0) { 
+		return; 
+	} 
+	towerOfHanoi(n - 1, from_rod, aux_rod, to_rod); 
+	cout << "Move disk " << n << " from rod " << from_rod << " to rod " << to_rod << endl; 
+	towerOfHanoi(n - 1, aux_rod, to_rod, from_rod); 
+} 
+
+// Driver code 
+int main() 
+{ 
+	int N = 3; 
+
+	// A, B and C are names of rods
+   towerOfHanoi(N, 'A', 'C', 'B'); 
+	return 0; 
+} 
+
+// This is code is contributed by rathbhupendra 
+
+```
+>[!Note] Time complexity:
+>O(2^N), There are two possibilities for every disk. Therefore, 2 * 2 * 2 * . . . * 2(N times) is 2N
