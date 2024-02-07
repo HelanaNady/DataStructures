@@ -1,6 +1,5 @@
 # Linked List
-![2024-02-04](https://github.com/HelanaNady/DataStructure/assets/84867341/3d686016-6a54-45ce-9e4f-34386f164d4d)
-
+![image](https://github.com/HelanaNady/DataStructure/assets/84867341/14b90c3e-8d37-410e-bce4-cbacc41dbe3f)
 
 ## Resources (in progress)
 
@@ -9,7 +8,6 @@
 - [Singly-Linked Lists - CS50 Shorts](https://www.youtube.com/watch?v=zQI3FyWm144)
 - [Doubly-Linked Lists - CS50 Shorts](https://www.youtube.com/watch?v=FHMPswJDCvU)
 - [LinkedList - Leetcode problems playlist ](https://www.youtube.com/playlist?list=PLot-Xpze53leU0Ec0VkBhnf4npMRFiNcB)
-
 
 ## To be covered
 - singly linked list
@@ -25,16 +23,15 @@
 ## Functions implemented:
 
 - [size](#size)
-- empty
-- value_at(index)
-- push_front(value)
-- push_back(value)
-- pop_back()
-- front()
-- back()
-- erase(index)
-- reverse()
-- remove_value(value) 
+- [empty](#empty)
+- [push_front(num)](#push_front)
+- [push_back(num)](#push_back)
+- [pop_front](#pop_front)
+- [pop_back](#pop_back)
+- [value_at(index)](#value_at(index))
+- [erase(index)](#erase(index))
+- [remove_value](#remove_value)
+- [reverse](#reverse)
 
 ----
 ## Node 
@@ -43,25 +40,26 @@
 class Node
 {
 public:
-    int num;
+	int num;
     Node *next;
     Node()
     {
         num = 0;
-        next = NULL;
+        next = nullptr;
     }
     Node(int num)
     {
         this->num = num;
-        next = NULL;
+        next = nullptr;
     }
 };
 ```
 
 ## size 
+returns the number of data elements in the list
 
 ```cpp
-int LinkedList :: size()
+int size()
 {
     int size = 0;
     Node *ptr = head;
@@ -75,25 +73,31 @@ int LinkedList :: size()
 }
 ```
 ## empty
+returns true if empty
 
 ```cpp
-
 bool empty()
 {
     if (head == nullptr)
+    {
         return true;
+    }
+
     else
-        return false;
+    {
+        return false;    
+    }
 }
 ```
 
 ## push_front 
+
 - Time complexity = O(1)
 
 ```cpp
 void push_front(int num)
 {
-    // allocate a new node for num
+    // Allocate a new node for num
     Node *newNode = new Node(num);
 
     if (head == nullptr)
@@ -107,7 +111,10 @@ void push_front(int num)
 }
 ```
 
-## push_back()
+
+
+## push_back
+
 - Time complexity = O(n)
 ```cpp
 void push_back(int num)
@@ -119,54 +126,134 @@ void push_back(int num)
         head = newNode;
         return;
     }
-
-    // if node inserted isn't the first one -> iterate till u reach end of list (NULL)
+    // if node inserted isn't the first one -> iterate till u reach end of list
     Node *ptr = head;
     while (ptr->next != nullptr)
     {
         ptr = ptr->next;
     }
-    // exit while loop when next is null, set it to point to new node inserted
     ptr->next = newNode;
 }
 ```
 
-## reverse 
+## pop_front
 
-Using two pointers: 
 ```cpp
-void reverse()
+int pop_front()
 {
-    // if list is empty or contains only 1 node there is nothing to reverse
-    if (size() <= 1)
-        return;
-
-    // we need two pointers to reverse list (again because this is singly linked list)
-    Node *prev = NULL;
-    Node *current = head;
-
-    while (current) // current != nullptr
+    if (head == nullptr)
     {
-        // node 1 -> node 2 -> node 3
-        // prev      current   temp
-
-        Node *temp = current->next;
-        current->next = prev;
-        // move pointers
-        prev = current;
-        current = temp;
+        throw out_of_range("can not pop from an empty list");
     }
+
+    int num = head->num;
+    Node *temp = head;
+    head = head->next;
+    delete temp;
+    return num;
 }
 ```
-Using recursion:
-//to be implemented 
 
-## remove
+## pop_back
+
 ```cpp
+int pop_back()
+{
+    if (head == nullptr)
+    {
+        throw out_of_range("can not pop from an empty list");
+    }
 
+    int num;
+    
+    if (head->next == nullptr)
+    {
+        num = head->num;
+        delete head;
+        head = nullptr;
+        return num;
+    }
+
+    Node *prev = head;
+    Node *curr = head->next;
+
+    while (curr->next != nullptr)
+    {
+        prev = prev->next;
+        curr = curr->next;
+    }
+
+    num = curr->num;
+    prev->next = curr->next;
+    delete curr;
+    return num;
+}
+```
+
+## value_at(index)
+
+```cpp
+int value_at(int index)
+{
+    if (index >= size())
+    {
+        throw out_of_range("index out of range");
+    }
+
+    // Keep iterating and count until u find that index
+    Node *ptr = head;
+    int count = 0;
+    while (count != index)
+    {
+        count++;
+        ptr = ptr->next;
+    }
+    return ptr->num;
+}
+
+```
+----
+
+![image](https://github.com/HelanaNady/DataStructure/assets/84867341/3f120f98-b70d-4067-8f21-c23c0290f4ee)
+
+## erase(index)
+```cpp
+void erase(int index)
+{
+    if (index >= size())
+    {
+        throw out_of_range("index out of range");
+    }
+
+    // Deleting element at head
+    if (index == 0)
+    {
+        Node *temp = head;
+        head = head->next;
+        delete temp;
+        return;
+    }
+    
+    Node *prev = nullptr;
+    Node *curr = head;
+    int count = 0;
+    while (count != index)
+    {
+        prev = curr;
+        curr = curr->next;
+        count++;
+    }
+    prev->next = curr->next;
+    delete curr;
+}
+
+```
+## remove_value
+
+```cpp
 void remove(int num)
 {
-    if (head == NULL)
+    if (head == nullptr)
     {
         cout << "list is empty nothing to delete! \n";
         return;
@@ -174,36 +261,84 @@ void remove(int num)
 
     if (head->num == num)
     {
-        delete head;
-        head = nullptr;
+        Node *temp = head;
+        head = head->next;
+        delete temp;
         return;
     }
+    
+    Node *prev = head;       
+    Node *curr = head->next; 
 
-    // assuming element deleted isn't the first node at the list
-    Node *ptr1 = head;       
-    Node *ptr2 = head->next; 
-
-    while (ptr2 != nullptr)
+    while (curr != nullptr)
     {
-        if (ptr2->num == num)
+        if (curr->num == num)
         {
-            // ptr1 -> ptr2 (to be deleted) -> node3
-            // connect ptr1 with the node 3
-            ptr1->next = ptr2->next;
-            delete ptr2;
-            ptr2 = nullptr;
+            prev->next = curr->next;
+            delete curr;
             return;
         }
-        ptr1 = ptr1->next;
-        ptr2 = ptr2->next;
+        prev = prev->next;
+        curr = curr->next;
     }
 }
 ```
 
 
+--- 
+
+## reverse 
+
+### using two pointers 
+
+```cpp
+void reverse()
+{
+    // If list is empty or contains only 1 node there is nothing to reverse
+    if (head == nullptr || head->next == nullptr)
+    {
+        return;  
+    }
+
+    // We need two pointers to reverse list (singly linked list)
+    Node *prev = nullptr;
+    Node *curr = head;
+
+    while (curr != nullptr)
+    {
+        Node *temp = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = temp;
+    }
+}
+```
+
+### using recursion:
+
+```cpp
+Node *reverse(Node *head)
+{
+    if (head == nullptr || head->next == nullptr)
+    {
+        return head;
+    }
+    Node *newHead = reverse(head->next);
+    head->next->next = head;
+    head->next = nullptr;
+    return newHead;
+}
+```
 
 
+# Doubly linked list
+
+![Pasted image 20240207183037](https://github.com/HelanaNady/DataStructure/assets/84867341/dcb083bd-033b-41e9-87a5-ad17b041b8c8)
+
+Each node in doubly linked lists has 2 pointers: a pointer to the previous node and another to the next node. 
+
+![image](https://github.com/HelanaNady/DataStructure/assets/84867341/3ab8e693-9a51-4a32-af15-478978fbe3bf)
 
 
-
+----
 
