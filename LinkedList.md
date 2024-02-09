@@ -17,7 +17,11 @@
 
 ## To be added 
 - more leetcode / interview questions 
-
+----
+## For practice
+**Leetcode** </br>
+- [Singly linked list problems](https://leetcode.com/tag/linked-list/)
+- [Doubly linked list problems](https://leetcode.com/tag/doubly-linked-list/l)
 ----
 
 ## Functions implemented:
