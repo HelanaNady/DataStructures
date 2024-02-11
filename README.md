@@ -4,7 +4,8 @@
 ## Contents 
 - [Recursion](Recursion.md) 
 - [Linked Lists](https://github.com/HelanaNady/DataStructure/blob/main/LinkedList.md)
-- [Stacks and queues](https://github.com/HelanaNady/DataStructure/blob/main/Stacks%20and%20queues.md)
+- [Stacks](https://github.com/HelanaNady/DataStructure/blob/main/Stacks.md)
+- [Trees](https://github.com/HelanaNady/DataStructure/blob/main/Trees.md)
 
 ---
 ![image](https://github.com/HelanaNady/DataStructure/assets/84867341/23bfef84-5e68-4e0f-89df-cb720a5ce4fa)
