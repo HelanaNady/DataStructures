@@ -30,7 +30,7 @@
 - [empty](#empty)
 - [push_front(num)](#push_front)
 - [push_back(num)](#push_back)
-- [Insert_at(Node* previous, num)](#Insert_at(Node*previous,num))
+- [Insert_at(Node* previous, num)](https://github.com/HelanaNady/DataStructure/blob/main/LinkedList.md#insert_atnodepreviousnum)
 - [pop_front](#pop_front)
 - [pop_back](#pop_back)
 - [value_at(index)](#value_at(index))
