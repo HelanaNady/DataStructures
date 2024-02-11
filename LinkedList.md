@@ -37,20 +37,19 @@
 - [remove_value](#remove_value)
 - [reverse](#reverse)
 
-> // a note i will edit all functions to templates + put a style for the code
->[!warning] Common Mistake
+> // a note i will edit all functions to templates + put a style for the code </br>
+------
+> [!WARNING] Common Mistake
 > It is a common mistake to think that before you can assign
-headPtr a value, you fi rst must create a new Node object. This misconception is rooted in
-the belief that the variable headPtr does not exist if it does not point to a node. This is not
-
-at all true; headPtr is a pointer variable waiting to be assigned a value. Thus, for exam-
-ple, you can assign nullptr to headPtr without fi rst using new . In fact, the sequence
-```cpp
-headPtr = new Node; // An incorrect use of new
-headPtr = nullptr;
-```
-destroys the content of the only pointer— headPtr—to the newly created node. Thus, you have needlessly created a new node and then made it
-inaccessible. This action creates a memory leak in your program and should be avoided!
+> headPtr a value, you first must create a new Node object. This misconception is rooted in
+> the belief that the variable headPtr does not exist if it does not point to a node. This is not
+> at all true; headPtr is a pointer variable waiting to be assigned a value. Thus, for example, you can assign nullptr to headPtr without fi rst using new . In fact, the sequence: </br>
+ > ```cpp
+> headPtr = new Node; // An incorrect use of new
+> headPtr = nullptr;
+> ```
+> destroys the content of the only pointer— headPtr—to the newly created node. Thus, you have needlessly created a new node and then made it
+> inaccessible. This action creates a memory leak in your program and should be avoided!
 ----
 ## Node 
 
