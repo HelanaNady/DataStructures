@@ -140,7 +140,8 @@ void push_back(int num)
 inserts a value after a certain node
 
 ```cpp
-void Insert_at(Node* previous, num)
+template <typename T>
+Void LinkedList<T> :: Insert_at(Node* previous,T num)
 {
 	//check if previous node is NULL
 	if (!previous)
