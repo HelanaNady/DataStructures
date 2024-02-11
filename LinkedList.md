@@ -39,7 +39,7 @@
 
 > // a note i will edit all functions to templates + put a style for the code </br>
 ------
-> [!WARNING] Common Mistake
+> [!WARNING] 
 > It is a common mistake to think that before you can assign
 > headPtr a value, you first must create a new Node object. This misconception is rooted in
 > the belief that the variable headPtr does not exist if it does not point to a node. This is not
