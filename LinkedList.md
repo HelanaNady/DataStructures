@@ -25,7 +25,6 @@
 ----
 
 ## Functions implemented:
-
 - [size](#size)
 - [empty](#empty)
 - [push_front(num)](#push_front)
@@ -37,6 +36,8 @@
 - [erase(index)](#erase(index))
 - [remove_value](#remove_value)
 - [reverse](#reverse)
+
+> // a note i will edit all functions to templates + put a style for the code 
 
 ----
 ## Node 
@@ -309,6 +310,7 @@ void remove(int num)
 --- 
 
 ## reverse 
+![RGIF2](https://github.com/HelanaNady/DataStructure/assets/84867341/38a6da52-5826-4cc6-9568-d8394bf4384c)
 
 ### using two pointers 
 
@@ -332,6 +334,7 @@ void reverse()
         prev = curr;
         curr = temp;
     }
+    head = prev;
 }
 ```
 
