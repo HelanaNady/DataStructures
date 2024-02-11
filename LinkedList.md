@@ -30,6 +30,7 @@
 - [empty](#empty)
 - [push_front(num)](#push_front)
 - [push_back(num)](#push_back)
+- [Insert_at(Node* previous, num)](#Insert_at(Node*previous,num))
 - [pop_front](#pop_front)
 - [pop_back](#pop_back)
 - [value_at(index)](#value_at(index))
@@ -133,6 +134,25 @@ void push_back(int num)
         ptr = ptr->next;
     }
     ptr->next = newNode;
+}
+```
+## Insert_at(Node*previous,num)
+inserts a value after a certain node
+
+```cpp
+void Insert_at(Node* previous, num)
+{
+	//check if previous node is NULL
+	if (!previous)
+	{
+		cout << "previous can't be null\n"; 
+		return;
+	}
+	//Prepare a new node
+	Node* newnode = new Node(num);
+	//insertion
+	newnode->Next = previous->next;
+	previous->next = newnode;
 }
 ```
 
