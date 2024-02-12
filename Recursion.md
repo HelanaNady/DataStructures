@@ -65,6 +65,7 @@ int main()
 -----------------------------
 ## Useful videos 
 [Recursion in Programming - Full Course](https://youtu.be/IJDJ0kBx2LM?si=NEXHFnrRiT8Sf8KG) <br />
+[Recursion Abdul Bari](https://www.youtube.com/playlist?list=PL0x1zsLFiXsy62_l3Oum0nzyGM5VPkNyK) <br />
 [Dr Mostafa Saad -competitive programming pov](https://www.youtube.com/watch?v=hyk46UmJPS4&list=PLPt2dINI2MIZPFq6HyUB1Uhxdh1UDnZMS&index=24) <br />
 [Tower of Hanoi problem](https://youtu.be/q6RicK1FCUs?si=nYdiK7xfuIQxfj-G) <br /> 
 
