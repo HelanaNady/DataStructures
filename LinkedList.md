@@ -32,8 +32,8 @@
 - [Insert_at(Node* previous, num)](https://github.com/HelanaNady/DataStructure/blob/main/LinkedList.md#insert_atnodepreviousnum)
 - [pop_front](#pop_front)
 - [pop_back](#pop_back)
-- [value_at(index)](https://github.com/HelanaNady/DataStructure/blob/main/LinkedList.md#value_at(index))
-- [erase(index)](https://github.com/HelanaNady/DataStructure/blob/main/LinkedList.md#erase(index))
+- [value_at(index)](#value_atindex)
+- [erase(index)](#eraseindex)
 - [remove_value](#remove_value)
 - [reverse](#reverse)
 
