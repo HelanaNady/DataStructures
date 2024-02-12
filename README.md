@@ -5,6 +5,7 @@
 - [Recursion](Recursion.md) 
 - [Linked Lists](https://github.com/HelanaNady/DataStructure/blob/main/LinkedList.md)
 - [Stacks](https://github.com/HelanaNady/DataStructure/blob/main/Stacks.md)
+- [Queues](https://github.com/HelanaNady/DataStructure/blob/main/Queues.md)
 - [Trees](https://github.com/HelanaNady/DataStructure/blob/main/Trees.md)
 
 ---
