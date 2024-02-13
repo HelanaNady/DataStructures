@@ -61,8 +61,20 @@ int main()
 >Time complexity:
 >O(2^N), There are two possibilities for every disk. Therefore, 2 * 2 * 2 * . . . * 2(N times) is 2N
 
+------
 
------------------------------
+## Tail recursion vs Head recursion 
+
+
+| Tail recursion | Head recursion |
+| ---- | ---- |
+| Recursive call is typically last statement and no operations are performed after it | Recursive call isn't the last thing to excute, there <br>are additional operations performed after it |
+| Operations are performed at calling time | Operations are performed at return time |
+| Can be easily converted to a loop | Not easily converted to a loop |
+| Better memory efficiency especially in languages <br>with tail call optimization. | Consume more memory due to multiple call frames being stored on the stack. |
+
+
+-----
 ## Useful videos 
 [Recursion in Programming - Full Course](https://youtu.be/IJDJ0kBx2LM?si=NEXHFnrRiT8Sf8KG) <br />
 [Recursion Abdul Bari](https://www.youtube.com/playlist?list=PL0x1zsLFiXsy62_l3Oum0nzyGM5VPkNyK) <br />
@@ -71,6 +83,7 @@ int main()
 
 ## Useful articles
 [GeeksForGeeks Tower of Hanoi](https://www.geeksforgeeks.org/c-program-for-tower-of-hanoi/) <br />
+[A Common Mistake: Head Recursion](https://harshpreetsingh.medium.com/a-common-mistake-head-recursion-8901fedb45fd) <br />
 
 ## For practice 
 **codeforces** <br /> 
