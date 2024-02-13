@@ -73,6 +73,42 @@ int main()
 | Can be easily converted to a loop | Not easily converted to a loop |
 | Better memory efficiency especially in languages <br>with tail call optimization. | Consume more memory due to multiple call frames being stored on the stack. |
 
+Tail recurion example:
+
+```cpp
+void print(int x)
+{
+	if(x == 0)
+		return;
+	std::cout << x;
+	print(x-1);
+}
+```
+
+Head recursion example:
+
+```cpp
+void print(int x)
+{
+	if(x == 0)
+		return;
+	print(x-1);
+	std::cout << x;
+}
+```
+
+Another example:
+```cpp
+int factorial(int n)
+{
+	if(n == 1)
+        return 1;
+    return n * factorial(n - 1);
+}
+```
+> [!warning] 
+> Don't get tricked here! this is a head recursion not tail recursion, the recursive call `factorial(n - 1)` is made before the multiplication operation
+
 
 -----
 ## Useful videos 
