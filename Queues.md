@@ -1,8 +1,10 @@
 # Queues
 
-<p align="center">
-  <img src="https://github.com/HelanaNady/DataStructure/assets/84867341/d89eb698-df26-44ac-9dea-f3eaec1f10ec" alt="Queue">
-</p>
+
+<div align="center">
+  <img src="https://github.com/HelanaNady/DataStructure/assets/84867341/d89eb698-df26-44ac-9dea-f3eaec1f10ec" alt="Queue" width="65%">
+</div>
+
 
 Queues are FIFO structure first in-first out. 
 
@@ -77,6 +79,9 @@ bool LinkedQueue<ItemType>::dequeue()
 
 ----
 
-![image](https://github.com/HelanaNady/DataStructure/assets/84867341/9c7e87d4-50fc-4f7c-b24e-12e4618782f3)
+<div align="center">
+  <img src="https://github.com/HelanaNady/DataStructure/assets/84867341/9c7e87d4-50fc-4f7c-b24e-12e4618782f3" alt="Queue" width="80%">
+</div>
+
 
 ![image](https://github.com/HelanaNady/DataStructure/assets/84867341/1931798a-c0cd-4963-98d6-0ea2fe88c726)
