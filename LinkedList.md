@@ -25,6 +25,7 @@
 ----
 
 ## Functions implemented:
+- [Copy constructor](#Copy-constructor)
 - [size](#size)
 - [empty](#empty)
 - [push_front(num)](#push_front)
@@ -65,7 +66,45 @@ public:
 > destroys the content of the only pointer— headPtr—to the newly created node. Thus, you have needlessly created a new node and then made it
 > inaccessible. This action creates a memory leak in your program and should be avoided!
 ----
+## Copy constructor 
+When copying an object involves only copying the values of its data members, the copy is called a shallow copy. If a shallow copy is sufficient, you can omit the copy constructor, in which case the compiler generates a copy constructor that performs a shallow copy. </br>
+The copy constructor makes a copy of an object. It is invoked implicitly when you either pass an object to a function by value, return an object from a valued function, or define and initialize an object. </br>
+![Screenshot 2024-02-16 233532](https://github.com/HelanaNady/DataStructure/assets/137416623/a8e7bb55-3d90-4513-ab91-830b9c25b266)
+***(a) A linked chain and its shallow copy; (b) a linked chain and its deep copy*** </br> 
+If you need to create a copy of the linked chain, we must write own own copy constructor. That is, a deep copy is needed </br>
 
+```cpp
+template< class t>
+LinkedBag<t>::LinkedBag( const LinkedBag<t>& aBag)
+{
+itemCount = aBag->itemCount;
+Node<t>* origChainPtr = aBag->headPtr
+if (origChainPtr == nullptr)
+headPtr = nullptr; // Original bag is empty; so is copy
+else
+{
+// Copy first node
+headPtr = new Node<t>();
+headPtr->Item= origChainPtr ->Item;
+// Copy remaining nodes
+Node<t>* newChainPtr = headPtr; // Last-node pointer
+while (origPtr != nullptr)
+{
+origChainPtr = origChainPtr ->Next; // Advance pointer
+// Get next item from original chain
+t nextItem = origChainPtr->Item;
+// Create a new node containing the next item
+Node<t>* newNodePtr = new Node<t>(nextItem);
+// Link new node to end of new chain
+newChainPtr->Next = newNodePtr;
+// Advance pointer to new last node
+newChainPtr = newChainPtr->Next;
+} // end while
+newChainPtr->Next = nullptr; // Flag end of new chain
+} // end if
+} // end copy constructor
+```
+----
 ## size 
 returns the number of data elements in the list
 
