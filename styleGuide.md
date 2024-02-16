@@ -1,16 +1,17 @@
 # coding style followed 
 
-coding style followed to make everything consistent
 
-- class name should be written in pascal case
-  
+> [!NOTE]
+> The primary goal is to explain concepts rather than focusing on implementation details. Therefore, we choose not to use setters and getters to access class data members. This approach keeps the code concise and directs attention to the core ideas being discussed.
+
+- class name should be written in PascalCasee
 ```cpp
 class LinkedList
 ```
 
 ----
  
-- functions and variable names should be written in camelcase
+- functions and variable names should be written in camelCase
 ex:
 ```cpp
 void isEmpty() const;
