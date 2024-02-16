@@ -69,9 +69,19 @@ public:
 ## Copy constructor 
 When copying an object involves only copying the values of its data members, the copy is called a shallow copy. If a shallow copy is sufficient, you can omit the copy constructor, in which case the compiler generates a copy constructor that performs a shallow copy. </br>
 The copy constructor makes a copy of an object. It is invoked implicitly when you either pass an object to a function by value, return an object from a valued function, or define and initialize an object. </br>
-![Screenshot 2024-02-16 233532](https://github.com/HelanaNady/DataStructure/assets/137416623/a8e7bb55-3d90-4513-ab91-830b9c25b266)
-***(a) A linked chain and its shallow copy; (b) a linked chain and its deep copy*** </br> 
-If you need to create a copy of the linked chain, we must write own own copy constructor. That is, a deep copy is needed </br>
+
+
+![copyconstructor](https://github.com/HelanaNady/DataStructure/assets/137416623/47cb7c87-500f-4408-8d54-96e902cb9248)
+
+
+![Screenshot 2024-02-16 233532](https://github.com/HelanaNady/DataStructure/assets/137416623/93335464-363d-433a-a538-6bf9beec92f0)
+
+
+- **(a) A linked chain and its shallow copy; (b) a linked chain and its deep copy** </br> 
+
+
+- If you need to create a copy of the linked chain, we must write own own copy constructor. That is, a deep copy is needed </br>
+
 
 ```cpp
 template< class t>
@@ -104,7 +114,8 @@ newChainPtr->Next = nullptr; // Flag end of new chain
 } // end if
 } // end copy constructor
 ```
-----
+---
+-
 ## size 
 returns the number of data elements in the list
 
