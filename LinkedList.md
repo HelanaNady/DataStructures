@@ -74,44 +74,38 @@ The copy constructor makes a copy of an object. It is invoked implicitly when yo
 ![copyconstructor](https://github.com/HelanaNady/DataStructure/assets/137416623/47cb7c87-500f-4408-8d54-96e902cb9248)
 
 
-![Screenshot 2024-02-16 233532](https://github.com/HelanaNady/DataStructure/assets/137416623/93335464-363d-433a-a538-6bf9beec92f0)
 
-
-- **(a) A linked chain and its shallow copy; (b) a linked chain and its deep copy** </br> 
-
-
-- If you need to create a copy of the linked chain, we must write own own copy constructor. That is, a deep copy is needed </br>
-
+ If we need to create a copy of the linked chain, we must write own own copy constructor. That is, a deep copy is needed </br>
 
 ```cpp
 template< class t>
-LinkedBag<t>::LinkedBag( const LinkedBag<t>& aBag)
+LinkedBag<t>::LinkedBag(const LinkedBag<t>& aBag)
 {
-itemCount = aBag->itemCount;
-Node<t>* origChainPtr = aBag->headPtr
-if (origChainPtr == nullptr)
-headPtr = nullptr; // Original bag is empty; so is copy
-else
-{
-// Copy first node
-headPtr = new Node<t>();
-headPtr->Item= origChainPtr ->Item;
-// Copy remaining nodes
-Node<t>* newChainPtr = headPtr; // Last-node pointer
-while (origPtr != nullptr)
-{
-origChainPtr = origChainPtr ->Next; // Advance pointer
-// Get next item from original chain
-t nextItem = origChainPtr->Item;
-// Create a new node containing the next item
-Node<t>* newNodePtr = new Node<t>(nextItem);
-// Link new node to end of new chain
-newChainPtr->Next = newNodePtr;
-// Advance pointer to new last node
-newChainPtr = newChainPtr->Next;
-} // end while
-newChainPtr->Next = nullptr; // Flag end of new chain
-} // end if
+	itemCount = aBag->itemCount;
+	Node<t>* origChainPtr = aBag->headPtr
+		if (origChainPtr == nullptr)
+			headPtr = nullptr; // Original bag is empty; so is copy
+		else
+		{
+			// Copy first node
+			headPtr = new Node<t>();
+			headPtr->Item = origChainPtr->Item;
+			// Copy remaining nodes
+			Node<t>* newChainPtr = headPtr; // Last-node pointer
+			while (origPtr != nullptr)
+			{
+				origChainPtr = origChainPtr->Next; // Advance pointer
+				// Get next item from original chain
+				t nextItem = origChainPtr->Item;
+				// Create a new node containing the next item
+				Node<t>* newNodePtr = new Node<t>(nextItem);
+				// Link new node to end of new chain
+				newChainPtr->Next = newNodePtr;
+				// Advance pointer to new last node
+				newChainPtr = newChainPtr->Next;
+			} // end while
+			newChainPtr->Next = nullptr; // Flag end of new chain
+		} // end if
 } // end copy constructor
 ```
 ---
