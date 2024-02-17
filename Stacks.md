@@ -57,7 +57,7 @@ public:
 ----
 ## LinkedStack
 
-check this if you can't see, to figure the need for a copy constructor: </br>
+check this if you can't seem to figure the need for a copy constructor: </br>
 [Shallow copying vs deep copying](https://www.geeksforgeeks.org/shallow-copy-and-deep-copy-in-c/) </br>
 
 ```cpp
@@ -190,8 +190,8 @@ inline LinkedStack<T>::~LinkedStack()
 
 -----
 ## Useful Articles
-- [Introduction to Stack – Data Structure and Algorithm GeeksForGeeks Tutorials]([url](https://www.geeksforgeeks.org/introduction-to-stack-data-structure-and-algorithm-tutorials/?ref=header_search)https://www.geeksforgeeks.org/introduction-to-stack-data-structure-and-algorithm-tutorials/?ref=header_search)
-- [Top 50 Problems on Stack Data Structure asked in SDE Interviews]([url](https://www.geeksforgeeks.org/top-50-problems-on-stack-data-structure-asked-in-interviews/?ref=header_search)https://www.geeksforgeeks.org/top-50-problems-on-stack-data-structure-asked-in-interviews/?ref=header_search)
+- [Introduction to Stack – Data Structure and Algorithm GeeksForGeeks Tutorials]([url](https://www.geeksforgeeks.org/introduction-to-stack-data-structure-and-algorithm-tutorials/?ref=header_search)
+- [Top 50 Problems on Stack Data Structure asked in SDE Interviews]([url](https://www.geeksforgeeks.org/top-50-problems-on-stack-data-structure-asked-in-interviews/?ref=header_search)
 
 -----
 ## For practice
