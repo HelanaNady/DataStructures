@@ -421,3 +421,102 @@ Each node in doubly linked lists has 2 pointers: a pointer to the previous node 
 
 ----
 
+
+# Techniques for linked list problems
+
+- using two pointers
+	- //prev and curr
+	- fast and slow pointer
+- Dummy node approach 
+- Think recursively
+
+### Dummy node approach 
+
+
+https://youtu.be/aloIxnZ4EvY?si=zVt0JYG_o1r3Ou03 <br/>
+
+To avoid too many edge cases when inserting or deleting from a linked list a dummy node is used. Consider the following: an algorithm that traverses a linked list and deletes all nodes whose keys are negative and returns the new head 
+
+#### Without using a dummy node
+
+```cpp
+Node* DeleteNegatives(Node* head)
+{
+    if (head == nullptr) 
+        return head;
+
+    Node* currPtr = head;
+    while (ptr != nullptr && L->data < 0) //Remove all -ve items from the head
+    {
+        currPtr = head;
+        head = head->next;
+        delete currPtr;
+    }
+
+    if (head == nullptr) 
+        return head; //all elements were negative
+    // If we reached here without a return, then we have at least one non-negative node
+
+    Node* prevPtr = head;
+    currPtr = prev->next;
+    while (currPtr != nullptr)
+    {
+        if (ptr->data < 0)
+        {
+            prevPtr->next = currPtr->next;
+            delete ptr;
+        }
+        else
+        {
+            prev = currPtr;
+        }
+        currPtr = prevPtr->next;
+    }
+    return head;
+}
+```
+
+#### With a dummy node 
+
+```cpp
+Node* deleteNegative(Node* head)
+{
+    if(head == nullptr)
+        return head;
+
+    // create a dummy node to handle deletation at the head 
+    Node* dummy = new Node ();
+    dummy->next = head;
+
+    Node* prevPtr = dummy;
+    Node* currPtr = head;
+
+    while(currPtr != nullptr)
+    {
+        if(currPtr->data < 0)
+        {
+            prevPtr->next = currPtr->next;
+            delete currPtr;
+            currPtr = prevPtr->next; //only move currPtr to new position
+        }
+        else //move the two pointers
+        {
+            prevPtr = prevPtr->next;
+            currPtr = currPtr->next;
+        }
+    }
+    //the new head is whatever that dummy nodes is pointing to
+    head = dummy->next;
+    delete dummy;
+    return head;
+}
+```
+
+Note the difference between both approaches, not using a dummy node makes the code harder and more redundant.
+
+-----
+### Think recursively
+Linked lists are recursive data structures
+![Pasted image 20240217022038](https://github.com/HelanaNady/DataStructure/assets/84867341/a03abb76-9147-49c9-bfdb-24d0d2bff92f)
+
+
