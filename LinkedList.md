@@ -115,15 +115,14 @@ returns the number of data elements in the list
 
 ```cpp
 template <typename T>
-int LinkedList<T>::size() 
+int LinkedBag<T>::size() const
 {
     int size = 0;
-    Node<T> *ptr = head;
-
-    while(ptr != nullptr) 
+    Node<T>* currPtr = headPtr;
+    while(currPtr != nullptr) 
     {
+        currPtr = currPtr->next;
         size++;
-        ptr = ptr->next;
     }
     return size;
 }
@@ -133,17 +132,12 @@ int LinkedList<T>::size()
 returns true if empty
 
 ```cpp
-bool empty()
+template <typename T>
+bool LinkedBAG<t>::isEmpty() const
 {
-    if (head == nullptr)
-    {
+    if (headPtr == nullptr)
         return true;
-    }
-
-    else
-    {
-        return false;    
-    }
+    return false;    
 }
 ```
 
@@ -152,39 +146,28 @@ bool empty()
 - Time complexity = O(1)
 
 ```cpp
-void push_front(int num)
+template <typename T>
+void LinkedBag<T> :: push_front(const T& item)
 {
-    // Allocate a new node for num
-    Node *newNode = new Node(num);
-
-    if (head == nullptr)
-    {
-        head = newNode;
-        return;
-    }
-
-    newNode->next = head;
-    head = newNode;
+    Node* newNode = new Node(item);
+    newNode->next = headPtr;
+    headPtr = newNode;
+    //itemCount++; ??
 }
 ```
-
-
 
 ## push_back
 
 - Time complexity = O(n)
+  
 ```cpp
-void push_back(int num)
+template <typename T>
+void LinkedBag<T> :: push_back(const T& iteam)
 {
-    Node *newNode = new Node(num);
+    Node* newNode = new Node(item);
 
-    if (head == nullptr)
-    {
-        head = newNode;
-        return;
-    }
-    // if node inserted isn't the first one -> iterate till u reach end of list
-    Node *ptr = head;
+    //find the last node
+    Node* ptr = headPtr;
     while (ptr->next != nullptr)
     {
         ptr = ptr->next;
@@ -370,41 +353,40 @@ void remove(int num)
 ### using two pointers 
 
 ```cpp
-void reverse()
+template <typename T>
+void LinkedBag<T> :: reverse()
 {
     // If list is empty or contains only 1 node there is nothing to reverse
-    if (head == nullptr || head->next == nullptr)
-    {
+    if (headPtr == nullptr || headPtr->next == nullptr)
         return;  
-    }
 
     // We need two pointers to reverse list (singly linked list)
-    Node *prev = nullptr;
-    Node *curr = head;
+    Node<T>* prevPtr = nullptr;
+    Node<T>* currPtr = headPtr;
 
-    while (curr != nullptr)
+    while (currPtr != nullptr)
     {
-        Node *temp = curr->next;
-        curr->next = prev;
-        prev = curr;
-        curr = temp;
+        Node<T>* temp = currPtr->next;
+        currPtr->next = prevPtr;
+        prevPtr = currPtr;
+        currPtr = temp;
     }
-    head = prev;
+    headPtr = prevPtr;
 }
 ```
 
 ### using recursion:
 
 ```cpp
-Node *reverse(Node *head)
+template <typename T>
+Node* reverse(Node<T>* headPtr)
 {
-    if (head == nullptr || head->next == nullptr)
-    {
-        return head;
-    }
-    Node *newHead = reverse(head->next);
-    head->next->next = head;
-    head->next = nullptr;
+    if (headPtr == nullptr || headPtr->next == nullptr)
+        return headPtr;
+
+    Node<T>* newHead = reverse(headPtr->next);
+    headPtr->next->next = headPtr;
+    headPtr->next = nullptr;
     return newHead;
 }
 ```
