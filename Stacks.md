@@ -38,13 +38,21 @@ public:
 
 
 ```
+-----
+![stack-operations-in-c](https://github.com/HelanaNady/DataStructures/assets/137416623/5cf031f3-b22e-4fbd-b399-4235d3517e0f)
 
-## Implementation
- A) using [Linked Lists](#LinkedStack)
- B) using [Arrays](#ArrayStack)
+-----
+
+
+## Implementation:
+ - A) using [Linked Lists](#LinkedStack)
+-  B) using [Arrays](#ArrayStack) 
 
 ----
 ## LinkedStack
+
+check this if you can't see, to figure the need for a copy constructor: </ br>
+[Shallow copying vs deep copying](https://www.geeksforgeeks.org/shallow-copy-and-deep-copy-in-c/) </br>
 
 ```cpp
 #pragma once
@@ -69,7 +77,6 @@ public:
 	virtual ~LinkedStack();
 
 };
-
 template<typename T>
 inline LinkedStack<T>::LinkedStack(const LinkedStack<T>& aStack)
 {
