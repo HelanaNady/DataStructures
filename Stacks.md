@@ -6,7 +6,7 @@
 or simply **LIFO** </br>
 
 ## Contents
-- [Implementations](#implementation:)
+- [Implementations](#Implementation:)
 - [Useful videos](#Useful-videos)
 - [Useful articles](#Useful-articles)
 - [For practice](#For-practice)
@@ -190,8 +190,8 @@ inline LinkedStack<T>::~LinkedStack()
 
 -----
 ## Useful Articles
-- [Introduction to Stack – Data Structure and Algorithm GeeksForGeeks Tutorials]([url](https://www.geeksforgeeks.org/introduction-to-stack-data-structure-and-algorithm-tutorials/?ref=header_search)
-- [Top 50 Problems on Stack Data Structure asked in SDE Interviews]([url](https://www.geeksforgeeks.org/top-50-problems-on-stack-data-structure-asked-in-interviews/?ref=header_search)
+- [Introduction to Stack – Data Structure and Algorithm GeeksForGeeks Tutorials](https://www.geeksforgeeks.org/introduction-to-stack-data-structure-and-algorithm-tutorials/?ref=header_search)
+- [Top 50 Problems on Stack Data Structure asked in SDE Interviews](https://www.geeksforgeeks.org/top-50-problems-on-stack-data-structure-asked-in-interviews/?ref=header_search)
 
 -----
 ## For practice
