@@ -471,7 +471,6 @@ Node* deleteNegative(Node* head)
     if(head == nullptr)
         return head;
 
-    // create a dummy node to handle deletation at the head 
     Node* dummy = new Node ();
     dummy->next = head;
 
@@ -484,16 +483,14 @@ Node* deleteNegative(Node* head)
         {
             prevPtr->next = currPtr->next;
             delete currPtr;
-            currPtr = prevPtr->next; //only move currPtr to new position
         }
-        else //move the two pointers
-        {
+        else
             prevPtr = prevPtr->next;
-            currPtr = currPtr->next;
-        }
+
+        currPtr = prevPtr->next;
     }
-    //the new head is whatever that dummy nodes is pointing to
-    head = dummy->next;
+    
+    head = dummy->next; //the new head is whatever that dummy nodes is pointing to
     delete dummy;
     return head;
 }
