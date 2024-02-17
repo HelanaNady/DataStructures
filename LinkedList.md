@@ -417,8 +417,29 @@ Each node in doubly linked lists has 2 pointers: a pointer to the previous node 
 - Dummy node approach 
 - Think recursively
 
-### Dummy node approach 
+> more things will be added as we progress
 
+## Fast and slow pointer approach
+[Fast and Slow pointer pattern in Linked list - article](https://medium.com/@arifimran5/fast-and-slow-pointer-pattern-in-linked-list-43647869ac99)
+
+One of the most basic problems in linked lists is finding the middle node, a brute forces solution would be to loop through the linked list twice, but can that be further optimized. Imagine two cars one moving with twice the speed of the other, by the time the fast car reaches the end, the slow car will be at the middle.
+
+Using this technique we start with two pointers at the head **slow pointer** and **fast pointer** : the slow pointer will move 1 step at a time and the fast one 2 steps.
+
+![Pasted image 20240217142659](https://github.com/HelanaNady/DataStructure/assets/84867341/3fc7547e-efcf-448d-a3bb-0bf9330af177)
+
+
+<br/> Another classic problem is detecting cycles in linked lists, if there is a cycle the fast pointer will eventually catch up with the slow pointer 
+
+![Pasted image 20240217145700](https://github.com/HelanaNady/DataStructure/assets/84867341/158b9063-13a2-4fad-9bae-4e1ffbd2257e)
+
+**Try solving the following problems:**
+- [Remove nth node from the end of the Linked list ](https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/)
+- [Linked List Cycle ](https://leetcode.com/problems/linked-list-cycle/)
+- [Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/)
+- [Palindrome Linked List](https://leetcode.com/problems/palindrome-linked-list/)
+
+### Dummy node approach 
 
 https://youtu.be/aloIxnZ4EvY?si=zVt0JYG_o1r3Ou03 <br/>
 
