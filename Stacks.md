@@ -6,7 +6,7 @@
 or simply **LIFO** </br>
 
 ## Contents
-- [Implementations](#Implementation:)
+- [Implementations](#Implementation)
 - [Useful videos](#Useful-videos)
 - [Useful articles](#Useful-articles)
 - [For practice](#For-practice)
@@ -50,7 +50,7 @@ public:
 -----
 
 
-## Implementation:
+## Implementation
  - A) using [Linked Lists](#LinkedStack)
 -  B) using [Arrays](#ArrayStack) 
 
@@ -182,7 +182,81 @@ inline LinkedStack<T>::~LinkedStack()
 
 ## ArrayStack
 
+```cpp
+#pragma once
+#include "StackInterface.h"
+using namespace std;
+template <typename T>
+#define MAX_STACK 100; //any arbitary number for now
 
+class ArrayStack
+{
+	int top;
+	T items[MAX_STACK];
+public:
+	ArrayStack() : top(-1) {}           // Default constructor
+	bool push(const T& val);
+	bool pop(); 
+	T peek() const; 
+	bool isEmpty() const;
+	void display();
+	int count(); 
+};
+
+template<typename T>
+inline bool ArrayStack<T>::push(const T& val) 
+{
+	if (top != MAX_STACK - 1)
+	{
+		items[++top] = val;
+		return true;
+	}
+	return false;
+}
+
+template<typename T>
+inline bool ArrayStack<T>::pop()
+{
+	if (top == -1)
+	{
+		throw out_of_range("\ncan not pop an empty stack\n");
+	}
+	else
+	{
+		top--;
+		return true;
+	}
+}
+
+template<typename T>
+inline T ArrayStack<T>::peek() const
+{
+	assert (!isEmpty())
+	return items[top];
+}
+
+template<typename T>
+inline bool ArrayStack<T>::isEmpty() const
+{
+	return top < 0;
+}
+
+template<typename T>
+inline void ArrayStack<T>::display()
+{
+	for (int i = 0; i <= top; i++)
+	{
+		cout << items[i] << endl;
+	}
+}
+
+template<typename T>
+inline int ArrayStack<T>::count()
+{
+	return (top + 1);
+}
+
+```
 
 -----
 ## Useful videos
