@@ -391,21 +391,6 @@ Node* reverse(Node<T>* headPtr)
 }
 ```
 
-
-# Doubly linked list
-
-![Pasted image 20240207183037](https://github.com/HelanaNady/DataStructure/assets/84867341/dcb083bd-033b-41e9-87a5-ad17b041b8c8)
-
-Each node in doubly linked lists has 2 pointers: a pointer to the previous node and another to the next node. 
-
-![image](https://github.com/HelanaNady/DataStructure/assets/84867341/3ab8e693-9a51-4a32-af15-478978fbe3bf)
-
-
----
-# Circular linked list
-![image](https://github.com/HelanaNady/DataStructure/assets/84867341/9d732db4-877d-4cf1-8d25-80c58b4c4634)
-
-
 ----
 
 
@@ -523,5 +508,21 @@ Note the difference between both approaches, not using a dummy node makes the co
 ### Think recursively
 Linked lists are recursive data structures
 ![Pasted image 20240217022038](https://github.com/HelanaNady/DataStructure/assets/84867341/a03abb76-9147-49c9-bfdb-24d0d2bff92f)
+
+-----
+
+# Doubly linked list
+
+![Pasted image 20240207183037](https://github.com/HelanaNady/DataStructure/assets/84867341/dcb083bd-033b-41e9-87a5-ad17b041b8c8)
+
+Each node in doubly linked lists has 2 pointers: a pointer to the previous node and another to the next node. 
+
+![image](https://github.com/HelanaNady/DataStructure/assets/84867341/3ab8e693-9a51-4a32-af15-478978fbe3bf)
+
+
+---
+# Circular linked list
+![image](https://github.com/HelanaNady/DataStructure/assets/84867341/9d732db4-877d-4cf1-8d25-80c58b4c4634)
+
 
 
