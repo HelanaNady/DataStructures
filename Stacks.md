@@ -5,6 +5,12 @@
  A stack has the property that the last item placed on the stack will be the first item removed. This property is commonly referred to as last in, first out
 or simply **LIFO** </br>
 
+## Contents
+- [Implementations](#implementation:)
+- [Useful videos](#Useful-videos)
+- [Useful articles](#Useful-articles)
+- [For practice](#For-practice)
+
 ## StackInterface Class
 
 ```cpp
@@ -51,7 +57,7 @@ public:
 ----
 ## LinkedStack
 
-check this if you can't see, to figure the need for a copy constructor: </ br>
+check this if you can't see, to figure the need for a copy constructor: </br>
 [Shallow copying vs deep copying](https://www.geeksforgeeks.org/shallow-copy-and-deep-copy-in-c/) </br>
 
 ```cpp
@@ -178,8 +184,20 @@ inline LinkedStack<T>::~LinkedStack()
 
 
 
+-----
+## Useful videos
+- [Stacks - Neso Academy](https://youtube.com/playlist?list=PLBlnK6fEyqRgWh1emltdMOz8O2m5X3YYn&si=kyy7kaNoGDbh42l-)
 
+-----
+## Useful Articles
+- [Introduction to Stack – Data Structure and Algorithm GeeksForGeeks Tutorials]([url](https://www.geeksforgeeks.org/introduction-to-stack-data-structure-and-algorithm-tutorials/?ref=header_search)https://www.geeksforgeeks.org/introduction-to-stack-data-structure-and-algorithm-tutorials/?ref=header_search)
+- [Top 50 Problems on Stack Data Structure asked in SDE Interviews]([url](https://www.geeksforgeeks.org/top-50-problems-on-stack-data-structure-asked-in-interviews/?ref=header_search)https://www.geeksforgeeks.org/top-50-problems-on-stack-data-structure-asked-in-interviews/?ref=header_search)
 
+-----
+## For practice
+- [LeetCode problems](https://leetcode.com/tag/stack/) 
+
+----
 
 
 
