@@ -419,6 +419,11 @@ Each node in doubly linked lists has 2 pointers: a pointer to the previous node 
 ![image](https://github.com/HelanaNady/DataStructure/assets/84867341/3ab8e693-9a51-4a32-af15-478978fbe3bf)
 
 
+---
+# Circular linked list
+![image](https://github.com/HelanaNady/DataStructure/assets/84867341/9d732db4-877d-4cf1-8d25-80c58b4c4634)
+
+
 ----
 
 
