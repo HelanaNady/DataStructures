@@ -2,15 +2,17 @@
 
 ![image](https://github.com/HelanaNady/DataStructure/assets/84867341/b15339be-bd6d-465d-872a-edf323812141)
 
- A stack has the property that the last item placed on the stack will be the first item removed. This property is commonly referred to as last in, first out
-or simply **LIFO** </br>
+A stack has the property that the last item placed on the stack will be the first item removed. This property is commonly referred to as last in, first out
+or simply **LIFO** </br> 
 
 ## Contents
 - [Implementations](#Implementation)
+- [ArrayStack vs LinkedStack](#ArrayStack-vs-LinkedStack)
+- [Applications using Stack ADT](#Applications-using-Stack-ADT) 
 - [Useful videos](#Useful-videos)
 - [Useful articles](#Useful-articles)
-- [For practice](#For-practice)
-
+- [For practice](#For-practice) 
+-----
 ## StackInterface Class
 
 ```cpp
@@ -40,7 +42,7 @@ public:
 	the stack is unchanged.
 	@return The top of the stack. */
 	virtual T peek() const = 0;
-}; // end StackInterface
+};
 
 
 ```
@@ -57,7 +59,7 @@ public:
 ----
 ## LinkedStack
 
-check this if you can't seem to figure the need for a copy constructor: </br>
+Check this if you can't seem to figure the need for a copy constructor: </br>
 [Shallow copying vs deep copying](https://www.geeksforgeeks.org/shallow-copy-and-deep-copy-in-c/) </br>
 
 ```cpp
@@ -257,19 +259,43 @@ inline int ArrayStack<T>::count()
 }
 
 ```
+-----
+## ArrayStack vs LinkedStack
 
 -----
+
+## Applications using Stack ADT
+- [Converting decimal to binary](#Converting-decimal-to-binary)
+- [Evaluating postfix expressions](#Evaluating-postfix-expressions)
+- [Parsing](#Parsing)
+- [Backtracking](#Backtracking) </br>
+
+## Converting decimal to binary
+
+
+
+## Evaluating postfix expressions
+
+
+## Parsing
+
+
+## Backtracking
+
+-----
+
 ## Useful videos
 - [Stacks - Neso Academy](https://youtube.com/playlist?list=PLBlnK6fEyqRgWh1emltdMOz8O2m5X3YYn&si=kyy7kaNoGDbh42l-)
 
 -----
 ## Useful Articles
 - [Introduction to Stack – Data Structure and Algorithm GeeksForGeeks Tutorials](https://www.geeksforgeeks.org/introduction-to-stack-data-structure-and-algorithm-tutorials/?ref=header_search)
-- [Top 50 Problems on Stack Data Structure asked in SDE Interviews](https://www.geeksforgeeks.org/top-50-problems-on-stack-data-structure-asked-in-interviews/?ref=header_search)
 
 -----
 ## For practice
-- [LeetCode problems](https://leetcode.com/tag/stack/) 
+- [LeetCode problems](https://leetcode.com/tag/stack/)
+- [Top 50 Problems on Stack Data Structure asked in SDE Interviews](https://www.geeksforgeeks.org/top-50-problems-on-stack-data-structure-asked-in-interviews/?ref=header_search)
+
 
 ----
 
