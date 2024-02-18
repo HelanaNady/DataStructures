@@ -429,59 +429,56 @@ To avoid too many edge cases when inserting or deleting from a linked list a dum
 #### Without using a dummy node
 
 ```cpp
-Node* DeleteNegatives(Node* head)
+Node* DeleteNegatives(Node* headPtr)
 {
-    if (head == nullptr) 
-        return head;
-
-    Node* currPtr = head;
-    while (ptr != nullptr && L->data < 0) //Remove all -ve items from the head
+    Node* currPtr = headPtr;
+    while (currPtr != nullptr && currPtr->item < 0) //Remove all -ve items from the head
     {
-        currPtr = head;
-        head = head->next;
+        headPtr = headPtr->next;
         delete currPtr;
+        currPtr = headPtr;
     }
 
-    if (head == nullptr) 
-        return head; //all elements were negative
+    if (headPtr == nullptr) 
+        return headPtr; //all elements were negative
+        
     // If we reached here without a return, then we have at least one non-negative node
-
-    Node* prevPtr = head;
-    currPtr = prev->next;
+    Node* prevPtr = headPtr;
+    currPtr = prevPtr->next;
+    
     while (currPtr != nullptr)
     {
-        if (ptr->data < 0)
+        if (currPtr->item < 0)
         {
             prevPtr->next = currPtr->next;
-            delete ptr;
+            delete currPtr;
         }
         else
-        {
-            prev = currPtr;
-        }
+            prevPtr = currPtr;
+            
         currPtr = prevPtr->next;
     }
-    return head;
+    return headPtr;
 }
 ```
 
 #### With a dummy node 
 
 ```cpp
-Node* deleteNegative(Node* head)
+Node* deleteNegative(Node* headPtr)
 {
-    if(head == nullptr)
-        return head;
+    if(headPtr == nullptr)
+        return headPtr;
 
     Node* dummy = new Node ();
-    dummy->next = head;
+    dummy->next = headPtr; 
 
     Node* prevPtr = dummy;
-    Node* currPtr = head;
+    Node* currPtr = headPtr;
 
     while(currPtr != nullptr)
     {
-        if(currPtr->data < 0)
+        if(currPtr->item < 0)
         {
             prevPtr->next = currPtr->next;
             delete currPtr;
@@ -492,13 +489,13 @@ Node* deleteNegative(Node* head)
         currPtr = prevPtr->next;
     }
     
-    head = dummy->next; //the new head is whatever that dummy nodes is pointing to
+    headPtr = dummy->next; //the new head is whatever that dummy nodes is pointing to
     delete dummy;
-    return head;
+    return headPtr;
 }
 ```
 
-Note the difference between both approaches, not using a dummy node makes the code harder and more redundant.
+Note the difference between both approaches, not using a dummy node makes the code redundant
 
 <br/>
 
