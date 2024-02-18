@@ -108,8 +108,7 @@ LinkedBag<T>::LinkedBag(const LinkedBag<T>& aBag)
     } // end if
 } // end copy constructor
 ```
----
--
+
 ## size 
 
 ```cpp
@@ -269,7 +268,6 @@ int value_at(int index)
 }
 
 ```
-----
 
 ![image](https://github.com/HelanaNady/DataStructure/assets/84867341/3f120f98-b70d-4067-8f21-c23c0290f4ee)
 
@@ -388,7 +386,6 @@ Node* reverse(Node<T>* headPtr)
 }
 ```
 
-----
 
 
 # Techniques for linked list problems
@@ -420,6 +417,8 @@ Using this technique we start with two pointers at the head **slow pointer** and
 - [Linked List Cycle ](https://leetcode.com/problems/linked-list-cycle/)
 - [Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/)
 - [Palindrome Linked List](https://leetcode.com/problems/palindrome-linked-list/)
+
+<br/>
 
 ### Dummy node approach 
 
@@ -501,7 +500,8 @@ Node* deleteNegative(Node* head)
 
 Note the difference between both approaches, not using a dummy node makes the code harder and more redundant.
 
------
+<br/>
+
 ### Think recursively
 Linked lists are recursive data structures
 ![Pasted image 20240217022038](https://github.com/HelanaNady/DataStructure/assets/84867341/a03abb76-9147-49c9-bfdb-24d0d2bff92f)
