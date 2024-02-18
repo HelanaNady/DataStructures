@@ -287,7 +287,7 @@ better choice.
 ```cpp
 void Decimal2Binary(int num)
 {
-	Stack<int> s;
+	stack<int> s;
 	do
 	{
 		s.push(num % 2);
@@ -317,7 +317,7 @@ bool checkBraces(string s)
 {
 	bool isBalanced = true;
 	int length = s.length();
-	Stack<char> Astack; 
+	stack<char> Astack; 
 	for (int i = 0; i < length; i++)
 	{
 		if (s[i] == '{')
@@ -345,6 +345,7 @@ bool checkBraces(string s)
 -----
 ## Useful Articles
 - [Introduction to Stack – Data Structure and Algorithm GeeksForGeeks Tutorials](https://www.geeksforgeeks.org/introduction-to-stack-data-structure-and-algorithm-tutorials/?ref=header_search)
+- [Stack in C++ STL](https://www.geeksforgeeks.org/stack-in-cpp-stl/)
 
 -----
 ## For practice
