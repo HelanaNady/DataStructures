@@ -9,20 +9,21 @@
 - [Doubly-Linked Lists - CS50 Shorts](https://www.youtube.com/watch?v=FHMPswJDCvU)
 - [LinkedList - Leetcode problems playlist ](https://www.youtube.com/playlist?list=PLot-Xpze53leU0Ec0VkBhnf4npMRFiNcB)
 
-## To be covered
-- singly linked list
-  -   without tail pointer
-  -   with tail pointer
--   doubly linked list
+## Contents
+- Singly linked list (without tail pointer) 
+- doubly linked list
+- circular linked list
+- [Techniques for linked list problems](Techniques-for-linked-list-problems)
 
-## To be added 
-- more leetcode / interview questions 
-----
 ## For practice
 **Leetcode** </br>
 - [Singly linked list problems](https://leetcode.com/tag/linked-list/)
 - [Doubly linked list problems](https://leetcode.com/tag/doubly-linked-list/l)
+
 ----
+
+> [!NOTE]
+> Linked bag and linked list functions are together for now, they will be seperated eventually
 
 ## Functions implemented:
 - [Copy constructor](#Copy-constructor)
@@ -38,7 +39,7 @@
 - [remove_value](#remove_value)
 - [reverse](#reverse)
 
-> // a note i will edit all functions to templates + put a style for the code </br>
+> // all functions will be edited to templates, not done yet: pop_back, valueat, erase and remove
 ------
 ## Node 
 
@@ -47,8 +48,8 @@ template <typename T>
 class Node
 {
 public:
-    T data;
-    Node<T> *next;
+    T item;
+    Node<T>* next;
 
     Node() : data(0), next(nullptr) {}
     Node(T value) : data(value), next(nullptr) {}
@@ -74,44 +75,42 @@ The copy constructor makes a copy of an object. It is invoked implicitly when yo
 ![copyconstructor](https://github.com/HelanaNady/DataStructure/assets/137416623/47cb7c87-500f-4408-8d54-96e902cb9248)
 
 
-
- If we need to create a copy of the linked chain, we must write own own copy constructor. That is, a deep copy is needed </br>
+If we need to create a copy of the linked chain, we must write own own copy constructor. That is, a deep copy is needed </br>
 
 ```cpp
-template< class t>
-LinkedBag<t>::LinkedBag(const LinkedBag<t>& aBag)
+template<typename T>
+LinkedBag<T>::LinkedBag(const LinkedBag<T>& aBag)
 {
-	itemCount = aBag->itemCount;
-	Node<t>* origChainPtr = aBag->headPtr
-		if (origChainPtr == nullptr)
-			headPtr = nullptr; // Original bag is empty; so is copy
-		else
-		{
-			// Copy first node
-			headPtr = new Node<t>();
-			headPtr->Item = origChainPtr->Item;
-			// Copy remaining nodes
-			Node<t>* newChainPtr = headPtr; // Last-node pointer
-			while (origPtr != nullptr)
-			{
-				origChainPtr = origChainPtr->Next; // Advance pointer
-				// Get next item from original chain
-				t nextItem = origChainPtr->Item;
-				// Create a new node containing the next item
-				Node<t>* newNodePtr = new Node<t>(nextItem);
-				// Link new node to end of new chain
-				newChainPtr->Next = newNodePtr;
-				// Advance pointer to new last node
-				newChainPtr = newChainPtr->Next;
-			} // end while
-			newChainPtr->Next = nullptr; // Flag end of new chain
-		} // end if
+    itemCount = aBag->itemCount;
+    Node<T>* origChainPtr = aBag->headPtr;
+    if (origChainPtr == nullptr)
+        headPtr = nullptr; // Original bag is empty; so is copy
+    else
+    {
+        // Copy first node
+        headPtr = new Node<T>();
+        headPtr->Item = origChainPtr->Item;
+        // Copy remaining nodes
+        Node<T>* newChainPtr = headPtr; // Last-node pointer
+        while (origPtr != nullptr)
+        {
+            origChainPtr = origChainPtr->Next; // Advance pointer
+            // Get next item from original chain
+            T nextItem = origChainPtr->Item;
+            // Create a new node containing the next item
+            Node<T>* newNodePtr = new Node<T>(nextItem);
+            // Link new node to end of new chain
+            newChainPtr->Next = newNodePtr;
+            // Advance pointer to new last node
+            newChainPtr = newChainPtr->Next;
+        } // end while
+        newChainPtr->Next = nullptr; // Flag end of new chain
+    } // end if
 } // end copy constructor
 ```
 ---
 -
 ## size 
-returns the number of data elements in the list
 
 ```cpp
 template <typename T>
@@ -152,7 +151,7 @@ void LinkedBag<T> :: push_front(const T& item)
     Node* newNode = new Node(item);
     newNode->next = headPtr;
     headPtr = newNode;
-    //itemCount++; ??
+    itemCount++;
 }
 ```
 
@@ -180,37 +179,35 @@ inserts a value after a certain node
 
 ```cpp
 template <typename T>
-Void LinkedList<T> :: Insert_at(Node* previous,T num)
+void LinkedList<T>::Insert_at(Node* previous, T newEntry)
 {
-	//check if previous node is NULL
-	if (!previous)
-	{
-		cout << "previous can't be null\n"; 
-		return;
-	}
-	//Prepare a new node
-	Node* newnode = new Node(num);
-	//insertion
-	newnode->Next = previous->next;
-	previous->next = newnode;
+    if (!previous)
+    {
+        cout << "previous can't be null\n"; 
+        return;
+    }
+    // Prepare a new node
+    Node* newNode = new Node(newEntry);
+    newNode->next = previous->next;
+    previous->next = newNode;
 }
 ```
 
 ## pop_front
 
 ```cpp
-int pop_front()
+T pop_front()
 {
-    if (head == nullptr)
+    if (headPtr == nullptr)
     {
-        throw out_of_range("can not pop from an empty list");
+        throw out_of_range("can not pop from an empty list"); //handle this error anyway
     }
 
-    int num = head->num;
-    Node *temp = head;
-    head = head->next;
+    T item = headPtr->num;
+    Node* temp = headPtr;
+    headPtr = headPtr->next;
     delete temp;
-    return num;
+    return item;
 }
 ```
 
@@ -219,7 +216,7 @@ int pop_front()
 ```cpp
 int pop_back()
 {
-    if (head == nullptr)
+    if (headPtr == nullptr)
     {
         throw out_of_range("can not pop from an empty list");
     }
