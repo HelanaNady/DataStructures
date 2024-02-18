@@ -59,7 +59,7 @@ int main()
 
 ```
 >Time complexity:
->O(2^N), There are two possibilities for every disk. Therefore, 2 * 2 * 2 * . . . * 2(N times) is 2N
+>O(2^N), There are two possibilities for every disk. Therefore, 2 * 2 * 2 * . . . * 2(N times) is 2^N
 
 ------
 
