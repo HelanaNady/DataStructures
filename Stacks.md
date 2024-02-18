@@ -4,6 +4,13 @@
 
 A stack has the property that the last item placed on the stack will be the first item removed. This property is commonly referred to as last in, first out
 or simply **LIFO** </br> 
+**Axioms for the ADT stack:**
+- (new Stack()).isEmpty() = true
+- (new Stack()).pop() = false
+- (new Stack()).peek() = error
+- (aStack.push(item)).isEmpty() = false
+- (aStack.push(item)).peek() = item
+- (aStack.push(item)).pop() = true
 
 ## Contents
 - [Implementations](#Implementation)
@@ -74,7 +81,7 @@ class LinkedStack:public StackInterface
 	Node<T>* topPtr; 
 public:
 	LinkedStack() :topPtr(nullptr) {} //constructor
-	LinkedStack(const LinkedStack<T>& aStack); //default constructor
+	LinkedStack(const LinkedStack<T>& aStack); //copy constructor
 	bool push(const T &val);
 	T pop();
 	T peek() const;
@@ -143,9 +150,7 @@ inline T LinkedStack<T>::peek() const
 template<typename T>
 inline bool LinkedStack<T>::isEmpty() const
 {
-	if (topPtr)
-		return false;
-	return true;
+    return topPtr == nullptr;
 }
 
 template<typename T>
@@ -187,6 +192,7 @@ inline LinkedStack<T>::~LinkedStack()
 ```cpp
 #pragma once
 #include "StackInterface.h"
+#include <cassert> 
 using namespace std;
 template <typename T>
 #define MAX_STACK 100; //any arbitary number for now
@@ -221,7 +227,7 @@ inline bool ArrayStack<T>::pop()
 {
 	if (top == -1)
 	{
-		throw out_of_range("\ncan not pop an empty stack\n");
+		throw out_of_range("\n can not pop an empty stack\n");
 	}
 	else
 	{
@@ -233,7 +239,8 @@ inline bool ArrayStack<T>::pop()
 template<typename T>
 inline T ArrayStack<T>::peek() const
 {
-	assert (!isEmpty())
+	assert (!isEmpty()) //enforces the precondition
+                            //If the stack is empty, assert will issue an error message and halt execution.
 	return items[top];
 }
 
@@ -261,7 +268,12 @@ inline int ArrayStack<T>::count()
 ```
 -----
 ## ArrayStack vs LinkedStack
-
+- The array-based implementation is a reasonable choice if the number of items in the stack does not exceed the fi xed size of
+the array. For example, when we read and correct an input line, if the system allows a
+line length of only 80 characters, you reasonably could use a statically allocated array
+to represent the stack. For stacks that might be large, but often are not, the array-based
+implementation will waste storage. In that case, the link-based implementation is a
+better choice.
 -----
 
 ## Applications using Stack ADT
@@ -272,13 +284,56 @@ inline int ArrayStack<T>::count()
 
 ## Converting decimal to binary
 
-
+```cpp
+void Decimal2Binary(int num)
+{
+	Stack<int> s;
+	do
+	{
+		s.push(num % 2);
+		s /= 2;
+	}
+        while (num);
+	while (!s.isEmpty())
+	{
+		s.pop();
+	}
+}
+```
 
 ## Evaluating postfix expressions
 
 
 ## Parsing
+You can check whether a string contains balanced braces by traversing it from left to
+right. As you move from left to right, you match each successive close brace “}” with the most
+recently encountered unmatched open brace “{”; that is, the “{” must be to the left of the current “}”.
+The braces are balanced if: </br>
+- 1. Each time you encounter a “}”, it matches an already encountered “{”.
+- 2. When you reach the end of the string, you have matched each “{”. 
 
+```cpp
+bool checkBraces(string s)
+{
+	bool isBalanced = true;
+	int length = s.length();
+	Stack<char> Astack; 
+	for (int i = 0; i < length; i++)
+	{
+		if (s[i] == '{')
+			Astack.push('{');
+		else if (s[i] == '}')
+		{
+			if (!Astack.isEmpty())
+				Astack.pop();
+			else
+				isBalanced = false;
+		}
+
+		return isBalanced && Astack.isEmpty();
+	}
+}
+```
 
 ## Backtracking
 
