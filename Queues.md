@@ -70,7 +70,7 @@ bool LinkedQueue<T>::isEmpty() const
 
 ```cpp
 template <typename T>
-bool LinkedQueue<ItemType>::enqueue(T newEntry)
+bool LinkedQueue<T>::enqueue(T newEntry)
 {
     Node<T>* newNodePtr = new Node<T>(newEntry);
 
@@ -78,7 +78,7 @@ bool LinkedQueue<ItemType>::enqueue(T newEntry)
     if (frontPtr == nullptr)
         frontPtr = newNodePtr;
     else
-        backPtr->setNext(newNodePtr);
+        backPtr->next = newNodePtr;
 
     backPtr = newNodePtr;
     return true;
@@ -98,7 +98,7 @@ bool LinkedQueue<T>::dequeue()
         return false;
 
     Node<T>* nodeToDeletePtr = frontPtr;
-    frontPtr = frontPtr->getNext();
+    frontPtr = frontPtr->next;
     delete nodeToDeletePtr;
 
     if (frontPtr == nullptr) //if list becomes empty set back to null
@@ -153,7 +153,7 @@ bool ArrayQueue<T>::isEmpty() const
 template <typename T>
 bool ArrayQueue(const T& newEntry) 
 {
-	if(front == (back + 1) % (MAX_QUEUE + 1))
+	if(front == (back + 1) % (MAX_QUEUE + 1)) //if list is full
 		return false;
 		
 	back = (back+1) % MAX_QUUEUE;
