@@ -5,7 +5,7 @@
 
 <br/>
 
-- Class name should be written in Pascal Case
+- Class name should be written in PascalCase
 
    ```cpp
    class LinkedList
@@ -90,10 +90,17 @@
 -----
  - Avoid using Hungarian notation:
 As **the C++ Core Guidelines strongly discourage the use of Hungarian method**. The guidelines advocate for using clear and descriptive names that reflect the purpose of variables and functions without relying on prefixes to convey their types as in semantic naming. </br>
-examples:
-```C++
-//Hungarian notation     // Old variable name
-string txtTextBox        // TextBox
-string frmInputForm      // InputForm
-```
-[For more info](https://www.lenovo.com/us/en/glossary/what-is-hungarian-notation/?orgRef=https%253A%252F%252Fwww.google.com%252F)
+
+   examples:
+   
+      ```C++
+      //Hungarian notation     // Old variable name
+      string txtTextBox        // TextBox
+      string frmInputForm      // InputForm
+      ```
+   [For more info](https://www.lenovo.com/us/en/glossary/what-is-hungarian-notation/?orgRef=https%253A%252F%252Fwww.google.com%252F)
+
+---
+Also check:
+- [CodeAesthetic](https://www.youtube.com/@CodeAesthetic)
+
