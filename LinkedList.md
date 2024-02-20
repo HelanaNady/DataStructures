@@ -1,16 +1,17 @@
 # Linked List
 ![image](https://github.com/HelanaNady/DataStructure/assets/84867341/14b90c3e-8d37-410e-bce4-cbacc41dbe3f)
 
-## Resources (in progress)
+## Resources
 
 - [Linked lists in 4 minutes ](https://www.youtube.com/watch?v=F8AbOfQwl1c)
 - [CS50 lec 05 - Data Structures](https://www.youtube.com/watch?v=0euvEdPwQnQ&t=4342s)
 - [Singly-Linked Lists - CS50 Shorts](https://www.youtube.com/watch?v=zQI3FyWm144)
 - [Doubly-Linked Lists - CS50 Shorts](https://www.youtube.com/watch?v=FHMPswJDCvU)
+- [Linked Lists by Jenny](https://www.youtube.com/playlist?list=PLnccP3XNVxGrks-guEVjE1xj9V9YC5oQ7)
 - [LinkedList - Leetcode problems playlist ](https://www.youtube.com/playlist?list=PLot-Xpze53leU0Ec0VkBhnf4npMRFiNcB)
 
 ## Contents
-- Singly linked list (without tail pointer) 
+- [Singly linked list](#Singly-linked-list)
 - doubly linked list
 - circular linked list
 - [Techniques for linked list problems](Techniques-for-linked-list-problems)
@@ -22,25 +23,25 @@
 
 ----
 
-> [!NOTE]
-> Linked bag and linked list functions are together for now, they will be seperated eventually
+## Singly linked list
 
-## Functions implemented:
+> [!Note]
+> The main difference between ADT bag and ADT list is: an ADT bag is neither value oriented nor position oriented while the ADT list is position oriented. 
+> 
+> ADT bag is simply a container that holds objects in no order, while in ADT list you indicate the order, since they are both very similar we will cover the general functionality of both together.
+
+<br/>
+
+**Implemented:**
+- [Node class](#Node)
 - [Copy constructor](#Copy-constructor)
 - [size](#size)
 - [empty](#empty)
-- [push_front(num)](#push_front)
-- [push_back(num)](#push_back)
-- [Insert_at(Node* previous, num)](https://github.com/HelanaNady/DataStructure/blob/main/LinkedList.md#insert_atnodepreviousnum)
-- [pop_front](#pop_front)
-- [pop_back](#pop_back)
-- [value_at(index)](#value_atindex)
-- [erase(index)](#eraseindex)
-- [remove_value](#remove_value)
+- [add](#add)
+- [remove](#remove)
 - [reverse](#reverse)
 
-> // all functions will be edited to templates, not done yet: pop_back, valueat, erase and remove
-------
+
 ## Node 
 
 ```cpp
@@ -79,32 +80,32 @@ If we need to create a copy of the linked chain, we must write own own copy cons
 
 ```cpp
 template<typename T>
-LinkedBag<T>::LinkedBag(const LinkedBag<T>& aBag)
+LinkedList<T>::LinkedList(const LinkedList<T>& aList)
 {
-    itemCount = aBag->itemCount;
-    Node<T>* origChainPtr = aBag->headPtr;
+    itemCount = aList->itemCount;
+    Node<T>* origChainPtr = aList->headPtr;
     if (origChainPtr == nullptr)
         headPtr = nullptr; // Original bag is empty; so is copy
     else
     {
         // Copy first node
         headPtr = new Node<T>();
-        headPtr->Item = origChainPtr->Item;
+        headPtr->item = origChainPtr->item;
         // Copy remaining nodes
         Node<T>* newChainPtr = headPtr; // Last-node pointer
         while (origPtr != nullptr)
         {
-            origChainPtr = origChainPtr->Next; // Advance pointer
+            origChainPtr = origChainPtr->next; // Advance pointer
             // Get next item from original chain
-            T nextItem = origChainPtr->Item;
+            T nextItem = origChainPtr->item;
             // Create a new node containing the next item
             Node<T>* newNodePtr = new Node<T>(nextItem);
             // Link new node to end of new chain
-            newChainPtr->Next = newNodePtr;
+            newChainPtr->next = newNodePtr;
             // Advance pointer to new last node
-            newChainPtr = newChainPtr->Next;
+            newChainPtr = newChainPtr->next;
         } // end while
-        newChainPtr->Next = nullptr; // Flag end of new chain
+        newChainPtr->next = nullptr; // Flag end of new chain
     } // end if
 } // end copy constructor
 ```
@@ -113,7 +114,7 @@ LinkedBag<T>::LinkedBag(const LinkedBag<T>& aBag)
 
 ```cpp
 template <typename T>
-int LinkedBag<T>::size() const
+int LinkedList<T>::size() const
 {
     int size = 0;
     Node<T>* currPtr = headPtr;
@@ -124,8 +125,8 @@ int LinkedBag<T>::size() const
     }
     return size;
 }
-
 ```
+
 ## empty
 returns true if empty
 
@@ -139,204 +140,126 @@ bool LinkedBAG<t>::isEmpty() const
 }
 ```
 
-## push_front 
+## add
 
-- Time complexity = O(1)
+There are many ways to add new nodes to the list, you can add the new node into a list right before its head, right after its last node, or between two adjacent nodes.
+
+**Adding to the front** 
+
+- Time complexity : O(1)
+- This technique is used in stacks linked based implementation
 
 ```cpp
 template <typename T>
-void LinkedBag<T> :: push_front(const T& item)
+bool LinkedList<T> :: add(const T& item)
 {
     Node* newNode = new Node(item);
     newNode->next = headPtr;
     headPtr = newNode;
     itemCount++;
+    return true;
 }
 ```
 
-## push_back
+**Adding to the back**
 
-- Time complexity = O(n)
-  
+**Without  a tail pointer** 
+- Time complexity: O(n)
+
 ```cpp
 template <typename T>
-void LinkedBag<T> :: push_back(const T& iteam)
+bool LinkedList<T>::add(const T& item)
+{
+    Node* newNode = new Node(item);
+    // Finding the last node
+    Node* ptr = headPtr;
+    while(ptr->next != nullptr)
+        ptr = ptr->next;
+
+    ptr->next = newNode;
+    return true;
+}
+```
+
+
+**With a tail pointer**
+- Time complexity with tail pointer: O(1)
+- This technique is used in Queues linked based implementation 
+
+```cpp
+template <typename T>
+bool LinkedList<T>::add(const T& item)
 {
     Node* newNode = new Node(item);
 
-    //find the last node
-    Node* ptr = headPtr;
-    while (ptr->next != nullptr)
-    {
-        ptr = ptr->next;
-    }
-    ptr->next = newNode;
+    if(headPtr == nullptr)
+        headPtr = newNode;
+    else 
+        tailPtr->next = newNode;
+
+    tailPtr = tailPtr->next;
+    return true;
 }
+
 ```
-## Insert_at(Node*previous,num)
-inserts a value after a certain node
+
+**Adding between two adjacent nodes**
 
 ```cpp
-template <typename T>
-void LinkedList<T>::Insert_at(Node* previous, T newEntry)
-{
-    if (!previous)
-    {
-        cout << "previous can't be null\n"; 
-        return;
-    }
-    // Prepare a new node
-    Node* newNode = new Node(newEntry);
-    newNode->next = previous->next;
-    previous->next = newNode;
-}
+//will be implemented
 ```
 
-## pop_front
+## remove
+
+There are several approaches to implementing the `remove` function in a linked list, each suited to different use cases and requirements: mainly you either remove by value or by position.
+Removing by position can also be done in different ways: you can provide the index or allow removal only at one end of the linked list
+
+We will cover here removing by value and by position, removal at one end is fairly easy and similar to adding logic also it is implemented in stacks and queues
+
+**Removing by value** 
 
 ```cpp
-T pop_front()
+bool LinkedList<T>::remove(const T& item)
 {
-    if (headPtr == nullptr)
+    if(headPtr == nullptr)
+        throw out_of_range("can not remove from an empty list");
+
+    //check first if the removed item is the head node
+    if(headPtr->item == item)
     {
-        throw out_of_range("can not pop from an empty list"); //handle this error anyway
+        Node* newHead = headPtr->next;
+        delete headPtr;
+        headPtr = newHead;
+        return true;
     }
 
-    T item = headPtr->num;
-    Node* temp = headPtr;
-    headPtr = headPtr->next;
-    delete temp;
-    return item;
-}
-```
+    Node* prevPtr = headPtr;
+    Node* currPtr = headPtr->next;
 
-## pop_back
-
-```cpp
-int pop_back()
-{
-    if (headPtr == nullptr)
+    while(currPtr != nullptr)
     {
-        throw out_of_range("can not pop from an empty list");
+        if(currPtr->item == item)
+        {
+            prevPtr->next = currPtr->next;
+            delete currPtr;
+            return true;
+        }
+        prevPtr = prevPtr->next;
+        currPtr = currPtr->next;
     }
 
-    int num;
-    
-    if (head->next == nullptr)
-    {
-        num = head->num;
-        delete head;
-        head = nullptr;
-        return num;
-    }
-
-    Node *prev = head;
-    Node *curr = head->next;
-
-    while (curr->next != nullptr)
-    {
-        prev = prev->next;
-        curr = curr->next;
-    }
-
-    num = curr->num;
-    prev->next = curr->next;
-    delete curr;
-    return num;
-}
-```
-
-## value_at(index)
-
-```cpp
-int value_at(int index)
-{
-    if (index >= size())
-    {
-        throw out_of_range("index out of range");
-    }
-
-    // Keep iterating and count until u find that index
-    Node *ptr = head;
-    int count = 0;
-    while (count != index)
-    {
-        count++;
-        ptr = ptr->next;
-    }
-    return ptr->num;
+    return false; //if item not found
 }
 
 ```
+
+**Removing by position** 
 
 ![image](https://github.com/HelanaNady/DataStructure/assets/84867341/3f120f98-b70d-4067-8f21-c23c0290f4ee)
 
-## erase(index)
-```cpp
-void erase(int index)
-{
-    if (index >= size())
-    {
-        throw out_of_range("index out of range");
-    }
-
-    // Deleting element at head
-    if (index == 0)
-    {
-        Node *temp = head;
-        head = head->next;
-        delete temp;
-        return;
-    }
-    
-    Node *prev = nullptr;
-    Node *curr = head;
-    int count = 0;
-    while (count != index)
-    {
-        prev = curr;
-        curr = curr->next;
-        count++;
-    }
-    prev->next = curr->next;
-    delete curr;
-}
-
-```
-## remove_value
 
 ```cpp
-void remove(int num)
-{
-    if (head == nullptr)
-    {
-        cout << "list is empty nothing to delete! \n";
-        return;
-    }
-
-    if (head->num == num)
-    {
-        Node *temp = head;
-        head = head->next;
-        delete temp;
-        return;
-    }
-    
-    Node *prev = head;       
-    Node *curr = head->next; 
-
-    while (curr != nullptr)
-    {
-        if (curr->num == num)
-        {
-            prev->next = curr->next;
-            delete curr;
-            return;
-        }
-        prev = prev->next;
-        curr = curr->next;
-    }
-}
+// in progress, will be implemented
 ```
 
 
@@ -385,7 +308,6 @@ Node* reverse(Node<T>* headPtr)
     return newHead;
 }
 ```
-
 
 
 # Techniques for linked list problems
