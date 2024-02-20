@@ -155,7 +155,7 @@ There are many ways to add new nodes to the list, you can add the new node into 
 template <typename T>
 bool LinkedList<T> :: add(const T& item)
 {
-    Node* newNode = new Node(item);
+    Node<T>* newNode = new Node<T>(item);
     newNode->next = headPtr;
     headPtr = newNode;
     itemCount++;
@@ -174,9 +174,9 @@ bool LinkedList<T> :: add(const T& item)
 template <typename T>
 bool LinkedList<T>::add(const T& item)
 {
-    Node* newNode = new Node(item);
+    Node<T>* newNode = new Node<T>(item);
     // Finding the last node
-    Node* ptr = headPtr;
+    Node<T>* ptr = headPtr;
     while(ptr->next != nullptr)
         ptr = ptr->next;
 
@@ -194,7 +194,7 @@ bool LinkedList<T>::add(const T& item)
 template <typename T>
 bool LinkedList<T>::add(const T& item)
 {
-    Node* newNode = new Node(item);
+    Node<T>* newNode = new Node<T>(item);
 
     if(headPtr == nullptr)
         headPtr = newNode;
@@ -231,14 +231,14 @@ bool LinkedList<T>::remove(const T& item)
     //check first if the removed item is the head node
     if(headPtr->item == item)
     {
-        Node* newHead = headPtr->next;
+        Node<T>* newHead = headPtr->next;
         delete headPtr;
         headPtr = newHead;
         return true;
     }
 
-    Node* prevPtr = headPtr;
-    Node* currPtr = headPtr->next;
+    Node<T>* prevPtr = headPtr;
+    Node<T>* currPtr = headPtr->next;
 
     while(currPtr != nullptr)
     {
