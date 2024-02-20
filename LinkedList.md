@@ -144,7 +144,7 @@ bool LinkedBAG<t>::isEmpty() const
 
 There are many ways to add new nodes to the list, you can add the new node into a list right before its head, right after its last node, or between two adjacent nodes.
 
-**Adding to the front** 
+### Adding to the front
 
 - Time complexity : O(1)
 - This technique is used in stacks linked based implementation
@@ -161,9 +161,9 @@ bool LinkedList<T> :: add(const T& item)
 }
 ```
 
-**Adding to the back**
+### Adding to the back
 
-**Without  a tail pointer** 
+#### Without  a tail pointer
 - Time complexity: O(n)
 
 ```cpp
@@ -182,7 +182,7 @@ bool LinkedList<T>::add(const T& item)
 ```
 
 
-**With a tail pointer**
+#### With a tail pointer
 - Time complexity with tail pointer: O(1)
 - This technique is used in Queues linked based implementation 
 
