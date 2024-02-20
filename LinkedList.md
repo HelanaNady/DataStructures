@@ -146,6 +146,8 @@ There are many ways to add new nodes to the list, you can add the new node into 
 
 ### Adding to the front
 
+![image](https://github.com/HelanaNady/DataStructures/assets/84867341/0d9cbef3-289a-4616-af78-9f40c86414dd)
+
 - Time complexity : O(1)
 - This technique is used in stacks linked based implementation
 
@@ -162,6 +164,8 @@ bool LinkedList<T> :: add(const T& item)
 ```
 
 ### Adding to the back
+
+![image](https://github.com/HelanaNady/DataStructures/assets/84867341/1ebb3653-6ef4-48d9-9aa1-6f3835f576f5)
 
 #### Without  a tail pointer
 - Time complexity: O(n)
