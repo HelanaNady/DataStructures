@@ -1,4 +1,4 @@
-# DataStructures
+# DataStructures 🖥️
 
 Welcome to our comprehensive Data Structures Repository! Dive into a rich collection of well-organized notes covering a wide range of essential data structure topics. </br>
 
@@ -27,6 +27,6 @@ Features: </br>
 ![image](https://github.com/HelanaNady/DataStructure/assets/84867341/d1f5b454-8d14-4e5a-a679-99c94c7aa3a6)
 
 image from [Big O cheatsheet](https://www.bigocheatsheet.com/)
-
+----
 > [!Note]
 > These notes are educational resources and not a substitute for comprehensive textbooks or formal education in computer science or related fields.
