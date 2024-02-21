@@ -2,6 +2,8 @@
 
 Welcome to our comprehensive Data Structures Repository! Dive into a rich collection of well-organized notes covering a wide range of essential data structure topics. </br>
 
+![codememe1](https://github.com/HelanaNady/DataStructure/assets/137416623/1b41fe83-1817-479d-a26f-752f6b6556fc)
+
 Features: </br>
 - Extensive coverage of fundamental concepts and algorithms.
 - Clear explanations, code snippets, and illustrative examples.
@@ -14,9 +16,8 @@ Features: </br>
 
 - Regular updates for a growing and valuable resource.
 - User-friendly directory structure for easy navigation.
-> Make sure you're navigating through the main branch as the other branches will contain ongoing edits.
+> branches other than the main will contain ongoing edits, take in consideration they haven't been reviewed yet. </br>
 
-![codememe1](https://github.com/HelanaNady/DataStructure/assets/137416623/1b41fe83-1817-479d-a26f-752f6b6556fc)
 
 
 ---
