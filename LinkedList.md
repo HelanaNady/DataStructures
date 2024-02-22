@@ -52,8 +52,8 @@ public:
     T item;
     Node<T>* next;
 
-    Node() : data(0), next(nullptr) {}
-    Node(T value) : data(value), next(nullptr) {}
+    Node() : item(0), next(nullptr) {}
+    Node(T value) : item(value), next(nullptr) {}
 };
 ```
 > [!WARNING] 
