@@ -93,7 +93,7 @@ LinkedList<T>::LinkedList(const LinkedList<T>& aList)
         headPtr->item = origChainPtr->item;
         // Copy remaining nodes
         Node<T>* newChainPtr = headPtr; // Last-node pointer
-        while (origPtr != nullptr)
+        while (origChainPtr -> next)
         {
             origChainPtr = origChainPtr->next; // Advance pointer
             // Get next item from original chain
