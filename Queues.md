@@ -5,10 +5,10 @@
 </div>
 
 
-Queues are FIFO structure first in-first out. 
+Queues are FIFO structure first in-first out. The first item added is the first one removed.
 
-- Linked list implemenation
-- Array implementation
+- [Linked list implementation](#Linked-list-implementation)
+- [Array implementation](#Array-implementation)
 
 ## Types 
 - priority queues
@@ -48,7 +48,7 @@ public:
 ```
 ----
 
-## A linked-based implementation 
+## Linked list implementation 
 
 #### Constructor
 
@@ -66,7 +66,7 @@ bool LinkedQueue<T>::isEmpty() const
 
 #### enqueue
 
-![Pasted image 20240218003514](https://github.com/HelanaNady/DataStructures/assets/84867341/bba43364-cd99-4457-9415-077af772cad5)
+![image](https://github.com/HelanaNady/DataStructures/assets/84867341/f81691df-f663-4d20-9602-9622232a12ed)
 
 ```cpp
 template <typename T>
@@ -121,19 +121,37 @@ ItemType ArrayQueue<T>::peekFront() const
 	return front->item; 
 } 
 ```
-## An array-based implementation 
+## Array implementation 
 
-Using a linear array isn't the most efficient way, every time we dequeue an item we have to shift all items to the left so we don't run out of space, a better approach is to use a circular array, basically when you reach the end you go back to the beginning in a cycle 
+Using a linear array isn't the most efficient way, every time we dequeue an item we have to shift all items to the left so we don't run out of space, that process takes O(n).
 
-There is just one small problem with circular array is you can't detect whether a queue is empty or full easily, Consider the following two examples
-![Pasted image 20240218023040](https://github.com/HelanaNady/DataStructures/assets/84867341/d794e1dc-7a51-430a-85b4-c6a1df3c319b)
+A better approach is to use a circular array, when you reach the end of it you go back to the beginning in a cycle that way we won't need to shift anything!
 
-In both cases: empty and full queue front can be ahead of back. There are multiple ways we can solve this problem: one way is to keep a count of the items or use a boolean variable `isFull` however a faster and better solution would be to sacrifice one location instead and instead add only `MAX_QUEUE-1` items 
+There is just one small problem with circular array is you can't detect whether a queue is empty or full easily, Consider the following two examples:
 
-![Pasted image 20240218023452](https://github.com/HelanaNady/DataStructures/assets/84867341/696466e1-a6ee-4708-8130-8caac13d4e4d)
+![image](https://github.com/HelanaNady/DataStructures/assets/84867341/083481cb-ffcf-48e6-9e74-243c137c756f)
 
-The condition for full queue becomes front = (back + 1) % (MAX_QUEUE + 1)
-and for empty it remains if front equals back.
+In both cases: empty and full queue front can be ahead of back. There are multiple ways we can solve this problem: one way is to keep a count of the items or use a Boolean variable `isFull` .
+
+Another solution would be to sacrifice one location of the array to always be empty and declare the array to be of `size + 1`
+
+The new conditions become:
+- for full queue: `front == (back +1) % (size + 1)`
+- for empty queue: `front == back `
+
+In order for this solution to work and be easy to implement we either change:
+- The front index to point to the location before the first item 
+- The back index to point to the location after the last item 
+
+The difference between whether you consider the front to be location before and leave the back to point to last item or the opposite is how you will enqueue items and the implementation of `peekFront()`
+- Incrementing the back index then adding item -> front points to location before first item 
+- Adding item then incrementing the back -> back points to location after last item 
+
+and we increment the indices using the following relations: 
+- `front = (front + 1) % (size + 1)`
+- `back = (back + 1) % (size + 1)`
+
+Since they are both very similar we will explain only one case (the first case)
 
 ####  isEmpty
 
@@ -141,23 +159,25 @@ and for empty it remains if front equals back.
 template <typename T>
 bool ArrayQueue<T>::isEmpty() const
 {
-	if(front == back)
-	    return true;
-	return false;
+	return front == back;
 }
 ```
 
 #### enqueue() 
 
+- First case: The front index points to the location before the first item 
+
+![Pasted image 20240227002240](https://github.com/HelanaNady/DataStructures/assets/84867341/b6ec4a68-22c3-4184-b719-ae2b535a52cd)
+
 ```cpp
 template <typename T>
-bool ArrayQueue(const T& newEntry) 
+bool ArrayQueue<T>::enqueue(const T& item) 
 {
-	if(front == (back + 1) % (MAX_QUEUE + 1)) //if list is full
-		return false;
+	if(front == (back + 1) % (size + 1)) 
+		throw std::out_of_range("queue is full can not add more items");
 		
-	back = (back+1) % MAX_QUUEUE;
-	items[back] = newEntry;
+	back = (back+1) % (size + 1);
+	items[back] = item;
 	return true;
 }
 ```
@@ -166,29 +186,15 @@ bool ArrayQueue(const T& newEntry)
 
 ```cpp
 template <typename T>
-bool dequeue() 
+bool ArrayQueue<T>::dequeue() 
 {
 	if(isEmpty())
-		return false;
-	front = (front+1) % MAX_QUEQUE;
+		throw std::out_of_range("can not dequeue from an empty queue");
+		
+	front = (front+1) % (size + 1);
 	return true;
 }
 ```
 
-#### peekFront
-
-```cpp
-template< typname T> T ArrayQueue::peekFront() const
-	throw(PrecondViolatedExcep) 
-{ 
-	if (isEmpty()) 
-		throw PrecondViolatedExcep("peekFront() called with empty queue"); 
-	return items[front]; 
-} 
-```
-
-
-
-
-
+we increment the front index, note that "deleting" is advancing front and overwriting the old item when a new item is added to the same place.
 
