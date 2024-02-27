@@ -17,6 +17,11 @@ Queues are FIFO structure first in-first out. The first item added is the first 
 -----
 ## QueueInterface Class
 
+<p align="center">
+  <img src="https://github.com/HelanaNady/DataStructures/assets/84867341/e0caee98-d234-4f2c-9049-17286540ffb1" alt="Queue GIF">
+</p>
+
+
 ```cpp
 #pragma once
 template< class T> 
