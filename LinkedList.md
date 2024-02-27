@@ -93,7 +93,7 @@ LinkedList<T>::LinkedList(const LinkedList<T>& aList)
         headPtr->item = origChainPtr->item;
         // Copy remaining nodes
         Node<T>* newChainPtr = headPtr; // Last-node pointer
-        while (origPtr != nullptr)
+        while (origChainPtr -> next)
         {
             origChainPtr = origChainPtr->next; // Advance pointer
             // Get next item from original chain
@@ -174,14 +174,23 @@ bool LinkedList<T> :: add(const T& item)
 template <typename T>
 bool LinkedList<T>::add(const T& item)
 {
-    Node<T>* newNode = new Node<T>(item);
-    // Finding the last node
-    Node<T>* ptr = headPtr;
-    while(ptr->next != nullptr)
-        ptr = ptr->next;
-
-    ptr->next = newNode;
-    return true;
+	//prepare the new last node
+	Node<T>* newNode = new Node<T>(item); 
+	newNode->next = nullptr;
+	if (!headPtr) //handles the case of an initially empty list
+	{
+		headPtr = newNode;
+		return true;
+	}
+	//find the previous last node
+	Node<t>* LastNode = headptr; 
+	while (LastNode->Next)  
+	{
+		LastNode = LastNode->Next;  
+	}
+	//make the previous last node point to it
+	LastNode->Next = newNode; 
+	return true;
 }
 ```
 
