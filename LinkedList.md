@@ -52,8 +52,8 @@ public:
     T item;
     Node<T>* next;
 
-    Node() : data(0), next(nullptr) {}
-    Node(T value) : data(value), next(nullptr) {}
+    Node() : item(0), next(nullptr) {}
+    Node(T value) : item(value), next(nullptr) {}
 };
 ```
 > [!WARNING] 
@@ -93,7 +93,7 @@ LinkedList<T>::LinkedList(const LinkedList<T>& aList)
         headPtr->item = origChainPtr->item;
         // Copy remaining nodes
         Node<T>* newChainPtr = headPtr; // Last-node pointer
-        while (origPtr != nullptr)
+        while (origChainPtr -> next)
         {
             origChainPtr = origChainPtr->next; // Advance pointer
             // Get next item from original chain
@@ -174,14 +174,23 @@ bool LinkedList<T> :: add(const T& item)
 template <typename T>
 bool LinkedList<T>::add(const T& item)
 {
-    Node<T>* newNode = new Node<T>(item);
-    // Finding the last node
-    Node<T>* ptr = headPtr;
-    while(ptr->next != nullptr)
-        ptr = ptr->next;
-
-    ptr->next = newNode;
-    return true;
+	//prepare the new last node
+	Node<T>* newNode = new Node<T>(item); 
+	newNode->next = nullptr;
+	if (!headPtr) //handles the case of an initially empty list
+	{
+		headPtr = newNode;
+		return true;
+	}
+	//find the previous last node
+	Node<t>* LastNode = headptr; 
+	while (LastNode->Next)  
+	{
+		LastNode = LastNode->Next;  
+	}
+	//make the previous last node point to it
+	LastNode->Next = newNode; 
+	return true;
 }
 ```
 
@@ -220,7 +229,7 @@ Removing by position can also be done in different ways: you can provide the ind
 
 We will cover here removing by value and by position, removal at one end is fairly easy and similar to adding logic also it is implemented in stacks and queues
 
-**Removing by value** 
+**Removing by value (ordering preserved)** 
 
 ```cpp
 bool LinkedList<T>::remove(const T& item)
@@ -263,7 +272,40 @@ bool LinkedList<T>::remove(const T& item)
 
 
 ```cpp
-// in progress, will be implemented
+    bool LinkedList<T>::removeByPos(int index)
+    {
+        if (headPtr == nullptr)
+            throw out_of_range("can not remove from an empty list");
+
+        if (index == 0)
+        {
+            Node<T> *newHead = headPtr->next;
+            delete headPtr;
+            headPtr = newHead;
+            return true;
+        }
+
+        // Check if the list have only one node
+        if (heatPtr->next == nullptr)
+            return false;
+
+        int i = 1;
+        Node<T> *prevPtr = headPtr;
+        Node<T> *currentPtr = headPtr->next;
+        while (i <= index && currentPtr)
+        {
+            currentPtr = currentPtr->next;
+            prevPtr = prevPtr->next;
+            ++i;
+        }
+        // Check if the loop ended early
+        if (i < index)
+            return false;
+        
+        prevPtr->next = currentPtr->next;
+        delete currentPtr;
+        return true;
+    };
 ```
 
 
