@@ -36,7 +36,7 @@ public:
 	 back of the queue. 
 	@param newEntry The object to be added as a new entry. 
 	@return True if the addition is successful or false if not. */ 
-	virtual bool enqueue( const T& newEntry) = 0; 
+	virtual bool enqueue( const T& item) = 0; 
 	 /** Removes the front of this queue. 
 	@post If the operation was successful, the front of the queue
 	 has been removed. 
@@ -47,15 +47,35 @@ public:
 	@post The front of the queue has been returned, and the 
 	 queue is unchanged. 
 	@return The front of the queue. */ 
-	virtual T peekFront() const = 0; 
+	virtual T peekFront() = 0; 
 }; // end QueueInterface 
 
 ```
 ----
 
 ## Linked list implementation 
+A linked list implementation offers dynamic resizing as new elements are added 
+  
+#### Class definition 
 
-#### Constructor
+```cpp
+template <typename T>
+class ArrayQueue : public QueueInterface 
+{
+private:
+    Node<T>* frontPtr;
+    Node<T>* backPtr;
+public:
+    LinkedQueue();
+    bool isEmpty() const;
+    bool enqueue(const T& item);
+    bool dequeue();
+    T peekFront();
+    ~ LinkedQueue();
+};
+```
+- assuming class node is implemented
+- We will need a head pointer as usual and a tail pointer for the enqueue operation
 
 #### isEmpty
 
@@ -63,9 +83,7 @@ public:
 template <typename T>
 bool LinkedQueue<T>::isEmpty() const
 {
-    if (frontPtr == nullptr && backPtr == nullptr)
-        return true;
-    return false;
+    return (!frontPtr && !backPtr);
 }
 ```
 
@@ -75,9 +93,9 @@ bool LinkedQueue<T>::isEmpty() const
 
 ```cpp
 template <typename T>
-bool LinkedQueue<T>::enqueue(T newEntry)
+bool LinkedQueue<T>::enqueue(T item)
 {
-    Node<T>* newNodePtr = new Node<T>(newEntry);
+    Node<T>* newNodePtr = new Node<T>(item);
 
     //if node inserted is the first one
     if (frontPtr == nullptr)
@@ -99,8 +117,8 @@ bool LinkedQueue<T>::enqueue(T newEntry)
 template <typename T>
 bool LinkedQueue<T>::dequeue()
 {
-    if (frontPtr == nullptr)
-        return false;
+    if (isEmpty())
+        throw std::out_of_range("can not dequeue from an empty queue");
 
     Node<T>* nodeToDeletePtr = frontPtr;
     frontPtr = frontPtr->next;
@@ -117,17 +135,17 @@ bool LinkedQueue<T>::dequeue()
 
 ```cpp
 template< class T> 
-ItemType ArrayQueue<T>::peekFront() const 
-	throw(PrecondViolatedExcep) 
+ItemType ArrayQueue<T>::peekFront()
 { 
-	// Enforce precondition 
-	if (isEmpty()) 
-		throw PrecondViolatedExcep("peekFront() called with empty queue"); 
-	return front->item; 
+    if (isEmpty())
+	throw std::out_of_range("peekFront() called with empty queue");
+    return front->item; 
 } 
 ```
 ## Array implementation 
+An array implementation provides faster access 
 
+### Naïve approach: linear array
 Using a linear array isn't the most efficient way, every time we dequeue an item we have to shift all items to the left so we don't run out of space, that process takes O(n).
 
 A better approach is to use a circular array, when you reach the end of it you go back to the beginning in a cycle that way we won't need to shift anything!
@@ -141,22 +159,59 @@ In both cases: empty and full queue front can be ahead of back. There are multip
 Another solution would be to sacrifice one location of the array to always be empty and declare the array to be of `size + 1`
 
 The new conditions become:
-- for full queue: `front == (back +1) % (size + 1)`
+- for full queue: `front == (back + 1) % (size + 1)`
 - for empty queue: `front == back `
-
-In order for this solution to work and be easy to implement we either change:
-- The front index to point to the location before the first item 
-- The back index to point to the location after the last item 
-
-The difference between whether you consider the front to be location before and leave the back to point to last item or the opposite is how you will enqueue items and the implementation of `peekFront()`
-- Incrementing the back index then adding item -> front points to location before first item 
-- Adding item then incrementing the back -> back points to location after last item 
 
 and we increment the indices using the following relations: 
 - `front = (front + 1) % (size + 1)`
 - `back = (back + 1) % (size + 1)`
 
-Since they are both very similar we will explain only one case (the first case)
+In order for this solution to work and be easy to implement we either change:
+- The front index to point to the location before the first item 
+- The back index to point to the location after the last item 
+
+The difference between both approaches is the way `enqueue` and `peekFront()` are implemented
+- Front points to location before first item 
+	- In `peekFront` you return the element after front 
+- Back points to location after last item 
+	- In `enqueue` you add the item then increment the back index 
+
+Since they are both very similar we will explain only one (the second case)
+
+#### Class definition 
+
+```cpp
+template <typename T>
+class ArrayQueue : public QueueInterface 
+{
+private:
+    int front;
+    int back;
+    int size;
+    T* items;
+public:
+    ArrayQueue(int size);
+    bool isEmpty() const;
+    bool enqueue(const T& item);
+    bool dequeue();
+    T peekFront();
+    ~ ArrayQueue();
+};
+```
+
+- Front and back indices to keep track of start and end 
+- The array is dynamically allocated based on the size specified
+
+#### Constructor 
+
+```cpp
+template <typename T>
+bool ArrayQueue<T>::ArrayQueue(int size) : front(0), back(0), size(size)
+{
+	items = new T[size + 1];
+}
+```
+![[Pasted image 20240226130942.png]]
 
 ####  isEmpty
 
@@ -164,7 +219,7 @@ Since they are both very similar we will explain only one case (the first case)
 template <typename T>
 bool ArrayQueue<T>::isEmpty() const
 {
-	return front == back;
+    return front == back;
 }
 ```
 
@@ -175,15 +230,19 @@ bool ArrayQueue<T>::isEmpty() const
 ![Pasted image 20240227002240](https://github.com/HelanaNady/DataStructures/assets/84867341/b6ec4a68-22c3-4184-b719-ae2b535a52cd)
 
 ```cpp
+
+- The back index  points to the location after the last item 
+
+```cpp
 template <typename T>
 bool ArrayQueue<T>::enqueue(const T& item) 
 {
-	if(front == (back + 1) % (size + 1)) 
-		throw std::out_of_range("queue is full can not add more items");
-		
-	back = (back+1) % (size + 1);
-	items[back] = item;
-	return true;
+    if(front == (back + 1) % (size + 1))
+	throw std::out_of_range("queue is full can not add more items");
+
+    items[back] = item;
+    back = (back+1) % (size + 1);
+    return true;
 }
 ```
 
@@ -193,13 +252,34 @@ bool ArrayQueue<T>::enqueue(const T& item)
 template <typename T>
 bool ArrayQueue<T>::dequeue() 
 {
-	if(isEmpty())
-		throw std::out_of_range("can not dequeue from an empty queue");
+    if(isEmpty())
+	throw std::out_of_range("can not dequeue from an empty queue");
 		
-	front = (front+1) % (size + 1);
-	return true;
+    front = (front+1) % (size + 1);
+    return true;
 }
 ```
 
-we increment the front index, note that "deleting" is advancing front and overwriting the old item when a new item is added to the same place.
+we increment the front index, note that "deleting" is advancing front and overwriting the old item when a new item is added to the same location.
+
+#### peekFront
+
+```cpp
+template <typename T>
+T ArrayQueue<T>::peekFront() 
+{
+    if(isEmpty())
+	throw std::out_of_range("empty queue");
+    return items[front];
+}
+```
+
+----
+
+# Applications 
+
+- **ask scheduling**: Operating systems schedule processes using queues, ensuring tasks are executed in the order they are received.
+- **Simulation**: Queues can model real-world queues, such as lines at a store or traffic light wait times.
+- **Breadth-first search (BFS) in trees and graphs**: BFS algorithms often use queues to explore nodes level by level.
+
 
