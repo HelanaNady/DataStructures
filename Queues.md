@@ -211,7 +211,7 @@ bool ArrayQueue<T>::ArrayQueue(int size) : front(0), back(0), size(size)
 	items = new T[size + 1];
 }
 ```
-![[Pasted image 20240226130942.png]]
+![Pasted image 20240227002240](https://github.com/HelanaNady/DataStructures/assets/84867341/b6ec4a68-22c3-4184-b719-ae2b535a52cd)
 
 ####  isEmpty
 
@@ -224,12 +224,6 @@ bool ArrayQueue<T>::isEmpty() const
 ```
 
 #### enqueue() 
-
-- First case: The front index points to the location before the first item 
-
-![Pasted image 20240227002240](https://github.com/HelanaNady/DataStructures/assets/84867341/b6ec4a68-22c3-4184-b719-ae2b535a52cd)
-
-```cpp
 
 - The back index  points to the location after the last item 
 
