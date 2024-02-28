@@ -151,6 +151,7 @@ An array implementation provides faster access
 ### Naïve approach: linear array
 Using a linear array isn't the most efficient way, every time we dequeue an item we have to shift all items to the left so we don't run out of space, that process takes O(n).
 
+### Circular array 
 A better approach is to use a circular array, when you reach the end of it you go back to the beginning in a cycle that way we won't need to shift anything!
 
 There is just one small problem with circular array is you can't detect whether a queue is empty or full easily, Consider the following two examples:
