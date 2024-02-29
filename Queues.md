@@ -215,7 +215,7 @@ bool ArrayQueue<T>::ArrayQueue(int size) : front(0), back(0), size(size)
     items = new T[size + 1];
 }
 ```
-![Pasted image 20240227002240](https://github.com/HelanaNady/DataStructures/assets/84867341/b6ec4a68-22c3-4184-b719-ae2b535a52cd)
+![Pasted image 20240226130942](https://github.com/HelanaNady/DataStructures/assets/84867341/f46e0a6f-7424-4163-90fe-19ba402b5ada)
 
 ####  isEmpty
 
