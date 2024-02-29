@@ -276,7 +276,7 @@ T ArrayQueue<T>::peekFront()
 
 # Applications 
 
-- **ask scheduling**: Operating systems schedule processes using queues, ensuring tasks are executed in the order they are received.
+- **Task scheduling**: Operating systems schedule processes using queues, ensuring tasks are executed in the order they are received.
 - **Simulation**: Queues can model real-world queues, such as lines at a store or traffic light wait times.
 - **Breadth-first search (BFS) in trees and graphs**: BFS algorithms often use queues to explore nodes level by level.
 
