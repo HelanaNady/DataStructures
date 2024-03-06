@@ -69,9 +69,10 @@ public:
 Check this if you can't seem to figure the need for a copy constructor: </br>
 [Shallow copying vs deep copying](https://www.geeksforgeeks.org/shallow-copy-and-deep-copy-in-c/) </br>
 
+
+## class:
+
 ```cpp
-#pragma once
-#include "Node.h"
 #include "StackInterface.h"
 using namespace std;
 template <typename T>
@@ -111,7 +112,25 @@ inline LinkedStack<T>::LinkedStack(const LinkedStack<T>& aStack)
 
 	}
 }
+template<typename T>
+inline LinkedStack<T>::~LinkedStack()
+{
+	while (!isEmpty())
+		pop();
+}
 
+```
+
+## Functions implemented :
+- [push()](#push())
+- [pop()](#pop())
+- [peek()](#peek())
+- [isEmpty()](#isEmpty())
+- [display()](#display())
+- [count()](#count())
+### push()
+
+```cpp
 template<typename T>
 inline bool LinkedStack<T>::push(const T &val)
 {
@@ -120,7 +139,10 @@ inline bool LinkedStack<T>::push(const T &val)
 	topPtr = newNode;
 	return true;
 }
+```
+### pop()
 
+```cpp
 template<typename T>
 inline T LinkedStack<T>::pop()
 {
@@ -134,9 +156,11 @@ inline T LinkedStack<T>::pop()
 	delete temp;
 	temp = nullptr;
 	return val;
-
 }
+```
+### peek()
 
+```cpp
 template<typename T>
 inline T LinkedStack<T>::peek() const
 {
@@ -146,13 +170,19 @@ inline T LinkedStack<T>::peek() const
 	}
 	return 0;
 }
+```
+### isEmpty()
 
+```cpp
 template<typename T>
 inline bool LinkedStack<T>::isEmpty() const
 {
     return topPtr == nullptr;
 }
+```
+### display()
 
+```cpp
 template<typename T>
 inline void LinkedStack<T>::display()
 {
@@ -163,7 +193,10 @@ inline void LinkedStack<T>::display()
 		currentPtr = currentPtr->Next;
 	}
 }
+```
+### count()
 
+```cpp
 template<typename T>
 inline int LinkedStack<T>::count()
 {
@@ -175,19 +208,16 @@ inline int LinkedStack<T>::count()
 		currentPtr = currentPtr->Next;
 	}
 }
-
-template<typename T>
-inline LinkedStack<T>::~LinkedStack()
-{
-	while (!isEmpty())
-		pop();
-}
-
 ```
+
+
+
 
 -----
 
 ## ArrayStack
+
+## class:
 
 ```cpp
 #pragma once
@@ -211,6 +241,19 @@ public:
 	int count(); 
 };
 
+```
+
+## Functions implemented :
+- [push()](#push())
+- [pop()](#pop())
+- [peek()](#peek())
+- [isEmpty()](#isEmpty())
+- [display()](#display())
+- [count()](#count())
+
+### push()
+
+```cpp
 template<typename T>
 inline bool ArrayStack<T>::push(const T& val) 
 {
@@ -221,7 +264,10 @@ inline bool ArrayStack<T>::push(const T& val)
 	}
 	return false;
 }
+```
+### pop()
 
+```cpp
 template<typename T>
 inline bool ArrayStack<T>::pop()
 {
@@ -236,20 +282,31 @@ inline bool ArrayStack<T>::pop()
 	}
 }
 
+```
+### peek()
+
+```cpp
 template<typename T>
 inline T ArrayStack<T>::peek() const
 {
 	assert (!isEmpty()) //enforces the precondition
-                            //If the stack is empty, assert will issue an error message and halt execution.
+    //If the stack is empty, assert will issue an error message and halt execution.
 	return items[top];
 }
+```
+### isEmpty()
 
+```cpp
 template<typename T>
 inline bool ArrayStack<T>::isEmpty() const
 {
 	return top < 0;
 }
 
+```
+### display()
+
+```cpp
 template<typename T>
 inline void ArrayStack<T>::display()
 {
@@ -258,22 +315,24 @@ inline void ArrayStack<T>::display()
 		cout << items[i] << endl;
 	}
 }
-
+```
+### count()
+```cpp
 template<typename T>
 inline int ArrayStack<T>::count()
 {
 	return (top + 1);
 }
-
 ```
+
 -----
 ## ArrayStack vs LinkedStack
 - The array-based implementation is a reasonable choice if the number of items in the stack does not exceed the fi xed size of
 the array. For example, when we read and correct an input line, if the system allows a
 line length of only 80 characters, you reasonably could use a statically allocated array
 to represent the stack. For stacks that might be large, but often are not, the array-based
-implementation will waste storage. In that case, the link-based implementation is a
-better choice.
+implementation will waste storage. In that case, the link-based implementation is a better choice.
+
 -----
 
 ## Applications using Stack ADT
