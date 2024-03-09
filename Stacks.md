@@ -244,12 +244,12 @@ public:
 ```
 
 ## Functions implemented :
-- [push()](#push())
-- [pop()](#pop())
-- [peek()](#peek())
-- [isEmpty()](#isEmpty())
-- [display()](#display())
-- [count()](#count())
+- [push()](https://github.com/HelanaNady/DataStructures/blob/main/Stacks.md#push-1)
+- [pop()](https://github.com/HelanaNady/DataStructures/blob/main/Stacks.md#pop-1)
+- [peek()](https://github.com/HelanaNady/DataStructures/blob/main/Stacks.md#peek-1)
+- [isEmpty()](https://github.com/HelanaNady/DataStructures/blob/main/Stacks.md#isEmpty-1)
+- [display()](https://github.com/HelanaNady/DataStructures/blob/main/Stacks.md#display-1)
+- [count()](https://github.com/HelanaNady/DataStructures/blob/main/Stacks.md#count-1)
 
 ### push()
 
@@ -413,13 +413,3 @@ bool checkBraces(string s)
 
 
 ----
-
-
-
-
-
-
-
-
-
-
