@@ -477,14 +477,8 @@ Linked lists are recursive data structures
 
 ![Pasted image 20240207183037](https://github.com/HelanaNady/DataStructure/assets/84867341/dcb083bd-033b-41e9-87a5-ad17b041b8c8)
 
-Each node in doubly linked lists has 2 pointers: a pointer to the previous node and another to the next node. 
-
 ![image](https://github.com/HelanaNady/DataStructure/assets/84867341/3ab8e693-9a51-4a32-af15-478978fbe3bf)
 
-
----
-# Circular linked list
-![image](https://github.com/HelanaNady/DataStructure/assets/84867341/9d732db4-877d-4cf1-8d25-80c58b4c4634)
 
 A doubly linked list is a type of linked list that has two pointers with each node, one pointing to the next node and another pointing to the previous node. Unlike a singly linked list, where traversal is only possible in one direction, a doubly linked list allows for both forward and backward traversal, providing more flexibility in certain scenarios. </br>
 
@@ -606,6 +600,10 @@ void delete(T item)
 }
 ```
 
-> [!NOTE] Don't forget to free the to be deleted node's memory!
+> [!NOTE]
+> Don't forget to free the to be deleted node's memory!
 
-### Both isEmpty() and Size() cam be implemented the same way like a single linked list.
+### Both isEmpty() and Size() can be implemented the same way like a single linked list.
+---
+# Circular linked list
+![image](https://github.com/HelanaNady/DataStructure/assets/84867341/9d732db4-877d-4cf1-8d25-80c58b4c4634)
