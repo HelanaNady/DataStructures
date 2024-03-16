@@ -504,7 +504,8 @@ public:
 ```
 
 ## Insertion
-![[0_VDORm92H9BFJlWlS.gif]] When Inserting in a doubly linked list:
+![0_VDORm92H9BFJlWlS](https://github.com/HelanaNady/DataStructures/assets/137416623/99b4ab4a-1278-4c26-a873-b1d45369a448)
+When Inserting in a doubly linked list:
 - you start by creating a new node 
 - then locate the node after which you want to insert the new node (let's call it `currentPtr`). 
 - Update the next pointer of the new
@@ -570,7 +571,7 @@ void insert(int index, const T& item)
 ```
 
 ## Deletion
-![[dll-delete.gif]]
+![dll-delete](https://github.com/HelanaNady/DataStructures/assets/137416623/a37ae430-d4cf-4e15-bb31-e4455cf63d94)
 The first step for sure would be to locate the node to be deleted processed by updating the next pointer of the previous node to skip the node to be deleted. Then update the previous pointer of the next node to skip the node to be deleted.
 
 ```cpp
