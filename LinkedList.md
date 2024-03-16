@@ -37,12 +37,12 @@
 - [Copy constructor](#Copy-constructor)
 - [size](#size)
 - [empty](#empty)
-- [add](#add)
+- [insert](#Insert)
 - [remove](#remove)
 - [reverse](#reverse)
 
 
-## Node 
+### Node 
 
 ```cpp
 template <typename T>
@@ -68,7 +68,7 @@ public:
 > destroys the content of the only pointer— headPtr—to the newly created node. Thus, you have needlessly created a new node and then made it
 > inaccessible. This action creates a memory leak in your program and should be avoided!
 ----
-## Copy constructor 
+### Copy constructor 
 When copying an object involves only copying the values of its data members, the copy is called a shallow copy. If a shallow copy is sufficient, you can omit the copy constructor, in which case the compiler generates a copy constructor that performs a shallow copy. </br>
 The copy constructor makes a copy of an object. It is invoked implicitly when you either pass an object to a function by value, return an object from a valued function, or define and initialize an object. </br>
 
@@ -110,7 +110,7 @@ LinkedList<T>::LinkedList(const LinkedList<T>& aList)
 } // end copy constructor
 ```
 
-## size 
+### size 
 
 ```cpp
 template <typename T>
@@ -127,7 +127,7 @@ int LinkedList<T>::size() const
 }
 ```
 
-## empty
+### empty
 returns true if empty
 
 ```cpp
@@ -140,11 +140,11 @@ bool LinkedBAG<t>::isEmpty() const
 }
 ```
 
-## add
+### Insert
 
 There are many ways to add new nodes to the list, you can add the new node into a list right before its head, right after its last node, or between two adjacent nodes.
 
-### Adding to the front
+#### Adding to the front
 
 ![image](https://github.com/HelanaNady/DataStructures/assets/84867341/0d9cbef3-289a-4616-af78-9f40c86414dd)
 
@@ -163,7 +163,7 @@ bool LinkedList<T> :: add(const T& item)
 }
 ```
 
-### Adding to the back
+#### Adding to the back
 
 ![image](https://github.com/HelanaNady/DataStructures/assets/84867341/1ebb3653-6ef4-48d9-9aa1-6f3835f576f5)
 
@@ -222,7 +222,7 @@ bool LinkedList<T>::add(const T& item)
 //will be implemented
 ```
 
-## remove
+### remove
 
 There are several approaches to implementing the `remove` function in a linked list, each suited to different use cases and requirements: mainly you either remove by value or by position.
 Removing by position can also be done in different ways: you can provide the index or allow removal only at one end of the linked list
@@ -311,7 +311,7 @@ bool LinkedList<T>::remove(const T& item)
 
 --- 
 
-## reverse 
+### reverse 
 ![RGIF2](https://github.com/HelanaNady/DataStructure/assets/84867341/38a6da52-5826-4cc6-9568-d8394bf4384c)
 
 ### using two pointers 
@@ -477,14 +477,134 @@ Linked lists are recursive data structures
 
 ![Pasted image 20240207183037](https://github.com/HelanaNady/DataStructure/assets/84867341/dcb083bd-033b-41e9-87a5-ad17b041b8c8)
 
-Each node in doubly linked lists has 2 pointers: a pointer to the previous node and another to the next node. 
-
 ![image](https://github.com/HelanaNady/DataStructure/assets/84867341/3ab8e693-9a51-4a32-af15-478978fbe3bf)
 
 
+A doubly linked list is a type of linked list that has two pointers with each node, one pointing to the next node and another pointing to the previous node. Unlike a singly linked list, where traversal is only possible in one direction, a doubly linked list allows for both forward and backward traversal, providing more flexibility in certain scenarios. </br>
+
+Each node in a doubly linked list requires additional memory to store the previous pointer, leading to increased memory usage compared to singly linked lists. This might be a problem when memory usage is a critical factor, especially with small data types such as integers. You might find yourself acquiring more memory to store the pointers than the data itself.</br>
+
+Doubly linked lists are similar to singly linked lists in all operations but with just minding to take care of the extra pointer. </br>
+
+### Node
+adjust the Node class to have the additional pointer
+like the following:
+```cpp
+template <typename T>
+class Node
+{
+public:
+    T item;
+    Node<T>* next;
+    Node<T>* prev;
+
+    Node() : item(0), next(nullptr) {}
+    Node(T value) : item(value), next(nullptr) {}
+};
+```
+
+## Insertion
+![0_VDORm92H9BFJlWlS](https://github.com/HelanaNady/DataStructures/assets/137416623/99b4ab4a-1278-4c26-a873-b1d45369a448)
+When Inserting in a doubly linked list:
+- you start by creating a new node 
+- then locate the node after which you want to insert the new node (let's call it `currentPtr`). 
+- Update the next pointer of the new
+- node to point to `currentPtr.next`
+- Update the previous pointer of the new node to point to `currentPtr` .
+- Update the next pointer of the `currentPtr` to point to the new node. 
+- If `currentPtr.next` is not null, update the previous pointer of `currentPtr.next` to point to the new node.
+
+```cpp
+template <typename T>
+void insert(int index, const T& item)
+{
+    Node* newNode = new Node(item);
+
+    if (headPtr == nullptr)
+    {
+        headPtr = newNode;
+    }
+    else
+    {
+        Node* currentPtr = headPtr;
+        int currentIndex = 0;
+
+        while (currentPtr != nullptr && currentIndex < index)
+        {
+            currentPtr = currentPtr->next;
+            currentIndex++;
+        }
+
+        if (currentPtr == nullptr && currentIndex == index)
+        {
+            // Insert at the end
+            Node* lastPtr = headPtr;
+            while (lastPtr->next != nullptr)
+                lastPtr = lastPtr->next;
+
+            lastPtr->next = newNode;
+            newNode->prev = lastPtr;
+        }
+        else if (currentPtr != nullptr)
+        {
+            // Insert in the middle
+            newNode->prev = currentPtr->prev;
+            newNode->next = currentPtr;
+
+            if (currentPtr->prev != nullptr)
+            {
+                currentPtr->prev->next = newNode;
+            }
+            else
+            {
+                headPtr = newNode;
+            }
+
+            currentPtr->prev = newNode;
+        }
+        else
+        {
+            throw out_of_range("Error: Index out of range.");
+        }
+    }
+}
+```
+
+## Deletion
+![dll-delete](https://github.com/HelanaNady/DataStructures/assets/137416623/a37ae430-d4cf-4e15-bb31-e4455cf63d94)
+The first step for sure would be to locate the node to be deleted processed by updating the next pointer of the previous node to skip the node to be deleted. Then update the previous pointer of the next node to skip the node to be deleted.
+
+```cpp
+template <typename T>
+void delete(T item) 
+{
+        if (headPtr == nullptr)
+            throw out_of_range("Error: List is empty.");
+
+        Node* currentPtr = headPtr;
+        while (currentPtr != nullptr && currentPtr->data != item)
+            currentPtr = currentPtr->next;
+
+        if (currentPtr == nullptr)
+            throw out_of_range("Error: Node with specified value not found.");
+
+        if (currentPtr->prev != nullptr)
+            currentPtr->prev->next = currentPtr->next;
+        else
+            head = currentPtr->next;
+        
+
+        if (currentPtr->next != nullptr)
+            currentPtr->next->prev = currentPtr->prev;
+
+        delete currentPtr;
+}
+```
+
+> [!NOTE]
+> Don't forget to free the to be deleted node's memory!
+
+### Both isEmpty() and Size() can be implemented the same way like a single linked list.
 ---
 # Circular linked list
 ![image](https://github.com/HelanaNady/DataStructure/assets/84867341/9d732db4-877d-4cf1-8d25-80c58b4c4634)
-
-
-
