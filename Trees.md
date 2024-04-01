@@ -45,18 +45,18 @@ The Generic trees are the N-ary trees which have the following properties: 
 
 ## Binary Trees
  A binary Tree is defined as a Tree data structure with at most 2 children. Since each element in a binary tree can have only 2 children, we typically name them the left and right child.
- Types of BTs:
- - Full BT (based on number of nodes)
+ Types of BTs: </br>
+ - Full BT (based on number of nodes) </br>
 ![Screenshot 2024-04-01 020310](https://github.com/HelanaNady/DataStructures/assets/137416623/9a869627-b0d5-4d66-97ac-c570987690d0)
 
- all nodes that are at a level less than h have two children each.
+ all nodes that are at a level less than h have two children each. </br>
  
- - Complete BT (based on levels completion)
+ - Complete BT (based on levels completion) </br>
 ![Screenshot 2024-04-01 020358](https://github.com/HelanaNady/DataStructures/assets/137416623/d1bc4e09-e160-4808-90cf-60a1f597886d)
 
- A complete binary tree of height h is a binary tree that is full down to level h – 1, with level h filled in from left to right.
+ A complete binary tree of height h is a binary tree that is full down to level h – 1, with level h filled in from left to right. </br>
  
- - Balanced BT (based on levels completion)
+ - Balanced BT (based on levels completion) </br>
 ![image](https://github.com/HelanaNady/DataStructures/assets/137416623/bbd05f55-3c13-4391-b6f4-67ebee9b4663)
  A binary tree is height balanced, or simply balanced, if the height of any node’s right sub-tree differs from the height of the node’s left subtree by no more than 1.
 -----
