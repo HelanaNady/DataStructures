@@ -11,13 +11,13 @@ A ***tree data structure*** is a hierarchical [nonlinear](https://www.geeksforg
 ![2024-02-09 (1)](https://github.com/HelanaNady/DataStructure/assets/84867341/dd08963e-4437-48af-b03b-9d19593e677e)
 ## Important terminologies 
 - ***Parent Node:*** The node which is a predecessor of a node is called the parent node of that node. 
-- **Child Node:*** The node which is the immediate successor of a node is called the child node of that node. 
+- ***Child Node:*** The node which is the immediate successor of a node is called the child node of that node. 
 - ***Root Node:*** The topmost node of a tree or the node which does not have any parent node is called the root node.
 > A non-empty tree must contain exactly one root node and exactly one path from the root to all other nodes of the tree.
 - **Leaf Node or External Node:** The nodes which do not have any child nodes are called leaf nodes. 
 - **Ancestor of a Node:*** Any predecessor nodes on the path of the root to that node are called Ancestors of that node. 
 - ***Descendant:*** A node x is a descendant of another node y if and only if y is an ancestor of x.
-- **Sibling:*** Children of the same parent node are called siblings. 
+- ***Sibling:*** Children of the same parent node are called siblings. 
 - ***Level of a node:*** The count of edges on the path from the root node to that node. The root node has level 0.
 - ***Internal node:*** A node with at least one child is called Internal Node.
 - ***Neighbour of a Node:*** Parent or child nodes of that node are called neighbors of that node.
@@ -38,8 +38,8 @@ Generic trees are a collection of nodes where each node is a data structure that
 
 The Generic trees are the N-ary trees which have the following properties: 
 
- 1) Many children at every node.
-2) The number of nodes for each node is not known in advance.
+ 1) Many children at every node.</br>
+2) The number of nodes for each node is not known in advance.<br>
 [For more info](https://www.geeksforgeeks.org/generic-treesn-array-trees/)
 
 ## Binary Trees
@@ -60,22 +60,14 @@ The Generic trees are the N-ary trees which have the following properties: 
 ## Heights of a Binary Tree
 *for a BT with n nodes*
 - Max height :
-$$
-h = n
-$$
+$h = n$
 - min height --> Fill each level of tree as completely as possible 
-$$
-h = ceil (log_2(n + 1) )
-$$
+$h = ceil (log_2(n + 1) )$
  *for a BT with height h*
  - max number of nodes :
- $$
- n = 2^{h} - 1
-$$
+ $n = 2^{h} - 1$
 - min number of nodes :
-$$
-n = h
-$$
+$n = h$
 
 ----
 ## The ADT Binary Tree
