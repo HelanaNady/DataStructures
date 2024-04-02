@@ -572,6 +572,7 @@ void insert(int index, const T& item)
 
 ## Deletion
 ![dll-delete](https://github.com/HelanaNady/DataStructures/assets/137416623/a37ae430-d4cf-4e15-bb31-e4455cf63d94)
+
 The first step for sure would be to locate the node to be deleted processed by updating the next pointer of the previous node to skip the node to be deleted. Then update the previous pointer of the next node to skip the node to be deleted.
 
 ```cpp
