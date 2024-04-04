@@ -12,7 +12,7 @@ Features: </br>
     - [Linked Lists](https://github.com/HelanaNady/DataStructure/blob/main/LinkedList.md)
     - [Stacks](https://github.com/HelanaNady/DataStructure/blob/main/Stacks.md)
     - [Queues](https://github.com/HelanaNady/DataStructure/blob/main/Queues.md)
-    - [Trees](https://github.com/HelanaNady/DataStructure/blob/main/Trees.md)
+    - [BinaryTrees](https://github.com/HelanaNady/DataStructure/blob/main/BinaryTrees.md)
 
 - Regular updates for a growing and valuable resource.
 - User-friendly directory structure for easy navigation.
