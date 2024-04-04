@@ -392,7 +392,7 @@ inline void BinaryNodeTree<T>::preorder(BinaryNode<T>* treePtr) const
 
 ![postorder](https://github.com/HelanaNady/DataStructures/assets/137416623/04c63ad3-d0dc-415e-8e56-69c2d69d3dbb)
 
-</br>
+
 ```cpp
 template<typename T>
 inline void BinaryNodeTree<T>::postorder(BinaryNode<T>* treePtr) const
@@ -410,7 +410,7 @@ inline void BinaryNodeTree<T>::postorder(BinaryNode<T>* treePtr) const
 - #### inorder traversing
 ![inorder](https://github.com/HelanaNady/DataStructures/assets/137416623/6a0c1b00-1701-4fb6-b156-63bcb9287ab9)
 
-</br>
+
 ```cpp
 template<typename T>
 inline void BinaryNodeTree<T>::inorder(BinaryNode<T>* treePtr) const
@@ -433,7 +433,7 @@ inline void BinaryNodeTree<T>::inorder(BinaryNode<T>* treePtr) const
 A queue is needed to store the address of the skipped nodes. </br>
 ![levelorder](https://github.com/HelanaNady/DataStructures/assets/137416623/33383513-7a1b-4540-81ee-422372c1328d)
 
-</br>
+
 ```cpp
 template<typename T>
 inline void BinaryNodeTree<T>::levelorder(BinaryNode<T>* treePtr) const
