@@ -1,4 +1,4 @@
-# Trees
+# BinaryTrees
 A ***tree data structure*** is a hierarchical [nonlinear](https://www.geeksforgeeks.org/difference-between-linear-and-non-linear-data-structures/) structure that is used to represent and organize data in a way that is easy to navigate and search. It is a collection of nodes that are connected by edges and has a hierarchical relationship between the nodes.
 ## Contents 
 - [Important terminologies](#important-terminologies)
@@ -179,6 +179,8 @@ public:
 	- [getHeightHelper(..) and getHeight()](#getHeightHelper)
 	- [getNumberOfNodesHelper() and getNumberOfNodes()](#getNumberOfNodesHelper)
 	- [balancedAdd(..) and add(..)](#balancedAdd)
+	- [Depth First Traversing](#Depth-First-Traversing)
+	- [Breadth First Traversing](#Breadth-First-Traversing)
 - header file:
 >[!Note]
 >public ADT methods usually are not themselves
@@ -213,9 +215,10 @@ public:
 	T getEntry(const T& anEntry) const throw(NotFoundException);
 	bool contains(const T& anEntry) const;
 
-	void preorderTraverse(void visit(T&)) const;
-	void inorderTraverse(void visit(T&)) const;
-	void postorderTraverse(void visit(T&)) const;
+	void preorderTraverse() const;
+	void inorderTraverse() const;
+	void postorderTraverse() const;
+	void levelorderTraverse() const;
 	
 	//-------------
 	// Protected utility helper (recursive) methods
@@ -229,9 +232,10 @@ public:
 	BinaryNode<T>* findNode(BinaryNode<T>* treePtr, const T& target, bool& success) const;
 	BinaryNode<T>* copyTree(const BinaryNode<T>* treePtr) const;
 
-	void preorder(void visit(T&), BinaryNode<T>* treePtr) const;
-	void inorder(void visit(T&),BinaryNode<T>* treePtr) const;
-	void postorder(void visit(T&),BinaryNode<T>* treePtr) const;
+	void preorder(BinaryNode<T>* treePtr) const;
+	void inorder(BinaryNode<T>* treePtr) const;
+	void postorder(BinaryNode<T>* treePtr) const;
+	void levelorder(BinaryNode<T>* treePtr) const;
 };
 ```
 
@@ -364,7 +368,100 @@ inline bool BinaryNodeTree<T>::add(const T& newData)
 ```
 
 -----
+### Depth first traversing 
+
+- #### preorder traversing
+
+![preorder](https://github.com/HelanaNady/DataStructures/assets/137416623/13dafe33-c7e7-4642-b757-a65ca0acc3bf)
+ </br>
+```cpp
+template<typename T>
+inline void BinaryNodeTree<T>::preorder(BinaryNode<T>* treePtr) const
+{
+	if (treePtr)
+	{
+		// Do something supposedly, print
+		std::cout << treePtr->getItem() << " ";
+		preorder(treePtr->getLeftChildPtr());
+		preorder(treePtr->getRightChildPtr());
+	}
+}
+```
+
+- #### postorder traversing
+
+![postorder](https://github.com/HelanaNady/DataStructures/assets/137416623/04c63ad3-d0dc-415e-8e56-69c2d69d3dbb)
+
+</br>
+```cpp
+template<typename T>
+inline void BinaryNodeTree<T>::postorder(BinaryNode<T>* treePtr) const
+{
+	if (treePtr)
+	{
+		preorder(treePtr->getLeftChildPtr()); 
+		preorder(treePtr->getRightChildPtr()); 
+		// Do something supposedly, print
+		std::cout << treePtr->getItem() << " "; 
+	}
+}
+```
+
+- #### inorder traversing
+![inorder](https://github.com/HelanaNady/DataStructures/assets/137416623/6a0c1b00-1701-4fb6-b156-63bcb9287ab9)
+
+</br>
+```cpp
+template<typename T>
+inline void BinaryNodeTree<T>::inorder(BinaryNode<T>* treePtr) const
+{
+	if (treePtr)
+	{
+		preorder(treePtr->getLeftChildPtr());
+		// Do something supposedly, print
+		std::cout << treePtr->getItem() << " "; 
+		preorder(treePtr->getRightChildPtr()); 
+	}
+}
+```
+
+> while the three public traversal functions just call them
+
+### Breadth first traversing
+
+
+A queue is needed to store the address of the skipped nodes. </br>
+![levelorder](https://github.com/HelanaNady/DataStructures/assets/137416623/33383513-7a1b-4540-81ee-422372c1328d)
+
+</br>
+```cpp
+template<typename T>
+inline void BinaryNodeTree<T>::levelorder(BinaryNode<T>* treePtr) const
+{
+	std::queue<BinaryNode<T>*> Nodesqueue;
+	Nodesqueue.push(rootPtr);
+
+	while (!Nodesqueue.empty())
+	{
+		BinaryNode<T>* currentPtr = Nodesqueue.front();
+		// Do something supposedly, print
+		std::cout << currentPtr->getItem() << " ";
+		if (currentPtr->getLeftChildPtr())
+			Nodesqueue.push(currentPtr->getLeftChildPtr());
+		if (currentPtr->getRightChildPtr())
+			Nodesqueue.push(currentPtr->getRightChildPtr());
+	}
+}
+```
+
 
 ## Useful articles 
 - [geeksforgeeks intro to trees ds](https://www.geeksforgeeks.org/introduction-to-tree-data-structure-and-algorithm-tutorials/)
-- 
+- [4 ways to traverse binary trees](https://dev.to/abdisalan_js/4-ways-to-traverse-binary-trees-with-animations-5bi5)
+
+## Useful videos 
+- [Binary Tree Algorithms full course |FreeCodeCamp.](https://youtu.be/fAAZixBzIAI?si=vqc78enJtVhrr8kS)
+- [Simplest Binary Tree Traversal trick for preorder inorder postorder](https://www.youtube.com/watch?v=WLvU5EQVZqY&pp=ygUMYmluYXJ5IHRyZWVz )
+- [Converting to Binary Trees](https://youtu.be/TE2-Zs2QTTw?si=bZyLPhIJ3VGC1LqO)
+## For practice
+- [Coding Interview Questions |takeUforward](https://takeuforward.org/interviews/strivers-sde-sheet-top-coding-interview-problems/)
