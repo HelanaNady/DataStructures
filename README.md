@@ -13,6 +13,7 @@ Features: </br>
     - [Stacks](https://github.com/HelanaNady/DataStructure/blob/main/Stacks.md)
     - [Queues](https://github.com/HelanaNady/DataStructure/blob/main/Queues.md)
     - [BinaryTrees](https://github.com/HelanaNady/DataStructure/blob/main/BinaryTrees.md)
+    - [BST and AVL Trees](ttps://github.com/HelanaNady/DataStructure/blob/main/ValueOrientedTrees.md)
 
 - Regular updates for a growing and valuable resource.
 - User-friendly directory structure for easy navigation.
