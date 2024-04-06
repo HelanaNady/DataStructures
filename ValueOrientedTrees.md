@@ -1,5 +1,5 @@
 # Binary Search Trees
-![bst](<Pasted image 20240406040826.png>)
+![Pasted image 20240406040826](https://github.com/HelanaNady/DataStructures/assets/84867341/e58c9f33-9fe4-4130-8229-1807bd72152c)
 
 Binary search trees are a special type of binary trees that satisfies the following at any node:
 - All nodes in left subtree are smaller than root node 
@@ -12,22 +12,24 @@ Binary search trees are a special type of binary trees that satisfies the follow
 - [For practice](#For-practice)
 
 ## Functions
-- Searching
+- [Searching](#Search)
 - Finding minimum
 - Finding maximum
-- insertion 
-- deletion 
+- [Insertion](#Insertion) 
+- [Removing an item](#Remove) 
 
 ---
 
 ### Search
 
-![bst-search](bst-searching.gif)
+![bst-searching](https://github.com/HelanaNady/DataStructures/assets/84867341/db781cf1-3c6f-4c9c-8f19-031eeec5a012)
 
 ### Insertion
 
 - We search for the right place to insert the new node by having a private method that gets called recursively 
 - Note that here it is assumed that no duplicate values are allowed in the BST
+
+![bst-insertion](https://github.com/HelanaNady/DataStructures/assets/84867341/a6cca796-770c-4d78-9db9-4eae10e46276)
 
 #### insertInOrder
 
@@ -70,21 +72,19 @@ Removing an element is more tricky than inserting we have three possible scenari
 
 *First case is quiet easy just remove the node itself by setting it to null and nothing extra need to be done* 
 
-![first-case](<Pasted image 20240406145021.png>)
+![image](https://github.com/HelanaNady/DataStructures/assets/84867341/935674fb-ba45-4825-8585-6342e1208dab)
 
 *Second case: can further be divided into another two cases -> has only left child or has only the right child (both has the same solution due to symmetry)*
 
-![alt text](<Pasted image 20240406145216.png>)
+![image](https://github.com/HelanaNady/DataStructures/assets/84867341/3fa78133-6fe8-4ecb-9fa8-821670d84f69)
 
 Suppose you delete that node that will leave the child node without a parent so to avoid that we  first swap parent node we want to delete with the child node -> the node we want to delete is now a leaf node and we are back to the first case 
 
 *Third case: when the node is a parent node with 2 children*
 
-![third-case](<Pasted image 20240406145321.png>)
+![image](https://github.com/HelanaNady/DataStructures/assets/84867341/7cbe9d0c-9b3a-4c89-92f4-4e721dfcedc0)
 
-> we won't be deleting the node itself directly, just like we did with case 2 we will find another node that is easier to delete and swap their items 
-
-> lets call the node we want to delete N and the Node that will take its place M 
+> we won't be deleting the node itself directly, just like we did with case 2 we will find another node that is easier to delete and swap their items, lets call the node we want to delete N and the Node that will take its place M 
 
 **Steps:**
 1. Locate another node M that is easier to remove from the tree than the node N 
@@ -110,7 +110,7 @@ For example for 20:
 BinaryNode<T>* current = rootPtr->getLeftChild();
 
 while (current->getRightChild())
-	current = current->getRightChild();
+    current = current->getRightChild();
 ```
 
 **To find inorder successor:** 
@@ -118,7 +118,7 @@ while (current->getRightChild())
 BinaryNode<T>* current = rootPtr->getRightChild();
 
 while (current->getLeftChild())
-	current = current->getLeftChild();
+    current = current->getLeftChild();
 ```
 
 **Recursive remove function (private)**
@@ -173,7 +173,7 @@ inline BinaryNode<T>* BinarySearchTree<T>::removeValue(BinaryNode<T>* rootPtr, c
 template<class T>
 bool BinarySearchTree<T>::remove(const T& anEntry)
 {
-	bool success = false;
+    bool success = false;
     removeValue(rootPtr, anEntry, success);
     return success;
 }
@@ -196,7 +196,6 @@ bool BinarySearchTree<T>::remove(const T& anEntry)
 - [Binary Tree leetcode problem set](https://leetcode.com/tag/binary-tree/)
 
 ---
-
 
 
 # AVL Trees
