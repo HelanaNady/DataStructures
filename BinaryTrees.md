@@ -30,8 +30,8 @@ A ***tree data structure*** is a hierarchical [nonlinear](https://www.geeksforg
 - [Generic Trees (N-ary Tree)](#Generic-Trees)
 - [Binary Trees](#Binary-Trees)
 #### Value oriented :
-- [Binary Search Tree BST](#BST)
-- [AVL Trees](#AVL-Trees)
+- [Binary Search Tree BST](https://github.com/HelanaNady/DataStructures/blob/Trees-changes/ValueOrientedTrees.md#binary-search-trees)
+- [AVL Trees](https://github.com/HelanaNady/DataStructures/blob/Trees-changes/ValueOrientedTrees.md#avl-trees)
 
 ----
 ## Generic Trees
@@ -454,14 +454,21 @@ inline void BinaryNodeTree<T>::levelorder(BinaryNode<T>* treePtr) const
 }
 ```
 
-
 ## Useful articles 
 - [geeksforgeeks intro to trees ds](https://www.geeksforgeeks.org/introduction-to-tree-data-structure-and-algorithm-tutorials/)
 - [4 ways to traverse binary trees](https://dev.to/abdisalan_js/4-ways-to-traverse-binary-trees-with-animations-5bi5)
 
 ## Useful videos 
-- [Binary Tree Algorithms full course |FreeCodeCamp.](https://youtu.be/fAAZixBzIAI?si=vqc78enJtVhrr8kS)
+- [Binary Tree Algorithms crash course | FreeCodeCamp.](https://youtu.be/fAAZixBzIAI?si=vqc78enJtVhrr8kS)
 - [Simplest Binary Tree Traversal trick for preorder inorder postorder](https://www.youtube.com/watch?v=WLvU5EQVZqY&pp=ygUMYmluYXJ5IHRyZWVz )
 - [Converting to Binary Trees](https://youtu.be/TE2-Zs2QTTw?si=bZyLPhIJ3VGC1LqO)
+- [Tree Traversals | William Fiset](https://www.youtube.com/watch?v=k7GkEbECZK0&list=PLDV1Zeh2NRsB6SWUrDFW2RmDotAfPbeHu&index=27)
+- [Breadth First Traversal | Coderbyte](https://www.youtube.com/watch?v=dfaKCrJ2HAk)
+- [Depth First Traversal | Coderbyte](https://www.youtube.com/watch?v=fPz40W9mfCg)
+- [Trees leetcode playlist | neetcode](https://www.youtube.com/playlist?list=PLot-Xpze53ldg4pN6PfzoJY7KsKcxF1jg)
+
+
 ## For practice
-- [Coding Interview Questions |takeUforward](https://takeuforward.org/interviews/strivers-sde-sheet-top-coding-interview-problems/)
+- [Coding Interview Questions | TakeUforward](https://takeuforward.org/interviews/strivers-sde-sheet-top-coding-interview-problems/)
+- [Binary Tree leetcode problem set](https://leetcode.com/tag/binary-tree/)
+
