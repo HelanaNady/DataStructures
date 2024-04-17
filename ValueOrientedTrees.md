@@ -199,3 +199,35 @@ bool BinarySearchTree<T>::remove(const T& anEntry)
 
 
 # AVL Trees
+
+Normal BST can quickly become imbalanced as its affected by the order by which we insert items into the tree 
+
+Consider a simple example where we insert items in increasing or decreasing order it will quickly lead to an an unbalanced binary tree ex: 10, 20, 30, 40, 50, 60
+
+There are man types of self balancing trees one of them is AVL trees
+
+*The heights of the left and right subtrees of any node in a balanced binary tree differ by no more than*
+
+Balance of AVL tree = Height of left subtree - Height of right subtree , -1 <= h <= 1
+
+The basic strategy of the AVL algorithm is to monitor the shape of the binary search tree after each insertion or deletion if the tree becomes imbalanced we "rotate" it
+
+
+**If the tree is left heavy**
+
+![Pasted image 20240417200538](https://github.com/HelanaNady/DataStructures/assets/84867341/a6cd039c-1ae0-4718-b492-483eae22d3bc)
+
+**If the tree is right heavy**
+![Pasted image 20240417200632](https://github.com/HelanaNady/DataStructures/assets/84867341/ef12a17a-4915-4b70-90a4-862e8be563d8)
+
+----
+
+![Pasted image 20240417201236](https://github.com/HelanaNady/DataStructures/assets/84867341/17b04dff-0f86-421c-8da1-93777e69467d)
+
+![Pasted image 20240417201309](https://github.com/HelanaNady/DataStructures/assets/84867341/540ef184-c32b-4a7f-bc1b-db8e7a801578)
+
+![Pasted image 20240417201352](https://github.com/HelanaNady/DataStructures/assets/84867341/29f6df37-e6b4-4c90-9a36-8ca0c3d577dd)
+
+![Pasted image 20240417201420](https://github.com/HelanaNady/DataStructures/assets/84867341/5e3d4983-8c3e-446e-90c6-d2600f4a614f)
+
+
