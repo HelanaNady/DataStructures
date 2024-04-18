@@ -16,19 +16,24 @@
 
 ## Functions
 - [Insertion](#AVL-Trees#Insert)
+- [Removing an item](#AVL-Trees#remove)
 
 ---
 ## Resources
 
 #### Useful Videos
+BST
 - [Intro to Binary Search Trees | William Fiset ](https://www.youtube.com/watch?v=JfSdGQdAzq8)
 - [Binary Search Tree Insertion | William Fiset](https://www.youtube.com/watch?v=LwpLXm3eb6A)
 - [BST Search Leetcode problem - recursive & iterative solution | neetcode ](https://www.youtube.com/watch?v=Cpg8f79luEA)
 - [Binary Search Tree removal | William Fiset](https://www.youtube.com/watch?v=8K7EO7s_iFE)
 - [BST removal Leetcode problem solution | neetcode](https://www.youtube.com/watch?v=LFzAoJJt92M&t=350s)
 - [Balanced Binary Search tree rotations | William Fiset](https://www.youtube.com/watch?v=q4fnJZr8ztY)
-
+AVL
 - [AVL tree insertions and rotations | Abdul Bari](https://www.youtube.com/watch?v=jDM6_TnYIqE)
+- [AVL tree insertion | William Fiset](https://www.youtube.com/watch?v=1QSYxIKXXP4)
+- [AVL tree removals | William Fiset](https://www.youtube.com/watch?v=g4y2h70D6Nk)
+- [Dhort video: AVL trees in 9 minutes — Insertions ](https://www.youtube.com/watch?v=1QSYxIKXXP4)
 
 #### Useful Articles
 - [Everything about binary search trees | medium ](https://praharshbhatt.medium.com/everything-about-binary-search-trees-insertion-deletion-searching-time-complexity-b1fd42976e77)
