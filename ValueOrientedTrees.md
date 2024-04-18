@@ -326,5 +326,71 @@ inline int BinarySearchTree<T>::getBalanceFactor(BinaryNode<T>* nodePtr) const
 }
 ```
 
+### remove
+```cpp
+template<class T>
+inline BinaryNode<T>* BinarySearchTree<T>::removeValue(BinaryNode<T>* subTreePtr, const T& target, bool& success)
+{
+    if (subTreePtr == nullptr)
+        return nullptr;
+    else if (target < subTreePtr->getItem())
+        subTreePtr->setLeft(removeValue(subTreePtr->getLeftChild(), target, success));
+    else if (target > rootPtr->getItem())
+        subTreePtr->setRight(removeValue(subTreePtr->getRightChild(), target, success));
+
+    else // target is found 
+    {
+        if (subTreePtr->getLeftChild() == nullptr)
+        {
+            BinaryNode<T>* temp = subTreePtr->getRightChild();
+            delete subTreePtr;
+            return temp;
+        }
+
+        else if (subTreePtr->getRightChild() == nullptr)
+        {
+            BinaryNode<T>* temp = subTreePtr->getLeftChild();
+            delete subTreePtr;
+            return temp;
+        }
+
+        else // find min in the right subtree (in left subtree of it)
+        {
+            success = true;
+
+            BinaryNode<T>* current = subTreePtr->getRightChild();
+            T newItem = current->getItem();
+
+            while (current->getLeftChild())
+                current = current->getLeftChild();
+            subTreePtr->setItem(newItem);
+            subTreePtr->setRight(removeValue(rootPtr->getRightChild(), newItem, success));
+        }
+    }
+    return subTreePtr;
+
+    // Update the height 
+    subTreePtr->setHeight(getHeightHelper(subTreePtr));
+
+    // Check the balance factor after insertion
+    int balance = getBalanceFactor(subTreePtr);
+
+    if (balance > 1) // Left heavy
+    {
+        if (getBalanceFactor(subTreePtr->getLeftChild()) < 0)
+            subTreePtr->setLeft(leftRotate(subTreePtr)); // right of left 
+        return rightRotate(subTreePtr); // left of left 
+    }
+
+    if (balance < -1) // right heavy
+    {
+        if (getBalanceFactor(subTreePtr->getRightChild()) > 0)
+            subTreePtr->setRight(rightRotate(subTreePtr)); // left of right
+        return leftRotate(subTreePtr); // right of right 
+    }
+    return subTreePtr;
+}
+```
+
 
 
