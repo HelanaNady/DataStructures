@@ -230,4 +230,101 @@ The basic strategy of the AVL algorithm is to monitor the shape of the binary se
 
 ![Pasted image 20240417201420](https://github.com/HelanaNady/DataStructures/assets/84867341/5e3d4983-8c3e-446e-90c6-d2600f4a614f)
 
+---
+
+### Insert
+
+```cpp
+template<class T>
+inline BinaryNode<T>* BinarySearchTree<T>::insertAVL(BinaryNode<T>* subTreePtr, T target)
+{
+    // First perform normal BST insertion
+    if (subTreePtr == nullptr)
+        subTreePtr = new BinaryNode<T>(target);
+    else if (target < subTreePtr->getItem())
+        subTreePtr->setLeft(insertInorder(subTreePtr->getLeftChild(), target));
+    else
+        subTreePtr->setRight(insertInorder(subTreePtr->getRightChild(), target));
+
+    return subTreePtr;
+
+    // Update the height 
+    subTreePtr->setHeight(getHeightHelper(subTreePtr));
+
+    // Check the balance factor after insertion
+    int balance = getBalanceFactor(subTreePtr);
+
+    if (balance > 1) // Left heavy
+    {
+        if (getBalanceFactor(subTreePtr->getLeftChild()) < 0)
+            subTreePtr->setLeft(leftRotate(subTreePtr)); // right of left 
+        return rightRotate(subTreePtr); // left of left 
+    }
+
+    if (balance < -1) // right heavy
+    {
+        if (getBalanceFactor(subTreePtr->getRightChild()) > 0)
+            subTreePtr->setRight(rightRotate(subTreePtr)); // left of right
+        return leftRotate(subTreePtr); // right of right 
+    }
+
+    return subTreePtr;
+}
+```
+
+### rotation functions
+
+```cpp
+template<class T>
+inline BinaryNode<T>* BinarySearchTree<T>::rightRotate(BinaryNode<T>* root)
+{
+    BinaryNode<T>* newRoot = root->getLeftChild();
+
+    root->setLeft(newRoot->getRightChild());
+    newRoot->setRight(root);
+
+    // update heights
+    root->setHeight(getHeightHelper(root));
+    newRoot->setHeight(getHeightHelper(newRoot));
+    
+    if (root == rootPtr)
+        rootPtr = newRoot;
+        
+    return newRoot;
+}
+```
+
+```cpp
+template<class T>
+inline BinaryNode<T>* BinarySearchTree<T>::leftRotate(BinaryNode<T>* root)
+{
+    BinaryNode<T>* newRoot = root->getRightChild();
+
+    root->setRight(newRoot->getLeftChild());
+    newRoot->setLeft(root);
+
+    // update heights
+    root->setHeight(getHeightHelper(root));
+    newRoot->setHeight(getHeightHelper(newRoot));
+
+    if (root = rootPtr)
+        root = newRoot;
+
+    return newRoot;
+}
+```
+
+#### balance factor 
+```cpp
+template<class T>
+inline int BinarySearchTree<T>::getBalanceFactor(BinaryNode<T>* nodePtr) const
+{
+    int leftHeight = getHeightHelper(nodePtr->getLeftChild());
+    int rightHeight = getHeightHelper(nodePtr->getRightChild());
+    
+    return std::max(leftHeight, rightHeight);
+}
+```
+
+
 
