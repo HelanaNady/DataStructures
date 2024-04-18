@@ -1,11 +1,5 @@
-# Binary Search Trees
-![Pasted image 20240406040826](https://github.com/HelanaNady/DataStructures/assets/84867341/e58c9f33-9fe4-4130-8229-1807bd72152c)
-
-Binary search trees are a special type of binary trees that satisfies the following at any node:
-- All nodes in left subtree are smaller than root node 
-- All nodes in the right subtree are greater than root node
-
 ## Contents 
+[Binary Search Trees](Binary-Search-Trees)
 - [Functions](#Functions)
 - [Useful videos](#Useful-videos)
 - [Useful articles](#Useful-articles)
@@ -16,7 +10,24 @@ Binary search trees are a special type of binary trees that satisfies the follow
 - Finding minimum
 - Finding maximum
 - [Insertion](#Insertion) 
-- [Removing an item](#Remove) 
+- [Removing an item](#Remove)
+
+AVL Trees
+
+## Functions
+- insert
+
+
+---
+
+# Binary Search Trees
+![Pasted image 20240406040826](https://github.com/HelanaNady/DataStructures/assets/84867341/e58c9f33-9fe4-4130-8229-1807bd72152c)
+
+Binary search trees are a special type of binary trees that satisfies the following at any node:
+- All nodes in left subtree are smaller than root node 
+- All nodes in the right subtree are greater than root node
+
+
 
 ---
 
@@ -34,7 +45,7 @@ Binary search trees are a special type of binary trees that satisfies the follow
 #### insertInOrder
 
 ```cpp
-template<class T>
+template<typename T>
 BinaryNode<T>* BinarySearchTree<T>::insertInorder(BinaryNode<T>* subTreePtr, T target)
 {
     if (subTreePtr == nullptr)
@@ -170,7 +181,7 @@ inline BinaryNode<T>* BinarySearchTree<T>::removeValue(BinaryNode<T>* rootPtr, c
 - Now the public method that calls it, returns true if element was found and deleted 
 
 ```cpp
-template<class T>
+template<typename T>
 bool BinarySearchTree<T>::remove(const T& anEntry)
 {
     bool success = false;
@@ -200,33 +211,102 @@ bool BinarySearchTree<T>::remove(const T& anEntry)
 
 # AVL Trees
 
-Normal BST can quickly become imbalanced as its affected by the order by which we insert items into the tree 
-
-Consider a simple example where we insert items in increasing or decreasing order it will quickly lead to an an unbalanced binary tree ex: 10, 20, 30, 40, 50, 60
-
-There are man types of self balancing trees one of them is AVL trees
-
-*The heights of the left and right subtrees of any node in a balanced binary tree differ by no more than*
-
-Balance of AVL tree = Height of left subtree - Height of right subtree , -1 <= h <= 1
+While BSTs excel at searching and insertion due to their sorted structure, their performance can be heavily influenced by the order of element insertion. Adding elements in increasing or decreasing order creates a skewed or degenerate BST, turning it into a linked list making the complexity of the code O(n) instead of logarithmic. That is where self balancing trees come in, there are many types of self balancing BST 
+- AVL trees
+- Red-Black trees
 
 The basic strategy of the AVL algorithm is to monitor the shape of the binary search tree after each insertion or deletion if the tree becomes imbalanced we "rotate" it
+where ***at any node The heights of the left and right subtrees differ by no more than one***
 
+*Balance of AVL tree = Height of left subtree - Height of right subtree, -1 <= balance factor <= 1*
 
-**If the tree is left heavy**
+We need to keep track of each node's height, we will add it as a data member in node class
+
+```cpp
+template <typename T>
+class BinaryNode
+{
+private:
+    T item;
+    BinaryNode<T>* leftChild;
+    BinaryNode<T>* rightChild;
+    int height;
+}
+```
+
+We will also need to define a private method to get the balance factor of each node
+```cpp
+template<typename T>
+int AVLTree<T>::getBalanceFactor(BinaryNode<T>* nodePtr) const
+{
+    int leftHeight = getHeightHelper(nodePtr->getLeftChild());
+    int rightHeight = getHeightHelper(nodePtr->getRightChild());
+    
+    return std::max(leftHeight, rightHeight);
+}
+```
+
+### All cases that we need to re-balance: 
+
+#### **If the tree becomes left heavy**
 
 ![Pasted image 20240417200538](https://github.com/HelanaNady/DataStructures/assets/84867341/a6cd039c-1ae0-4718-b492-483eae22d3bc)
 
-**If the tree is right heavy**
+#### **If the tree becomes right heavy**
 ![Pasted image 20240417200632](https://github.com/HelanaNady/DataStructures/assets/84867341/ef12a17a-4915-4b70-90a4-862e8be563d8)
 
-----
+#### For left of left and right of right cases they require only one rotation to be fixed:
+![Pasted image 20240417201352](https://github.com/HelanaNady/DataStructures/assets/84867341/29f6df37-e6b4-4c90-9a36-8ca0c3d577dd)
+
+**Right Rotation function:**
+
+```cpp
+template<typename T>
+BinaryNode<T>* AVLTree<T>::rightRotate(BinaryNode<T>* currentRoot)
+{
+    BinaryNode<T>* newRoot = currentRoot->getLeftChild();
+
+    currentRoot->setLeft(newRoot->getRightChild());
+    newRoot->setRight(currentRoot);
+
+    // Update heights
+    currentRoot->setHeight(getHeightHelper(root));
+    newRoot->setHeight(getHeightHelper(newRoot));
+    
+    if (currentRoot == rootPtr)
+        rootPtr = newRoot;
+        
+    return newRoot;
+}
+```
 
 ![Pasted image 20240417201236](https://github.com/HelanaNady/DataStructures/assets/84867341/17b04dff-0f86-421c-8da1-93777e69467d)
 
-![Pasted image 20240417201309](https://github.com/HelanaNady/DataStructures/assets/84867341/540ef184-c32b-4a7f-bc1b-db8e7a801578)
+**Left Rotation function:**
 
-![Pasted image 20240417201352](https://github.com/HelanaNady/DataStructures/assets/84867341/29f6df37-e6b4-4c90-9a36-8ca0c3d577dd)
+```cpp
+template<typename T>
+inline BinaryNode<T>* AVLTree<T>::leftRotate(BinaryNode<T>* currentRoot)
+{
+    BinaryNode<T>* newRoot = currentRoot->getRightChild();
+
+    currentRoot->setRight(newRoot->getLeftChild());
+    newRoot->setLeft(root);
+
+    // Update heights
+    currentRoot->setHeight(getHeightHelper(root));
+    newRoot->setHeight(getHeightHelper(newRoot));
+
+    if (currentRoot = rootPtr)
+        rootPtr = newRoot;
+
+    return newRoot;
+}
+```
+
+#### For the other two cases we will perform double rotations:
+
+![Pasted image 20240417201309](https://github.com/HelanaNady/DataStructures/assets/84867341/540ef184-c32b-4a7f-bc1b-db8e7a801578)
 
 ![Pasted image 20240417201420](https://github.com/HelanaNady/DataStructures/assets/84867341/5e3d4983-8c3e-446e-90c6-d2600f4a614f)
 
@@ -234,9 +314,11 @@ The basic strategy of the AVL algorithm is to monitor the shape of the binary se
 
 ### Insert
 
+It is quite similar to BST insertion we just check the balance after and re-balance the tree if needed 
+
 ```cpp
 template<class T>
-inline BinaryNode<T>* BinarySearchTree<T>::insertAVL(BinaryNode<T>* subTreePtr, T target)
+inline BinaryNode<T>* AVLTree<T>::insertAVL(BinaryNode<T>* subTreePtr, T target)
 {
     // First perform normal BST insertion
     if (subTreePtr == nullptr)
@@ -256,14 +338,16 @@ inline BinaryNode<T>* BinarySearchTree<T>::insertAVL(BinaryNode<T>* subTreePtr, 
 
     if (balance > 1) // Left heavy
     {
-        if (getBalanceFactor(subTreePtr->getLeftChild()) < 0)
+	int childBalance = getBalanceFactor(subTreePtr->getLeftChild());
+        if (childBalance < 0)
             subTreePtr->setLeft(leftRotate(subTreePtr)); // right of left 
         return rightRotate(subTreePtr); // left of left 
     }
 
     if (balance < -1) // right heavy
     {
-        if (getBalanceFactor(subTreePtr->getRightChild()) > 0)
+	int childBalance = getBalanceFactor(subTreePtr->getRightChild());
+        if ( childBalance > 0)
             subTreePtr->setRight(rightRotate(subTreePtr)); // left of right
         return leftRotate(subTreePtr); // right of right 
     }
@@ -272,64 +356,10 @@ inline BinaryNode<T>* BinarySearchTree<T>::insertAVL(BinaryNode<T>* subTreePtr, 
 }
 ```
 
-### rotation functions
-
-```cpp
-template<class T>
-inline BinaryNode<T>* BinarySearchTree<T>::rightRotate(BinaryNode<T>* root)
-{
-    BinaryNode<T>* newRoot = root->getLeftChild();
-
-    root->setLeft(newRoot->getRightChild());
-    newRoot->setRight(root);
-
-    // update heights
-    root->setHeight(getHeightHelper(root));
-    newRoot->setHeight(getHeightHelper(newRoot));
-    
-    if (root == rootPtr)
-        rootPtr = newRoot;
-        
-    return newRoot;
-}
-```
-
-```cpp
-template<class T>
-inline BinaryNode<T>* BinarySearchTree<T>::leftRotate(BinaryNode<T>* root)
-{
-    BinaryNode<T>* newRoot = root->getRightChild();
-
-    root->setRight(newRoot->getLeftChild());
-    newRoot->setLeft(root);
-
-    // update heights
-    root->setHeight(getHeightHelper(root));
-    newRoot->setHeight(getHeightHelper(newRoot));
-
-    if (root = rootPtr)
-        root = newRoot;
-
-    return newRoot;
-}
-```
-
-#### balance factor 
-```cpp
-template<class T>
-inline int BinarySearchTree<T>::getBalanceFactor(BinaryNode<T>* nodePtr) const
-{
-    int leftHeight = getHeightHelper(nodePtr->getLeftChild());
-    int rightHeight = getHeightHelper(nodePtr->getRightChild());
-    
-    return std::max(leftHeight, rightHeight);
-}
-```
-
 ### remove
 ```cpp
-template<class T>
-inline BinaryNode<T>* BinarySearchTree<T>::removeValue(BinaryNode<T>* subTreePtr, const T& target, bool& success)
+template<typename T>
+inline BinaryNode<T>* AVLTree<T>::removeValue(BinaryNode<T>* subTreePtr, const T& target, bool& success)
 {
     if (subTreePtr == nullptr)
         return nullptr;
@@ -377,17 +407,20 @@ inline BinaryNode<T>* BinarySearchTree<T>::removeValue(BinaryNode<T>* subTreePtr
 
     if (balance > 1) // Left heavy
     {
-        if (getBalanceFactor(subTreePtr->getLeftChild()) < 0)
+	int childBalance = getBalanceFactor(subTreePtr->getLeftChild());
+        if (childBalance < 0)
             subTreePtr->setLeft(leftRotate(subTreePtr)); // right of left 
         return rightRotate(subTreePtr); // left of left 
     }
 
     if (balance < -1) // right heavy
     {
-        if (getBalanceFactor(subTreePtr->getRightChild()) > 0)
+	int childBalance = getBalanceFactor(subTreePtr->getRightChild());
+        if ( childBalance > 0)
             subTreePtr->setRight(rightRotate(subTreePtr)); // left of right
         return leftRotate(subTreePtr); // right of right 
     }
+
     return subTreePtr;
 }
 ```
