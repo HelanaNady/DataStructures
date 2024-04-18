@@ -1,5 +1,5 @@
 ## Contents 
-[Binary Search Trees](Binary-Search-Trees)
+[Binary Search Trees](#Binary-Search-Trees)
 - [Functions](#Functions)
 - [Useful videos](#Useful-videos)
 - [Useful articles](#Useful-articles)
@@ -12,10 +12,30 @@
 - [Insertion](#Insertion) 
 - [Removing an item](#Remove)
 
-AVL Trees
+[AVL Trees](#AVL-Trees)
 
 ## Functions
-- insert
+- [Insertion](#AVL-Trees#Insert)
+
+---
+## Resources
+
+#### Useful Videos
+- [Intro to Binary Search Trees | William Fiset ](https://www.youtube.com/watch?v=JfSdGQdAzq8)
+- [Binary Search Tree Insertion | William Fiset](https://www.youtube.com/watch?v=LwpLXm3eb6A)
+- [BST Search Leetcode problem - recursive & iterative solution | neetcode ](https://www.youtube.com/watch?v=Cpg8f79luEA)
+- [Binary Search Tree removal | William Fiset](https://www.youtube.com/watch?v=8K7EO7s_iFE)
+- [BST removal Leetcode problem solution | neetcode](https://www.youtube.com/watch?v=LFzAoJJt92M&t=350s)
+- [Balanced Binary Search tree rotations | William Fiset](https://www.youtube.com/watch?v=q4fnJZr8ztY)
+
+- [AVL tree insertions and rotations | Abdul Bari](https://www.youtube.com/watch?v=jDM6_TnYIqE)
+
+#### Useful Articles
+- [Everything about binary search trees | medium ](https://praharshbhatt.medium.com/everything-about-binary-search-trees-insertion-deletion-searching-time-complexity-b1fd42976e77)
+
+#### For practice
+- [Coding Interview Questions | TakeUforward](https://takeuforward.org/interviews/strivers-sde-sheet-top-coding-interview-problems/)
+- [Binary Tree leetcode problem set](https://leetcode.com/tag/binary-tree/)
 
 
 ---
@@ -26,8 +46,6 @@ AVL Trees
 Binary search trees are a special type of binary trees that satisfies the following at any node:
 - All nodes in left subtree are smaller than root node 
 - All nodes in the right subtree are greater than root node
-
-
 
 ---
 
@@ -191,20 +209,6 @@ bool BinarySearchTree<T>::remove(const T& anEntry)
 ```
 -----
 
-## Useful Videos
-- [Intro to Binary Search Trees | William Fiset ](https://www.youtube.com/watch?v=JfSdGQdAzq8)
-- [Binary Search Tree Insertion | William Fiset](https://www.youtube.com/watch?v=LwpLXm3eb6A)
-- [BST Search Leetcode problem - recursive & iterative solution | neetcode ](https://www.youtube.com/watch?v=Cpg8f79luEA)
-- [Binary Search Tree removal | William Fiset](https://www.youtube.com/watch?v=8K7EO7s_iFE)
-- [BST removal Leetcode problem solution | neetcode](https://www.youtube.com/watch?v=LFzAoJJt92M&t=350s)
-- [Balanced Binary Search tree rotations | William Fiset](https://www.youtube.com/watch?v=q4fnJZr8ztY)
-
-## Useful Articles
-- [Everything about binary search trees | medium ](https://praharshbhatt.medium.com/everything-about-binary-search-trees-insertion-deletion-searching-time-complexity-b1fd42976e77)
-
-## For practice
-- [Coding Interview Questions | TakeUforward](https://takeuforward.org/interviews/strivers-sde-sheet-top-coding-interview-problems/)
-- [Binary Tree leetcode problem set](https://leetcode.com/tag/binary-tree/)
 
 ---
 
@@ -318,15 +322,15 @@ It is quite similar to BST insertion we just check the balance after and re-bala
 
 ```cpp
 template<class T>
-inline BinaryNode<T>* AVLTree<T>::insertAVL(BinaryNode<T>* subTreePtr, T target)
+inline BinaryNode<T>* AVLTree<T>::insert(BinaryNode<T>* subTreePtr, T target)
 {
     // First perform normal BST insertion
     if (subTreePtr == nullptr)
         subTreePtr = new BinaryNode<T>(target);
     else if (target < subTreePtr->getItem())
-        subTreePtr->setLeft(insertInorder(subTreePtr->getLeftChild(), target));
+        subTreePtr->setLeft(insert(subTreePtr->getLeftChild(), target));
     else
-        subTreePtr->setRight(insertInorder(subTreePtr->getRightChild(), target));
+        subTreePtr->setRight(insert(subTreePtr->getRightChild(), target));
 
     return subTreePtr;
 
