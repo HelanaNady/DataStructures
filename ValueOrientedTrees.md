@@ -180,8 +180,6 @@ bool BinarySearchTree<T>::remove(const T& anEntry)
     return success;
 }
 ```
------
-
 
 ---
 
@@ -191,14 +189,16 @@ bool BinarySearchTree<T>::remove(const T& anEntry)
 While BSTs excel at searching and insertion due to their sorted structure, their performance can be heavily influenced by the order of element insertion. Adding elements in increasing or decreasing order creates a skewed or degenerate BST, turning it into a linked list making the complexity of the code O(n) instead of logarithmic. That is where self balancing trees come in, there are many types of self balancing BST 
 - AVL trees
 - Red-Black trees
-## Functions
-- [Insertion](#AVL-Trees#Insert)
-- [Removing an item](#AVL-Trees#remove)
 
 The basic strategy of the AVL algorithm is to monitor the shape of the binary search tree after each insertion or deletion if the tree becomes imbalanced we "rotate" it
 where ***at any node The heights of the left and right subtrees differ by no more than one***
 
 *Balance of AVL tree = Height of left subtree - Height of right subtree, -1 <= balance factor <= 1*
+
+## AVL tree Functions
+- [Rotations](#All-cases-that-we-need-to-re-balance)
+- [Insertion](#insert)
+- [Removing an item](#remove)
 
 We need to keep track of each node's height, we will add it as a data member in node class
 
@@ -226,7 +226,7 @@ int AVLTree<T>::getBalanceFactor(BinaryNode<T>* nodePtr) const
 }
 ```
 
-### All cases that we need to re-balance: 
+### All cases that we need to re-balance
 
 #### **If the tree becomes left heavy**
 
@@ -246,8 +246,8 @@ BinaryNode<T>* AVLTree<T>::rightRotate(BinaryNode<T>* currentRoot)
 {
     BinaryNode<T>* newRoot = currentRoot->getLeftChild();
 
-    currentRoot->setLeft(newRoot->getRightChild());
-    newRoot->setRight(currentRoot);
+    currentRoot->setLeftChild(newRoot->getRightChild());
+    newRoot->setRightChild(currentRoot);
 
     // Update heights
     currentRoot->setHeight(getHeightHelper(root));
@@ -270,8 +270,8 @@ inline BinaryNode<T>* AVLTree<T>::leftRotate(BinaryNode<T>* currentRoot)
 {
     BinaryNode<T>* newRoot = currentRoot->getRightChild();
 
-    currentRoot->setRight(newRoot->getLeftChild());
-    newRoot->setLeft(root);
+    currentRoot->setRightChild(newRoot->getLeftChild());
+    newRoot->setLeftChild(root);
 
     // Update heights
     currentRoot->setHeight(getHeightHelper(root));
@@ -292,7 +292,7 @@ inline BinaryNode<T>* AVLTree<T>::leftRotate(BinaryNode<T>* currentRoot)
 
 ---
 
-### Insert
+### insert
 
 It is quite similar to BST insertion we just check the balance after and re-balance the tree if needed 
 
@@ -304,9 +304,9 @@ inline BinaryNode<T>* AVLTree<T>::insert(BinaryNode<T>* subTreePtr, T target)
     if (subTreePtr == nullptr)
         subTreePtr = new BinaryNode<T>(target);
     else if (target < subTreePtr->getItem())
-        subTreePtr->setLeft(insert(subTreePtr->getLeftChild(), target));
+        subTreePtr->setLeftChild(insert(subTreePtr->getLeftChild(), target));
     else
-        subTreePtr->setRight(insert(subTreePtr->getRightChild(), target));
+        subTreePtr->setRightChild(insert(subTreePtr->getRightChild(), target));
 
     return subTreePtr;
 
@@ -320,15 +320,17 @@ inline BinaryNode<T>* AVLTree<T>::insert(BinaryNode<T>* subTreePtr, T target)
     {
 	int childBalance = getBalanceFactor(subTreePtr->getLeftChild());
         if (childBalance < 0)
-            subTreePtr->setLeft(leftRotate(subTreePtr)); // right of left 
+            subTreePtr->setLeftChild(leftRotate(subTreePtr)); // right of left
+
         return rightRotate(subTreePtr); // left of left 
     }
 
     if (balance < -1) // right heavy
     {
 	int childBalance = getBalanceFactor(subTreePtr->getRightChild());
-        if ( childBalance > 0)
-            subTreePtr->setRight(rightRotate(subTreePtr)); // left of right
+        if (childBalance > 0)
+            subTreePtr->setRightChild(rightRotate(subTreePtr)); // left of right
+
         return leftRotate(subTreePtr); // right of right 
     }
 
@@ -344,9 +346,9 @@ inline BinaryNode<T>* AVLTree<T>::removeValue(BinaryNode<T>* subTreePtr, const T
     if (subTreePtr == nullptr)
         return nullptr;
     else if (target < subTreePtr->getItem())
-        subTreePtr->setLeft(removeValue(subTreePtr->getLeftChild(), target, success));
+        subTreePtr->setLeftChild(removeValue(subTreePtr->getLeftChild(), target, success));
     else if (target > rootPtr->getItem())
-        subTreePtr->setRight(removeValue(subTreePtr->getRightChild(), target, success));
+        subTreePtr->setRightChild(removeValue(subTreePtr->getRightChild(), target, success));
 
     else // target is found 
     {
@@ -374,7 +376,7 @@ inline BinaryNode<T>* AVLTree<T>::removeValue(BinaryNode<T>* subTreePtr, const T
             while (current->getLeftChild())
                 current = current->getLeftChild();
             subTreePtr->setItem(newItem);
-            subTreePtr->setRight(removeValue(rootPtr->getRightChild(), newItem, success));
+            subTreePtr->setRightChild(removeValue(rootPtr->getRightChild(), newItem, success));
         }
     }
     return subTreePtr;
@@ -388,16 +390,18 @@ inline BinaryNode<T>* AVLTree<T>::removeValue(BinaryNode<T>* subTreePtr, const T
     if (balance > 1) // Left heavy
     {
 	int childBalance = getBalanceFactor(subTreePtr->getLeftChild());
+
         if (childBalance < 0)
-            subTreePtr->setLeft(leftRotate(subTreePtr)); // right of left 
+            subTreePtr->setLeftChild(leftRotate(subTreePtr)); // right of left 
         return rightRotate(subTreePtr); // left of left 
     }
 
     if (balance < -1) // right heavy
     {
 	int childBalance = getBalanceFactor(subTreePtr->getRightChild());
+
         if ( childBalance > 0)
-            subTreePtr->setRight(rightRotate(subTreePtr)); // left of right
+            subTreePtr->setRightChild(rightRotate(subTreePtr)); // left of right
         return leftRotate(subTreePtr); // right of right 
     }
 
@@ -407,6 +411,7 @@ inline BinaryNode<T>* AVLTree<T>::removeValue(BinaryNode<T>* subTreePtr, const T
 
 
 ----
+
 ## Useful Videos
 </br> ***BST***
 - [Intro to Binary Search Trees | William Fiset ](https://www.youtube.com/watch?v=JfSdGQdAzq8)
@@ -415,6 +420,7 @@ inline BinaryNode<T>* AVLTree<T>::removeValue(BinaryNode<T>* subTreePtr, const T
 - [Binary Search Tree removal | William Fiset](https://www.youtube.com/watch?v=8K7EO7s_iFE)
 - [BST removal Leetcode problem solution | neetcode](https://www.youtube.com/watch?v=LFzAoJJt92M&t=350s)
 - [Balanced Binary Search tree rotations | William Fiset](https://www.youtube.com/watch?v=q4fnJZr8ztY) </br> 
+
 ***AVL*** </br>
 - [AVL tree insertions and rotations | Abdul Bari](https://www.youtube.com/watch?v=jDM6_TnYIqE)
 - [AVL tree insertion | William Fiset](https://www.youtube.com/watch?v=1QSYxIKXXP4)
