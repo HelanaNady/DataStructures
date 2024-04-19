@@ -39,8 +39,8 @@ Generic trees are a collection of nodes where each node is a data structure that
 
 The Generic trees are the N-ary trees which have the following properties: 
 
- 1) Many children at every node.</br>
-2) The number of nodes for each node is not known in advance.<br>
+1. Many children at every node.
+2. The number of nodes for each node is not known in advance.<br>
 [For more info](https://www.geeksforgeeks.org/generic-treesn-array-trees/)
 
 ## Binary Trees
@@ -243,7 +243,7 @@ public:
 ### copyTree
 uses a **recursive** preorder traversal to copy each node in the tree. By copying each node as soon as the traversal visits it, copyTree can make an exact copy of the original tree. To make the copy distinct from the original tree, the new nodes must be linked together by using new pointers. That is, you cannot simply copy the pointers in the nodes of the original tree. The result is a deep copy of the tree.
 ```cpp
-template<typename T>
+template <typename T>
 inline BinaryNode<T>* BinaryNodeTree<T>::copyTree(const BinaryNode<T>* treePtr) const
 {
 	BinaryNode<T>* newTreePtr = nullptr;
@@ -259,7 +259,7 @@ inline BinaryNode<T>* BinaryNodeTree<T>::copyTree(const BinaryNode<T>* treePtr) 
 ```
 The copy constructor then uses this method as follows:
 ```cpp
-template<typename T>
+template <typename T>
 inline BinaryNodeTree<T>::BinaryNodeTree(const BinaryNodeTree<T>& aTree)
 {
 	rootPtr = copyTree(aTree.rootPtr);
@@ -271,7 +271,7 @@ inline BinaryNodeTree<T>::BinaryNodeTree(const BinaryNodeTree<T>& aTree)
 the protected method destroyTree , which the destructor calls, uses a recursive postorder
 traversal to delete each node in the tree. A postorder traversal is appropriate here because you can delete a node only after you have fi rst traversed and deleted both of its subtrees.
 ```cpp
-template<typename T>
+template <typename T>
 inline void BinaryNodeTree<T>::destroyTree(BinaryNode<T>* subTreePtr)
 {
 	if (subTreePtr)
@@ -310,7 +310,14 @@ inline int BinaryNodeTree<T>::getHeightHelper(BinaryNode<T>* subTreePtr) const
 }
 ```
 
-while getHeight() just calls it.
+while getHeight() just calls it
+```cpp
+template<typename T>
+inline int BinaryNodeTree<T>::getHeight() const
+{
+	return getHeightHelper(rootPtr);
+}
+```
 
 -----
 ### getNumberOfNodesHelper
@@ -328,7 +335,14 @@ inline int BinaryNodeTree<T>::getNumberOfNodesHelper(BinaryNode<T>* subTreePtr) 
 		return 0;
 }
 ```
-while getNumberOfNodes() just calls it.
+while getNumberOfNodes() just calls it
+```cpp
+template<typename T>
+inline int BinaryNodeTree<T>::getNumberOfNodes() const
+{
+	getNumberOfNodesHelper(rootPtr);
+}
+```
 
 ---
 ### balancedAdd
@@ -399,8 +413,8 @@ inline void BinaryNodeTree<T>::postorder(BinaryNode<T>* treePtr) const
 {
 	if (treePtr)
 	{
-		preorder(treePtr->getLeftChildPtr()); 
-		preorder(treePtr->getRightChildPtr()); 
+		postorder(treePtr->getLeftChildPtr()); 
+		postorder(treePtr->getRightChildPtr()); 
 		// Do something supposedly, print
 		std::cout << treePtr->getItem() << " "; 
 	}
@@ -417,10 +431,10 @@ inline void BinaryNodeTree<T>::inorder(BinaryNode<T>* treePtr) const
 {
 	if (treePtr)
 	{
-		preorder(treePtr->getLeftChildPtr());
+		inorder(treePtr->getLeftChildPtr());
 		// Do something supposedly, print
 		std::cout << treePtr->getItem() << " "; 
-		preorder(treePtr->getRightChildPtr()); 
+		inorder(treePtr->getRightChildPtr()); 
 	}
 }
 ```
