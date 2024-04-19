@@ -408,7 +408,7 @@ inline BinaryNode<T>* AVLTree<T>::removeValue(BinaryNode<T>* subTreePtr, const T
 
 ----
 ## Useful Videos
-***BST***
+</br> ***BST***
 - [Intro to Binary Search Trees | William Fiset ](https://www.youtube.com/watch?v=JfSdGQdAzq8)
 - [Binary Search Tree Insertion | William Fiset](https://www.youtube.com/watch?v=LwpLXm3eb6A)
 - [BST Search Leetcode problem - recursive & iterative solution | neetcode ](https://www.youtube.com/watch?v=Cpg8f79luEA)
