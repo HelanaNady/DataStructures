@@ -28,6 +28,7 @@ You'll find:
 - [Stacks](https://github.com/HelanaNady/DataStructure/blob/main/Stacks.md)
 - [Queues](https://github.com/HelanaNady/DataStructure/blob/main/Queues.md)
 - [BinaryTrees](https://github.com/HelanaNady/DataStructure/blob/main/BinaryTrees.md)
+- [BSTrees and AVLTrees](https://github.com/HelanaNady/DataStructure/blob/main/ValueOrientedTrees.md)
 
 > Branches other than the main branch will contain ongoing edits, take in consideration they haven't been reviewed yet.
 
