@@ -1,47 +1,9 @@
 ## Contents 
-[Binary Search Trees](#Binary-Search-Trees)
-- [Functions](#Functions)
+- [Binary Search Trees](#Binary-Search-Trees)
+- [AVL Trees](#AVL-Trees)
 - [Useful videos](#Useful-videos)
 - [Useful articles](#Useful-articles)
 - [For practice](#For-practice)
-
-## Functions
-- [Searching](#Search)
-- Finding minimum
-- Finding maximum
-- [Insertion](#Insertion) 
-- [Removing an item](#Remove)
-
-[AVL Trees](#AVL-Trees)
-
-## Functions
-- [Insertion](#AVL-Trees#Insert)
-- [Removing an item](#AVL-Trees#remove)
-
----
-## Resources
-
-#### Useful Videos
-BST
-- [Intro to Binary Search Trees | William Fiset ](https://www.youtube.com/watch?v=JfSdGQdAzq8)
-- [Binary Search Tree Insertion | William Fiset](https://www.youtube.com/watch?v=LwpLXm3eb6A)
-- [BST Search Leetcode problem - recursive & iterative solution | neetcode ](https://www.youtube.com/watch?v=Cpg8f79luEA)
-- [Binary Search Tree removal | William Fiset](https://www.youtube.com/watch?v=8K7EO7s_iFE)
-- [BST removal Leetcode problem solution | neetcode](https://www.youtube.com/watch?v=LFzAoJJt92M&t=350s)
-- [Balanced Binary Search tree rotations | William Fiset](https://www.youtube.com/watch?v=q4fnJZr8ztY)
-AVL
-- [AVL tree insertions and rotations | Abdul Bari](https://www.youtube.com/watch?v=jDM6_TnYIqE)
-- [AVL tree insertion | William Fiset](https://www.youtube.com/watch?v=1QSYxIKXXP4)
-- [AVL tree removals | William Fiset](https://www.youtube.com/watch?v=g4y2h70D6Nk)
-- [Dhort video: AVL trees in 9 minutes — Insertions ](https://www.youtube.com/watch?v=1QSYxIKXXP4)
-
-#### Useful Articles
-- [Everything about binary search trees | medium ](https://praharshbhatt.medium.com/everything-about-binary-search-trees-insertion-deletion-searching-time-complexity-b1fd42976e77)
-
-#### For practice
-- [Coding Interview Questions | TakeUforward](https://takeuforward.org/interviews/strivers-sde-sheet-top-coding-interview-problems/)
-- [Binary Tree leetcode problem set](https://leetcode.com/tag/binary-tree/)
-
 
 ---
 
@@ -51,6 +13,12 @@ AVL
 Binary search trees are a special type of binary trees that satisfies the following at any node:
 - All nodes in left subtree are smaller than root node 
 - All nodes in the right subtree are greater than root node
+## Functions
+- [Searching](#Search)
+- Finding minimum
+- Finding maximum
+- [Insertion](#Insertion) 
+- [Removing an item](#Remove)
 
 ---
 
@@ -223,6 +191,9 @@ bool BinarySearchTree<T>::remove(const T& anEntry)
 While BSTs excel at searching and insertion due to their sorted structure, their performance can be heavily influenced by the order of element insertion. Adding elements in increasing or decreasing order creates a skewed or degenerate BST, turning it into a linked list making the complexity of the code O(n) instead of logarithmic. That is where self balancing trees come in, there are many types of self balancing BST 
 - AVL trees
 - Red-Black trees
+## Functions
+- [Insertion](#AVL-Trees#Insert)
+- [Removing an item](#AVL-Trees#remove)
 
 The basic strategy of the AVL algorithm is to monitor the shape of the binary search tree after each insertion or deletion if the tree becomes imbalanced we "rotate" it
 where ***at any node The heights of the left and right subtrees differ by no more than one***
@@ -435,4 +406,24 @@ inline BinaryNode<T>* AVLTree<T>::removeValue(BinaryNode<T>* subTreePtr, const T
 ```
 
 
+----
+## Useful Videos
+***BST***
+- [Intro to Binary Search Trees | William Fiset ](https://www.youtube.com/watch?v=JfSdGQdAzq8)
+- [Binary Search Tree Insertion | William Fiset](https://www.youtube.com/watch?v=LwpLXm3eb6A)
+- [BST Search Leetcode problem - recursive & iterative solution | neetcode ](https://www.youtube.com/watch?v=Cpg8f79luEA)
+- [Binary Search Tree removal | William Fiset](https://www.youtube.com/watch?v=8K7EO7s_iFE)
+- [BST removal Leetcode problem solution | neetcode](https://www.youtube.com/watch?v=LFzAoJJt92M&t=350s)
+- [Balanced Binary Search tree rotations | William Fiset](https://www.youtube.com/watch?v=q4fnJZr8ztY) </br> 
+***AVL*** </br>
+- [AVL tree insertions and rotations | Abdul Bari](https://www.youtube.com/watch?v=jDM6_TnYIqE)
+- [AVL tree insertion | William Fiset](https://www.youtube.com/watch?v=1QSYxIKXXP4)
+- [AVL tree removals | William Fiset](https://www.youtube.com/watch?v=g4y2h70D6Nk)
+- [Dhort video: AVL trees in 9 minutes — Insertions ](https://www.youtube.com/watch?v=1QSYxIKXXP4)
 
+## Useful Articles
+- [Everything about binary search trees | medium ](https://praharshbhatt.medium.com/everything-about-binary-search-trees-insertion-deletion-searching-time-complexity-b1fd42976e77)
+
+## For practice
+- [Coding Interview Questions | TakeUforward](https://takeuforward.org/interviews/strivers-sde-sheet-top-coding-interview-problems/)
+- [Binary Tree leetcode problem set](https://leetcode.com/tag/binary-tree/)
