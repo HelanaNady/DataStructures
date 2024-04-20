@@ -46,7 +46,6 @@ You'll find:
 ---
 ![image](https://github.com/HelanaNady/DataStructure/assets/84867341/23bfef84-5e68-4e0f-89df-cb720a5ce4fa)
 
-----
 ![image](https://github.com/HelanaNady/DataStructure/assets/84867341/d1f5b454-8d14-4e5a-a679-99c94c7aa3a6)
 
 Image from [Big O cheatsheet](https://www.bigocheatsheet.com/)
