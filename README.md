@@ -51,13 +51,47 @@ You'll find:
 
 Image from [Big O cheatsheet](https://www.bigocheatsheet.com/)
 
+> [!warning]
+> These notes are educational resources and not a substitute for comprehensive textbooks or formal education in computer science or other related fields.
+
 ---
 
 > [!IMPORTANT] 
 > **To contribute,** Fork this repository, create a new branch from the main branch, make your changes, and submit a pull request. <br/>
 > Include a description of your changes in the pull request description and adhere to our [code style guide](https://github.com/HelanaNady/DataStructures/blob/main/styleGuideline.md).
 
+## Contributors  
 
-----
-> [!warning]
-> These notes are educational resources and not a substitute for comprehensive textbooks or formal education in computer science or other related fields.
+<table>
+<tr>
+  <td align = "center"> 
+	<a href = "https://github.com/HelanaNady">
+	  <img src = "https://github.com/HelanaNady.png" width = 100>
+	  <br />
+	  <sub> Helana Nady</sub>
+	</a>
+  </td>
+  <td align = "center"> 
+	<a href = "https://github.com/habibayman">
+	  <img src = "https://github.com/habibayman.png" width = 100>
+	  <br />
+	  <sub> Habiba Ayman </sub>
+	</a>
+  </td>
+  <td align = "center"> 
+	<a href = "https://github.com/AhmedAmrNabil">
+	  <img src = "https://github.com/AhmedAmrNabil.png" width = 100>
+	  <br />
+	  <sub> Ahmed Amr </sub>
+	</a>
+  </td>
+  <td align = "center"> 
+	<a href = "https://github.com/AhmedSobhy01">
+	  <img src = "https://github.com/AhmedSobhy01.png" width = 100>
+	  <br />
+	  <sub> Ahmed Sobhy </sub>
+	</a>
+  </td>
+</tr>
+</table>
+
