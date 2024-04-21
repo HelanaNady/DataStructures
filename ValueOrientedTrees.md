@@ -14,11 +14,11 @@ Binary search trees are a special type of binary trees that satisfies the follow
 - All nodes in left subtree are smaller than root node 
 - All nodes in the right subtree are greater than root node
 ## Functions
-- [Searching](#Search)
-- Finding minimum
-- Finding maximum
 - [Insertion](#Insertion) 
 - [Removing an item](#Remove)
+- [Searching](#Searching)
+- [Finding minimum](#Finding-minimum)
+- [Finding maximum](#Finding-maximum)
 
 ---
 
@@ -72,7 +72,7 @@ Removing an element is more tricky than inserting we have three possible scenari
 - A parent node with one child
 - A parent node with 2 children nodes
 
-*First case is quiet easy just remove the node itself by setting it to null and nothing extra need to be done* 
+*First case is quiet easy just remove the node itself by setting it to null and nothing extra needs to be done* 
 
 ![image](https://github.com/HelanaNady/DataStructures/assets/84867341/935674fb-ba45-4825-8585-6342e1208dab)
 
@@ -131,7 +131,7 @@ inline BinaryNode<T>* BinarySearchTree<T>::removeValue(BinaryNode<T>* rootPtr, c
 {
     if (rootPtr == nullptr)
         return nullptr;
-    else if (target < rootPtr->getItem())
+    else if (target < rootPtr->getItem()) 
         rootPtr->setLeft(removeValue(rootPtr->getLeftChild(), target, success));
     else if (target > rootPtr->getItem())
         rootPtr->setRight(removeValue(rootPtr->getRightChild(), target, success));
@@ -180,8 +180,66 @@ bool BinarySearchTree<T>::remove(const T& anEntry)
     return success;
 }
 ```
+### Searching
+Searching for an element in a Binary Search Tree (BST) is a very efficient operation due to the inherent ordering property of the tree. Here's a breakdown of how it works:
+**1. Start at the Root:**
+**2. Compare with Current Node:**
+**3. Three Possibilities:**
+- **Target Found
+- **Target Less Than Current:** If the target value is less than the current node's data, the search continues by moving to the left child of the current node.
+- **Target Greater Than Current:** If the target value is greater than the current node's data, the search continues by moving to the right child of the current node.
+**4. Repeat Until Found or Reach Null**
+The private method is recursively implemented as follows:
+```cpp
+template<typename T>
+inline BinaryNode<T*> BinarySearchTree<T>::search(BinaryNode<T>* subtreePtr, const T& target)
+{
+	if (!subtreePtr)
+		return nullptr;
 
----
+	if (subtreePtr->getItem() == target)
+		return subtreePtr;
+	if (subtreePtr->getItem() < target)
+		search(subtreePtr->getRightChildPtr(), target);
+	else
+		search(subtreePtr->getLeftChildPtr(), target);
+}
+```
+The public method then calls it and return true if it didn't return a nullptr as follows:
+```cpp
+template<typename T>
+inline bool BinarySearchTree<T>::isFound(const T& target)
+{
+	return search(rootPtr, target);
+}
+```
+
+### Finding minimum
+The smallest element in a BST can be easily found by reaching the leaf of the root's left child
+```cpp
+template<typename T>
+T BinarySearchTree<T>::findMinimumHelper(BinaryNode<T>* subtreePtr)
+{
+	if (!subtreePtr->getLeftChildPtr())
+		return subtreePtr->getItem();
+	T temp = findMinimum(subtreePtr->getLeftChildPtr());
+}
+```
+### Finding maximum
+Similarly The largest element in a BST is the leaf of the root's right child
+```cpp
+template<typename T>
+T BinarySearchTree<T>::findMaximumHelper(BinaryNode<T>* subtreePtr)
+{
+	if (!subtreePtr->getRightChildPtr())
+		return subtreePtr->getItem();
+	T temp = findMaximum(subtreePtr->getRightChildPtr());
+}
+```
+</br>
+***Both helper functions get called inside their public versions `T findMinimum()` & `T findMaximim()` easily.***
+
+----
 
 
 # AVL Trees
