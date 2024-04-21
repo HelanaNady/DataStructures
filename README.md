@@ -1,6 +1,9 @@
 <div align = "center" >
     
 # 👩🏽‍💻 Data Structures 👨🏽‍💻
+![GitHub Repo stars](https://img.shields.io/github/stars/HelanaNady/DataStructures?style=flat?labelColor=#697689)
+![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2FHelanaNady%2FDataStructures&countColor=%23007ec6&style=flat)
+![GitHub top language](https://img.shields.io/github/languages/top/HelanaNady/DataStructures?style=flat)
 </div>
 
 <div align = "center" >
