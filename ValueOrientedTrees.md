@@ -111,7 +111,7 @@ For example for 20:
 ```cpp
 BinaryNode<T>* current = rootPtr->getLeftChild();
 
-while (current->getRightChild())
+while (current && current->getRightChild())
     current = current->getRightChild();
 ```
 
@@ -119,7 +119,7 @@ while (current->getRightChild())
 ```cpp
 BinaryNode<T>* current = rootPtr->getRightChild();
 
-while (current->getLeftChild())
+while (current && current->getLeftChild())
     current = current->getLeftChild();
 ```
 
