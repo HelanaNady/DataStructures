@@ -182,13 +182,13 @@ bool BinarySearchTree<T>::remove(const T& anEntry)
 ```
 ### Searching
 Searching for an element in a Binary Search Tree (BST) is a very efficient operation due to the inherent ordering property of the tree. Here's a breakdown of how it works:
-**1. Start at the Root:**
-**2. Compare with Current Node:**
-**3. Three Possibilities:**
-- **Target Found
-- **Target Less Than Current:** If the target value is less than the current node's data, the search continues by moving to the left child of the current node.
-- **Target Greater Than Current:** If the target value is greater than the current node's data, the search continues by moving to the right child of the current node.
-**4. Repeat Until Found or Reach Null**
+1. Start at the Root:
+2. Compare with Current Node:
+3. Three Possibilities:
+- _Target Found_
+- _Target Less Than Current:_ If the target value is less than the current node's data, the search continues by moving to the left child of the current node.
+- _Target Greater Than Current:_ If the target value is greater than the current node's data, the search continues by moving to the right child of the current node.
+4. Repeat Until Found or Reach Null
 The private method is recursively implemented as follows:
 ```cpp
 template<typename T>
