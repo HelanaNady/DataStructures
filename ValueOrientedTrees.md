@@ -237,7 +237,7 @@ T BinarySearchTree<T>::findMaximumHelper(BinaryNode<T>* subtreePtr)
 	T temp = findMaximum(subtreePtr->getRightChildPtr());
 }
 ```
-</br>
+
 ***Both helper functions get called inside their public versions `T findMinimum()` & `T findMaximim()` easily.***
 
 ----
