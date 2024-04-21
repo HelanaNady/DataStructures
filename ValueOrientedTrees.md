@@ -20,6 +20,7 @@ Binary search trees are a special type of binary trees that satisfies the follow
 - [Finding minimum](#Finding-minimum)
 - [Finding maximum](#Finding-maximum)
 
+
 ---
 
 ### Search
@@ -240,6 +241,7 @@ T BinarySearchTree<T>::findMaximumHelper(BinaryNode<T>* subtreePtr)
 ***Both helper functions get called inside their public versions `T findMinimum()` & `T findMaximim()` easily.***
 
 ----
+
 
 
 # AVL Trees
