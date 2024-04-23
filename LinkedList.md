@@ -12,7 +12,7 @@
 
 ## Contents
 - [Singly linked list](#Singly-linked-list)
-- doubly linked list
+- [Doubly linked list](#Doubly-linked-list)
 - circular linked list
 - [Techniques for linked list problems](Techniques-for-linked-list-problems)
 
