@@ -464,6 +464,7 @@ inline void BinaryNodeTree<T>::levelorder(BinaryNode<T>* treePtr) const
 			Nodesqueue.push(currentPtr->getLeftChildPtr());
 		if (currentPtr->getRightChildPtr())
 			Nodesqueue.push(currentPtr->getRightChildPtr());
+		Nodesqueue.pop();
 	}
 }
 ```
