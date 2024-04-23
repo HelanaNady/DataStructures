@@ -354,7 +354,7 @@ inline BinaryNode<T>* AVLTree<T>::leftRotate(BinaryNode<T>* currentRoot)
 
 ### insert
 
-It is quite similar to BST insertion we just check the balance after and re-balance the tree if needed 
+It is quite similar to BST insertion we just check the balance after and re-balance the tree if needed </br>
 
 ```cpp
 template<class T>
