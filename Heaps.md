@@ -8,27 +8,15 @@ A **Heap** is a binary tree-based data structure there are two types:
 
 **Heaps** maintain data in semi-order. It is a good tradeoff between having to maintain a complete order and searching through random chaos. They allow quick access to the max and min element in O(1) thus they become useful when we want to remove the element with highest/lowest value (priority) quickly ex: in priority queue.
 
-Sometimes they are called binary heaps and are nearly complete binary trees 
-- Height of Heap = log(n)
-
-
-
-How to represent Heaps ?
-- using a binary tree
-- using an array 
-
 ## Contents
 
 - [Heap Operations](#Heap-Operations)
-	- Heapify
-	- insert
-	- delete
-- [Heap Applications](#Heap-Appllications)
+	- [Heapify](#Heapify)
+	- [Insertion](#insert)
+	- [Deletion](#delete)
 - [Useful videos](#Useful-videos)
 - [Useful articles](#Useful-articles)
 - [For practice](#For-practice)
-
-  
 
 ----
 
@@ -39,18 +27,33 @@ Some of the important operations performed on a heap are described below along w
 
 - ***Heapify:*** the process of creating a heap data structure from a binary tree. It is used to create a Min-Heap or a Max-Heap.
 
-If the input is an array we will first build a binary tree from it where the root node will be at index 0 and its children are at the following indices:
+**Steps:**
+1. Convert the array into a binary tree
+2. Heapify the tree 
+
+#### To build a binary tree from it the root node will be at index 0 and its children are at the following indices:
 - Left child index = 2i + 1 
 - Right child index = 2i + 2 
 
-> We here assume that the parent node of the tree starts at index 0 
-> sometimes to make calculations easier you will see implementations of the heap where the root node is at index 1 instead making:
-> - The left child index = 2i
-> - The right child index = 2i + 1 
+> [!Note]
+> You might encounter some implementations that use 1-based indexing to simplify calculations, where the root node is at index 1. In that case, the child node formulas would be:
+> - Left child index: 2i
+> - Right child index: 2i + 1
 
-To heapify a tree we wil heapify each node that would take n* logn complexity , a more optimized approach would be to only heapify the non-leaf node 
-we can find the index of the last non-leaf node using the following formula : 
-last non-leaf node index = n/2 - 1;
+
+#### **To heapify a tree we wil heapify there are two approaches**
+- Top down approach
+- Bottom up approach
+
+**Top down approach**: it starts at the root node and heapify all nodes by recursively calling heapify on its children taking time complexity of nlog(n)
+
+> The thing is we don't need to heapify all nodes as leaf nodes already satisfy the heap property!
+
+**Bottom up approach** uses the fact that we only need to heapify the non-leaf nodes it starts at the last non-leaf node and works its way up the tree in reverse level order. resulting in time complexity of O(n) which is more efficient than top down approach.
+
+We can find the index of the last non-leaf node using the following formula : last non-leaf node index = n/2 - 1
+
+**Building Heap using bottom up approach:**
 
 ```cpp
 static void buildHeap(int arr[], int n)
@@ -62,17 +65,7 @@ static void buildHeap(int arr[], int n)
 		heapify(arr, n, i);
 }
 ```
-
- Perform reverse level order traversal from last non-leaf node and heapify each node
-
-1. Let the input array be ![2024-05-04 (1)](https://www.programiz.com/sites/tutorial2program/files/array_1.png)
-
-2. Create a complete binary tree from the array ![2024-05-04 (1)](https://www.programiz.com/sites/tutorial2program/files/completebt-1_0.png)
-
-
-
-
- ![2024-05-04 (1)](https://www.programiz.com/sites/tutorial2program/files/swap_1.png)
+Heapify function for max heap 
 
 ```cpp
 void maxHeapify(int arr[], int n, int parent) 
@@ -98,7 +91,7 @@ void maxHeapify(int arr[], int n, int parent)
 }
 ```
 
-----
+For minHeapify it is the same process it only differs in the conditions and checks on the root node 
 
 ```cpp
 void minHeapify(int arr[], int n, int parent) {
@@ -122,24 +115,16 @@ void minHeapify(int arr[], int n, int parent) {
 }
 ```
 
+----
 
-  #### insert 
+#### insert 
+
+  <div align = "center" >
+	<img src = "https://www.programiz.com/sites/tutorial2program/files/insert-heap-1.png" height = "200" alt="select">
+	<img src = "https://www.programiz.com/sites/tutorial2program/files/insert-heap-2.png" height = "200" alt="delete">
+</div>
   
-  
-- ****Insert:**** Adds a new element to the heap while maintaining the heap property.
-
-1. Insert the new element at the end of the tree.
-
-![2024-05-04 (1)](https://www.programiz.com/sites/tutorial2program/files/insert-heap-1.png)
-
-  
-  
-
-2. Heapify the tree.
-
-![2024-05-04 (1)](https://www.programiz.com/sites/tutorial2program/files/insert-heap-2.png)
-
-  
+- We insert the new element at the end of the tree and heapify 
 
 ```cpp
 
@@ -154,9 +139,9 @@ void insertNode(int arr[], int& n, int key)
 }
 ```
 
+----
 
-
-#### Delete 
+#### delete 
 ![max_heap_deletion_animation](https://github.com/HelanaNady/DataStructures/assets/137416623/f325daf1-9be8-4d13-92bd-49b843b90315)
 
 Delete process is quite simple: 
