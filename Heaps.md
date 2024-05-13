@@ -1,12 +1,28 @@
 # Heaps
 
-![max_heap_deletion_animation](https://github.com/HelanaNady/DataStructures/assets/137416623/f325daf1-9be8-4d13-92bd-49b843b90315)
-A ***heap*** is a binary tree-based data structure that satisfies the property: the value of each node is greater than or equal to the value of its children. This property makes sure that the root node contains the maximum or minimum value (depending on the type of heap), and the values decrease or increase as you move down the tree
+![image](https://github.com/HelanaNady/DataStructures/assets/84867341/4b5ccd87-d9de-45e1-98c6-cb4510a0e762)
+
+A **Heap** is a binary tree-based data structure there are two types:
+- **Max Heap:** any node is greater than its children where the parent node always contains the maximum element of this sub-tree
+- **Min Heap:** any node is smaller than its children where the parent node always contains the minimum element of this sub-tree
+
+**Heaps** maintain data in semi-order. It is a good tradeoff between having to maintain a complete order and searching through random chaos. They allow quick access to the max and min element in O(1) thus they become useful when we want to remove the element with highest/lowest value (priority) quickly ex: in priority queue.
+
+Sometimes they are called binary heaps and are nearly complete binary trees 
+- Height of Heap = log(n)
+
+
+
+How to represent Heaps ?
+- using a binary tree
+- using an array 
 
 ## Contents
 
-- [Types of Heaps](#Types-of-Heaps)
 - [Heap Operations](#Heap-Operations)
+	- Heapify
+	- insert
+	- delete
 - [Heap Applications](#Heap-Appllications)
 - [Useful videos](#Useful-videos)
 - [Useful articles](#Useful-articles)
@@ -14,125 +30,102 @@ A ***heap*** is a binary tree-based data structure that satisfies the property: 
 
   
 
-![2024-05-04 (1)](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1674109793492-Difference%20Between%20Max%20Heap%20and%20Min%20Heap2.png)
-
-  
-
-## Types of Heaps
-
- ### [1] Max Heaps
-- any  node is always greater than its child node/s and the key of the root node is the largest among all other nodes.
-
-![2024-05-04 (1)](https://www.programiz.com/sites/tutorial2program/files/maxheap_1.png)
-  
- ### [2] Min Heaps
-- any  node is  always smaller than the child node/s and the key of the root node is the smallest among all other nodes.
-
-  
-
-![2024-05-04 (1)](https://www.programiz.com/sites/tutorial2program/files/minheap_0.png)
-
 ----
 
 ## Heap Operations
-
 Some of the important operations performed on a heap are described below along with their algorithms.
 
+#### Heapify 
+
 - ***Heapify:*** the process of creating a heap data structure from a binary tree. It is used to create a Min-Heap or a Max-Heap.
+
+If the input is an array we will first build a binary tree from it where the root node will be at index 0 and its children are at the following indices:
+- Left child index = 2i + 1 
+- Right child index = 2i + 2 
+
+> We here assume that the parent node of the tree starts at index 0 
+> sometimes to make calculations easier you will see implementations of the heap where the root node is at index 1 instead making:
+> - The left child index = 2i
+> - The right child index = 2i + 1 
+
+To heapify a tree we wil heapify each node that would take n* logn complexity , a more optimized approach would be to only heapify the non-leaf node 
+we can find the index of the last non-leaf node using the following formula : 
+last non-leaf node index = n/2 - 1;
+
+```cpp
+static void buildHeap(int arr[], int n)
+{
+	// Index of last non-leaf node
+	int startIndex = (n / 2) - 1;
+
+	for (int i = startIndex; i >= 0; i--)
+		heapify(arr, n, i);
+}
+```
+
+ Perform reverse level order traversal from last non-leaf node and heapify each node
 
 1. Let the input array be ![2024-05-04 (1)](https://www.programiz.com/sites/tutorial2program/files/array_1.png)
 
 2. Create a complete binary tree from the array ![2024-05-04 (1)](https://www.programiz.com/sites/tutorial2program/files/completebt-1_0.png)
 
-3. Start from the first index of non-leaf node whose index is given by ```n/2 - 1```
-4. Set current element ``i`` as ``largest``
-5. The index of left child is given by `2i + 1` and the right child is given by `2i + 2`.
 
-	If `leftChild` is greater than `currentElement` (i.e. element at `ith` index), set ``leftChildIndex`` as largest.
 
-	If ``rightChild`` is greater than element in `largest`, set `rightChildIndex` as `largest`.
 
-6. Swap `largest` with `currentElement`
-7. Repeat steps 3-7 until the subtrees are also heapified.
  ![2024-05-04 (1)](https://www.programiz.com/sites/tutorial2program/files/swap_1.png)
 
-- Below is the cpp implementation in case of Max heaps:  
-
 ```cpp
-void heapify(int arr[], int N, int i)
-
+void maxHeapify(int arr[], int n, int parent) 
 {
-    int largest = i; // Initialize largest as root
-    int l = 2 * i + 1; // left = 2*i + 1
-    int r = 2 * i + 2; // right = 2*i + 2
+    int largest = parent;
+    int left = 2 * parent + 1;
+    int right = 2 * parent + 2;
 
-    // If left child is larger than root
-    if (l < N && arr[l] > arr[largest])
-        largest = l;
-        
-    // If right child is larger than largest so far
-    if (r < N && arr[r] > arr[largest])
-        largest = r;
+    // If left child is larger than parent
+    if (left < n && arr[left] > arr[largest])
+        largest = left;
 
-    // If largest is not root
+    // If right child is larger than largest so far
+    if (right < n && arr[right] > arr[largest])
+        largest = right;
 
-    if (largest != i) 
-    {
-        swap(arr[i], arr[largest]);
-        // Recursively heapify the affected sub-tree
-        heapify(arr, N, largest);
-    }
-
+    // If largest is no longer the parent
+    if (largest != parent) 
+    {
+        std::swap(arr[parent], arr[largest]);
+        maxHeapify(arr, n, largest);
+    }
 }
 ```
 
 ----
 
 ```cpp
+void minHeapify(int arr[], int n, int parent) {
+    int smallest = parent;
+    int left = 2 * parent + 1;
+    int right = 2 * parent + 2;
 
-// Min heap
+    // If left child is smaller than parent
+    if (left < n && arr[left] < arr[smallest])
+        smallest = left;
 
-void heapify(int arr[], int N, int i)
+    // If right child is smaller than smallest so far
+    if (right < n && arr[right] < arr[smallest])
+        smallest = right;
 
-{
-
-    int smallest = i; // Initialize smallest as root
-
-    int l = 2 * i + 1; // left = 2*i + 1
-
-    int r = 2 * i + 2; // right = 2*i + 2
-
-    // If left child is smaller than root
-
-    if (l < N && arr[l] < arr[smallest])
-
-        smallest = l;
-
-    // If right child is smaller than smallest so far
-
-    if (r < N && arr[r] < arr[smallest])
-
-        smallest = r;
-
-    // If smallest is not root
-
-    if (smallest != i) {
-
-        swap(arr[i], arr[smallest]);
-
-        // Recursively heapify the affected sub-tree
-
-        heapify(arr, N, smallest);
-
-    }
-
+    // If smallest is not parent
+    if (smallest != parent) {
+        std::swap(arr[parent], arr[smallest]);
+        minHeapify(arr, n, smallest);
+    }
 }
-
 ```
 
-  
-  
 
+  #### insert 
+  
+  
 - ****Insert:**** Adds a new element to the heap while maintaining the heap property.
 
 1. Insert the new element at the end of the tree.
@@ -150,31 +143,23 @@ void heapify(int arr[], int N, int i)
 
 ```cpp
 
-void insertNode(int arr[], int& n, int Key)
-
+void insertNode(int arr[], int& n, int key)
 {
-
     // Increase the size of Heap by 1
-
     n = n + 1;
-
     // Insert the element at end of Heap
-
-    arr[n - 1] = Key;
-
-    // Heapify the new node following a
-
-    // Bottom-up approach
-
+    arr[n - 1] = key;
+    // Heapify the new node following a Bottom-up approach
     heapify(arr, n, n - 1);
-
 }
-
 ```
 
-  
-  
-  
+Inserstion is quite simple we insert teh element and heapify the tree all over 
+
+
+#### Delete 
+![max_heap_deletion_animation](https://github.com/HelanaNady/DataStructures/assets/137416623/f325daf1-9be8-4d13-92bd-49b843b90315)
+
 
 - ***Delete Element from Heap:*** Adds a new element to the heap while maintaining the heap property.
 
@@ -234,7 +219,7 @@ void deleteNode(int arr[], int& n, int i)
   
 
 ## Useful articles
-- [Heap Data Structure |geeksforgeeks](https://www.geeksforgeeks.org/heap-data-structure/#heap-data-structure-applications)
+- [Heap Data Structure | geeksforgeeks](https://www.geeksforgeeks.org/heap-data-structure/#heap-data-structure-applications)
 - [Programiz](https://www.programiz.com/dsa/heap-data-structure)
 ## For practice
 
