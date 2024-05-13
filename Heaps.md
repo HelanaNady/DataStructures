@@ -154,24 +154,23 @@ void insertNode(int arr[], int& n, int key)
 }
 ```
 
-Inserstion is quite simple we insert teh element and heapify the tree all over 
 
 
 #### Delete 
 ![max_heap_deletion_animation](https://github.com/HelanaNady/DataStructures/assets/137416623/f325daf1-9be8-4d13-92bd-49b843b90315)
 
+Delete process is quite simple: 
+1. Selecting the element we will be deleting
+2. Swap it with the last element 
+3. Heapify the tree
 
-- ***Delete Element from Heap:*** Adds a new element to the heap while maintaining the heap property.
+<div align = "center" >
+	<img src = "https://www.programiz.com/sites/tutorial2program/files/delete-1_1.png" height = "200" alt="select">
+	<img src = "https://www.programiz.com/sites/tutorial2program/files/delete-2_1.png" height = "200" alt="delete">
+	<img src = "https://www.programiz.com/sites/tutorial2program/files/delete-4_0.png" height = "200" alt="heapify">
+</div>
 
-1. Select the element to be deleted.
- ![2024-05-04 (1)](https://www.programiz.com/sites/tutorial2program/files/delete-1_1.png)
-
-  2. Swap it with the last element.
- ![2024-05-04 (1)](https://www.programiz.com/sites/tutorial2program/files/delete-2_1.png)
-
- 3. Heapify the tree.
- ![2024-05-04 (1)](https://www.programiz.com/sites/tutorial2program/files/delete-4_0.png)
- 
+ 
 ````cpp
 void deleteNode(int arr[], int& n, int i)
 {
@@ -179,7 +178,7 @@ void deleteNode(int arr[], int& n, int i)
     int lastElement = arr[n - 1];
 
     // Replace node at index i with last element
-	 arr[i] = lastElement;
+    arr[i] = lastElement;
 
     // Decrease size of heap by 1
     n = n - 1;
@@ -187,7 +186,6 @@ void deleteNode(int arr[], int& n, int i)
     // heapify the modified heap
     heapify(arr, n, i);
 }
-
 ````
 
 ## Difference between Max Heap and Min Heap
