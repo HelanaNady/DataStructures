@@ -188,35 +188,21 @@ void deleteNode(int arr[], int& n, int i)
     heapify(arr, n, i);
 }
 
-```` 
+````
 
-
-
-## Heap Applications
-
-- Heaps are commonly used to implement priority queues, where elements are retrieved based on their priority (maximum or minimum value).
-
-- Heapsort is a sorting algorithm that uses a heap to sort an array in ascending or descending order.
-
-- Heaps are used in graph algorithms like Dijkstra’s algorithm and Prim’s algorithm for finding the shortest paths and minimum spanning trees.
-----
 ## Difference between Max Heap and Min Heap
 
-| Max Heap   | Min Heap |
-| ---- | ---- |
-| 1. The data at the root node should be greater than each of the child nodes. | 1. The data at the root node should be smaller than each of the child nodes. |
-|2. The element having the highest value has the highest priority assigned to it.| 2. The element having the lowest value has the highest priority assigned to it. |
-| 3. The first value to be extracted is the maximum value. |3. The first value to be extracted is the minimum value.
-| 4. It is used for the purpose of implementing Priority Queue.| 4. It is used for the purpose of implementing Dijkstra Graph Algorithm and Minimum Spanning Trees. |
-|5. It is used to sort the array in ascending order using Heap Sort.|5. It is used to sort the array in ascending order using Heap Sort.|
-|6. Operations performed in Max Heap include Extract Maximum, Get Maximum and Insertion.|6. Operations performed in Min Heap include Extract Minimum, Get Minimum and Insertion|
-|7. The root of the tree must have the maximum value.|7. The root of the tree must have the minimum value.|
+|                           | Max Heap                                          | Min Heap                                                                                     |
+| ------------------------- | ------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| **Root Value**            | Largest element                                   | Smallest element                                                                             |
+| **Priority**              | Highest value has highest priority                | Lowest value has highest priority                                                            |
+| **First Extracted Value** | Maximum value                                     | Minimum value                                                                                |
+| **Common Applications**   | - Priority Queues<br>- Heapsort (ascending order) | - Dijkstra's Algorithm<br>- Prim's Minimum Spanning Tree<br>- Heapsort (ascending order)<br> |
+
 
 
 ---
 ## Useful Videos
-
-  
 
 ## Useful articles
 - [Heap Data Structure | geeksforgeeks](https://www.geeksforgeeks.org/heap-data-structure/#heap-data-structure-applications)
