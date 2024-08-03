@@ -44,6 +44,8 @@ This flexibility makes graphs a powerful tool for representing various real-worl
 > - A *path* may pass through revisit the same vertex once while a *simple path* may not. likewise: the difference between a *cycle* and a *simple cycle* is that the latter doesn't pass through other vertices more than once
 > - A *complete graph* is also *connected* but the converse isn't necessarily true
 
+![image](https://github.com/user-attachments/assets/cd1aed0c-16b3-46fe-b2f9-509bbcb39b0d)
+
 ---
 ## Implementing Graphs
 The two primary ways to represent graphs are:
