@@ -1,7 +1,9 @@
 
 # Sorting-Algorithms
 
-![Sorting-Algorithms](assets/sorting.png)
+<div style="text-align: center;">
+<img src="assets/sorting.png" alt="Sorting-Algorithms" width="600" height="300">
+</div>
 
 ### Table of Contents
 
@@ -45,6 +47,12 @@ Insertion Sort is a simple comparison-based sorting algorithm. It builds the fin
 - **Space Complexity**: O(1) because it only requires a constant amount of additional memory space.
 - **Stability**: Stable.
 - **In-Place**: Yes.
+
+<div style="text-align: center;">
+<img src="https://miro.medium.com/v2/resize:fit:1012/1*JP-wURjwf4k23U2G3GNQDw.gif" alt="Sorting-Algorithms" width="600" height="300">
+</div>
+
+
 
 #### Example Code
 
@@ -101,6 +109,10 @@ Shell Sort is an optimization over Insertion Sort, where elements are sorted at 
 - **Space Complexity**: O(1) because it only requires a constant amount of additional memory space.
 - **Stability**: Not stable.
 - **In-Place**: Yes.
+
+<div style="text-align: center;">
+<img src="https://res.cloudinary.com/practicaldev/image/fetch/s--NWQbu0c8--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_66%2Cw_800/https://thumbs.gfycat.com/MarriedImpassionedIaerismetalmark-size_restricted.gif" alt="Sorting-Algorithms" width="600" height="300">
+</div>
 
 #### Example Code
 
@@ -182,6 +194,11 @@ Selection Sort is a simple comparison-based sorting algorithm. The algorithm div
 - **Space Complexity**: O(1) because it only requires a constant amount of additional memory space.
 - **Stability**: Not stable.
 - **In-Place**: Yes.
+
+<div style="text-align: center;">
+<img src="https://miro.medium.com/v2/resize:fit:828/format:webp/1*5WXRN62ddiM_Gcf4GDdCZg.gif" alt="Sorting-Algorithms" width="600" height="300">
+</div>
+
 #### Example Code
 
 ##### Selection Sort: Left to Right (Ascending Order)
@@ -240,6 +257,10 @@ Heap Sort is a comparison-based sorting algorithm that utilizes a binary heap da
 - **Space Complexity**: O(1) because it only requires a constant amount of additional memory space.
 - **Stability**: Not stable.
 - **In-Place**: Yes.
+
+<div style="text-align: center;">
+<img src="https://miro.medium.com/v2/resize:fit:798/0*_CtPDbdd6-jaaZE2.gif" alt="Sorting-Algorithms" width="600" height="300">
+</div>
 
 #### Example Code
 
@@ -334,6 +355,10 @@ Bubble Sort is a simple comparison-based sorting algorithm. It repeatedly steps 
 - **Stability**: Stable.
 - **In-Place**: Yes.
 
+<div style="text-align: center;">
+<img src="https://codepumpkin.com/wp-content/uploads/2017/10/BubbleSort_Avg_case.gif" alt="Sorting-Algorithms"width="600" height="300">
+</div>
+
 #### Example Code
 
 ##### Bubble Sort: Left to Right (Ascending Order)
@@ -381,6 +406,10 @@ Quick Sort is a comparison-based sorting algorithm that uses a divide-and-conque
 - **Space Complexity**: O(log n) due to the stack space used by recursion.
 - **Stability**: Not stable.
 - **In-Place**: Yes.
+
+<div style="text-align: center;">
+<img src="https://miro.medium.com/v2/resize:fit:750/format:webp/1*-SvbPjyoV0NyGyfF5uZbEA.gif" alt="Sorting-Algorithms" width="600" height="300">
+</div>
 
 #### Example Code
 
@@ -489,6 +518,10 @@ Merge Sort is a comparison-based sorting algorithm that follows the divide-and-c
 - **Space Complexity**: O(n) due to the temporary arrays used for merging.
 - **Stability**: Stable.
 - **In-Place**: No (uses additional space for merging).
+
+<div style="text-align: center;">
+<img src="https://miro.medium.com/v2/resize:fit:1358/1*X-o4Ng1YsdZg13We3J4q9Q.gif" alt="Sorting-Algorithms" width="400" height="400">
+</div>
 
 #### Example Code
 
