@@ -111,7 +111,7 @@ Shell Sort is an optimization over Insertion Sort, where elements are sorted at 
 - **In-Place**: Yes.
 
 <div align = "center">
-<img src="https://res.cloudinary.com/practicaldev/image/fetch/s--NWQbu0c8--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_66%2Cw_800/https://thumbs.gfycat.com/MarriedImpassionedIaerismetalmark-size_restricted.gif" alt="Sorting-Algorithms" width="600" height="300">
+<img src="https://img2020.cnblogs.com/blog/2324401/202103/2324401-20210310204327724-1140467061.gif" alt="Sorting-Algorithms" width="600" height="300">
 </div>
 
 #### Example Code
