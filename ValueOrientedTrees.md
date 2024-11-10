@@ -201,9 +201,9 @@ inline BinaryNode<T*> BinarySearchTree<T>::search(BinaryNode<T>* subtreePtr, con
 	if (subtreePtr->getItem() == target)
 		return subtreePtr;
 	if (subtreePtr->getItem() < target)
-		search(subtreePtr->getRightChildPtr(), target);
+		return search(subtreePtr->getRightChildPtr(), target);
 	else
-		search(subtreePtr->getLeftChildPtr(), target);
+		return search(subtreePtr->getLeftChildPtr(), target);
 }
 ```
 The public method then calls it and return true if it didn't return a nullptr as follows:
