@@ -361,8 +361,53 @@ void Decimal2Binary(int num)
 ```
 
 ## Evaluating postfix expressions
+In infix notation, operations require parentheses to enforce precedence:
+```
+(3 + 4) * 5
+```
+In postfix notation, the same expression is written as:
+```
+3 4 + 5 *
+```
 
+### **Step-by-Step Evaluation**
+Given the postfix expression: `3 4 + 5 *`
+1. **Push** `3` onto the stack.
+2. **Push** `4` onto the stack.
+3. **Encounter `+`**, pop `3` and `4`, compute `3 + 4 = 7`, and push `7`.
+4. **Push** `5` onto the stack.
+5. **Encounter `*`**, pop `7` and `5`, compute `7 * 5 = 35`, and push `35`.
+6. The final result in the stack is `35`.
 
+### Evaluating postfix expressions
+
+```cpp
+int evaluatePostfix(const string &expression) {
+    stack<int> st;
+
+    for (char ch : expression) {
+        if (isdigit(ch)) {
+            st.push(ch - '0'); // Convert char to int and push
+        } else if (ch == ' ') {
+            continue; // Ignore spaces
+        } else {
+            // Pop two operands
+            int b = st.top(); st.pop();
+            int a = st.top(); st.pop();
+
+            // Perform operation
+            switch (ch) {
+                case '+': st.push(a + b); break;
+                case '-': st.push(a - b); break;
+                case '*': st.push(a * b); break;
+                case '/': st.push(a / b); break;
+            }
+        }
+    }
+
+    return st.top(); // Final result
+}
+```
 ## Parsing
 You can check whether a string contains balanced braces by traversing it from left to
 right. As you move from left to right, you match each successive close brace “}” with the most
