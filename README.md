@@ -88,6 +88,8 @@ Image from [Big O cheatsheet](https://www.bigocheatsheet.com/)
 	  <sub> Ahmed Amr </sub>
 	</a>
   </td>
+</tr>
+<tr>
   <td align = "center"> 
 	<a href = "https://github.com/AhmedSobhy01">
 	  <img src = "https://github.com/AhmedSobhy01.png" width = 100>
@@ -95,14 +97,20 @@ Image from [Big O cheatsheet](https://www.bigocheatsheet.com/)
 	  <sub> Ahmed Sobhy </sub>
 	</a>
   </td>
-    <td align = "center"> 
-	<a href = "https://github.com/ahmedfathy0-0">
-	  <img src = "https://github.com/ahmedfathy0-0.png" width = 100>
+  <td align = "center"> 
+      <a href = "https://github.com/ahmedfathy0-0">
+ 	<img src = "https://github.com/ahmedfathy0-0.png" width = 100>
+  	<br />
+  	<sub> Ahmed Fathy </sub>
+      </a>
+  </td>
+  <td align = "center"> 
+	<a href = "https://github.com/georgeibrahim1">
+	  <img src = "https://github.com/georgeibrahim1.png" width = 100>
 	  <br />
-	  <sub> Ahmed Fathy </sub>
+	  <sub> George Ibrahim </sub>
 	</a>
   </td>
-	
 </tr>
 </table>
 
